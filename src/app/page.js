@@ -1,16 +1,10 @@
 "use client";
 import Header from "../app/components/Header";
-import About from "./components/About";
-import Contact from "./components/Contact";
+
 import IntroSection from "./components/Intro/IntroSection";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import Testimonials from "./components/Testimonials";
+
 import Work from "./components/Work";
-import { sendGAEvent } from "@next/third-parties/google";
-import { useLayoutEffect } from "react";
-import TimeLine from "./components/timelineDevelopment";
-import Cost from "./components/CostDevelopment";
+
 // import Portfolio from "./components/Portfolio";
 import Clients from "./components/Clients";
 import CompanyDetails from "./components/CompanyDetails";

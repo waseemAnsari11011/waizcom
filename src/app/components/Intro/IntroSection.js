@@ -1,19 +1,19 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
-import Script from 'next/script';
+import Script from "next/script";
 import Image from "next/image";
-import ParticleBackground from "../ParticleBackground";
-import { Link as ScrollLink } from "react-scroll";
-import { sendGAEvent } from '@next/third-parties/google'
-import WhatsAppButton from '../../utility/whatsappBtn';
+import { sendGAEvent } from "@next/third-parties/google";
+import WhatsAppButton from "../../utility/whatsappBtn";
 import Carousel from "./Carousel";
 import { montserrat, rubik } from "@/app/fonts";
 
 const IntroSection = () => {
   const [isMobile, setIsMobile] = useState(null);
   const trigerEvent = () => {
-    sendGAEvent('event', 'contact_me_intro_sec_clicked', { value: 'contact_me_intro' })
-  }
+    sendGAEvent("event", "contact_me_intro_sec_clicked", {
+      value: "contact_me_intro",
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,17 +24,17 @@ const IntroSection = () => {
     handleResize();
 
     // Add event listener to handle resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Remove event listener on component unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className="bg-white">
-      <WhatsAppButton phoneNumber={'918882202176'} />
+      <WhatsAppButton phoneNumber={"918882202176"} />
 
       <Script
         strategy="afterInteractive"
@@ -55,7 +55,9 @@ const IntroSection = () => {
       >
         <div className="flex-1 mt-20 md:mt-20">
           <div className="">
-            <h1 className={`${rubik.className} font-bold text-3xl md:text-7xl font-black text-black py-1.5 lg:py-2 h0`}>
+            <h1
+              className={`${rubik.className} font-bold text-3xl md:text-7xl font-black text-black py-1.5 lg:py-2 h0`}
+            >
               Creating
               <div className="ml-2 inline-block">
                 <div className="relative">
@@ -67,7 +69,7 @@ const IntroSection = () => {
                     height={100}
                     sizes="(max-width: 768px) 64px, (max-width: 1024px) 96px, 128px"
                     className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
-                    style={{ color: 'transparent' }}
+                    style={{ color: "transparent" }}
                   />
                 </div>
               </div>

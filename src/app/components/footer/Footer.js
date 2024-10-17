@@ -477,10 +477,6 @@ const Footer = () => {
         <div className="flex gap-4 max-xl:flex-wrap">
           <img
             className="w-[40px] h-[40px] cursor-pointer"
-            src="/images/behance.svg"
-          />
-          <img
-            className="w-[40px] h-[40px] cursor-pointer"
             src="/images/linkdin.svg"
           />
           <img
