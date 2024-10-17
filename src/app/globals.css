@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles/globals.css */
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.bg-linkedin-blue {
+  background-color: #00a86b;
+}
+
+.bg-linkedin-blue-dark {
+  background-color: #2e408d;
+}
+
+.brand-text {
+  font-size: 17px;
+  /* Adjust as needed */
+  font-weight: 800;
+  /* Adjust as needed */
+  letter-spacing: 2px;
+  /* Adjust as needed */
+  font-family: "Roboto Condensed", sans-serif;
+  /* Using Roboto Condensed font */
+}
+
+.side-bar-text {
+  font-size: 28px;
+  line-height: 30px;
+  letter-spacing: 1px;
+  font-weight: 750;
+}
+
+.text-linkedin {
+  color: #00a86b;
+}
+
+.brand-light {
+  background-color: #f4f5f6;
+}
+
+.brand-bg {
+  background-color: #00a86b;
+}
+
+.text-yellow {
+  color: #ffbd59;
+}
+
+.text-black {
+  color: 1e2a2e;
+}
+
+.text-header {
+  color: #1e2a2e;
+  font-size: 16px;
+  /* Adjust as needed */
+  font-weight: 400;
+  /* Adjust as needed */
+}
+
+.text-header-white {
+  color: #fff;
+  font-size: 14px;
+  /* Adjust as needed */
+  font-weight: 750;
+  /* Adjust as needed */
+  letter-spacing: 1px;
+}
+
+.get-in-touch-btn {
+  background-color: #0658f6;
+  border: none;
+  border-radius: 30px;
+  color: black;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-curved {
+  background-color: #00a86b;
+  border: none;
+  border-radius: 30px;
+  color: black;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* whatsappBtn.css */
+
+.whatsappButton {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 10px;
+  right: 10px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* animation: pulse .9s infinite alternate; */
+  /* Add this line for animation */
+}
+
+.whatsappIcon {
+  margin-bottom: 0px;
+  /* Adjust the space between the icon and the text */
+}
+
+.whatsappText {
+  font-size: 14px;
+  /* Adjust the font size of the text if needed */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button {
+  background-color: #0658f6;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  /* animation: pulse .9s infinite alternate; Add this line for animation */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* Initial box shadow */
+}
+
+/*  */
+
+.button:hover {
+  background-color: #0341bd;
+  /* Darker Blue on hover */
+}
+
+/* styles/Loader.module.css */
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  gap: 30px;
+  width: 200%; /* Adjust according to the number of images and duplicates */
+  animation: leftmove 30s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 33.3333%; /* Adjust to fit the container */
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50px;
+}
+
+@keyframes leftmove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move by 50% of the container width */
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .carousel {
+    animation: none;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  }
+  .carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+}
+
+.my-icon {
+  color: #00a86b;
+  transition: color 0.3s;
+}
+
+.my-icon:hover {
+  color: white;
+}
+
+.card-bg {
+  background-image: url("../../public/noise1.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.effect::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: -webkit-linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgb(30, 42, 46) 100%
+  ) !important;
+
+  z-index: 1;
+}
+.effect::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: -webkit-linear-gradient(
+    rgb(30, 42, 46) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ) !important;
+  z-index: 1;
+}

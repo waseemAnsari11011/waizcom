@@ -1,0 +1,41 @@
+import React from "react";
+import { Link as ScrollLink } from "react-scroll";
+
+const ContactUs = () => {
+  return (
+    <div className="bg-[#1e2a2e] text-white flex flex-col items-center py-20 px-5 mb-20">
+      <div className="relative w-full max-w-6xl">
+        {/* Desktop Image */}
+        <img
+          src="/cardDesktop.png"
+          alt="Card"
+          className="hidden md:block w-full rounded-lg"
+        />
+        {/* Mobile Image */}
+        <img
+          src="/cardMobile.avif"
+          alt="Card"
+          className="md:hidden w-full rounded-lg"
+        />
+        <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row justify-between items-center text-left p-5 md:p-20">
+          <div className="flex flex-col items-center mb-5 md:mb-0">
+            <h2 className="text-2xl mt-5 md:mt-0 md:text-5xl font-bold text-center md:text-left">
+              HAVE A GREAT IDEA?
+              <br />
+              KNOW YOUR APP COST
+            </h2>
+          </div>
+          <ScrollLink
+            to="Footer" // Replace with the ID of the home section
+            smooth={true}
+            className="bg-[#0658f6] hover:bg-[#0341bd] font-bold py-4 px-8 rounded-full"
+          >
+            <p className="text-white">Contact us</p>
+          </ScrollLink>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactUs;
