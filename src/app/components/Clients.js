@@ -12,21 +12,21 @@ const Clients = () => {
         {/* Container for images */}
         <div className="flex gap-x-8 gap-y-6 md:w-3/5 md:flex md:justify-between md:items-center max-md:flex-wrap">
           <div className="w-[calc(25%-8px)] max-md:w-[calc(50%-16px)]">
-            <img src="/5-Grey.png" alt="sevaBazar" className="h-8 md:h-10" />
+            <img src="5-Grey.png" alt="sevaBazar" className="h-8 md:h-10" />
           </div>
           <div className="w-[calc(25%-8px)] max-md:w-[calc(50%-16px)] flex justify-end">
             <img
-              src="/bluekite_grey.png"
+              src="bluekite_grey.png"
               alt="bluekite"
               className="h-14 md:h-16"
             />
           </div>
           <div className="w-[calc(25%-8px)] max-md:w-[calc(50%-16px)]">
-            <img src="/yos_grey.png" alt="yos" className="h-14 md:h-16" />
+            <img src="yos_grey.png" alt="yos" className="h-14 md:h-16" />
           </div>
           <div className="w-[calc(25%-8px)] max-md:w-[calc(50%-16px)] flex justify-end">
             <img
-              src="/giftezee_grey.png"
+              src="giftezee_grey.png"
               alt="giftezee"
               className="h-14 md:h-16"
             />
