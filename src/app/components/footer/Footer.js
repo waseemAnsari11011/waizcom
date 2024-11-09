@@ -471,7 +471,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[1px] bg-[#f0f0f133]"></div>
+      {/* <div className="w-full h-[1px] bg-[#f0f0f133]"></div>
       <div className="w-full p-5 max-w-[1200px] mx-auto flex justify-between items-center max-xl:flex-col-reverse max-xl:items-start max-xl:gap-4">
         <p className="text-[#bbbbc3]">©2024 All Rights Reserved. Waizcom</p>
         <div className="flex gap-4 max-xl:flex-wrap">
@@ -504,7 +504,7 @@ const Footer = () => {
             src="/images/clutch.svg"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
