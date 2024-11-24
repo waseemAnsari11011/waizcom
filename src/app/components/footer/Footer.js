@@ -361,7 +361,7 @@ const Footer = () => {
             Marketing
           </a>
           <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Mobile development
+            Mobile App development
           </a>
           <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Web development
