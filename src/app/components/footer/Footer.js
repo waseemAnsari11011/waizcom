@@ -353,35 +353,18 @@ const Footer = () => {
         </div>
         <div className="flex flex-col text-white gap-[10px]  max-xl:hidden">
           <h1 className="mb-2 font-bold text-xl">Services</h1>
+
+          <a className="cursor-pointer hover:text-[#fad171] duration-300">
+            Logo design
+          </a>
+          <a className="cursor-pointer hover:text-[#fad171] duration-300">
+            Marketing
+          </a>
           <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Mobile development
           </a>
           <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Web development
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            MVP development
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Mobile app design
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            UI/UX design
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Discovery phase
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Dedicated team
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            iOS app development
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Android app development
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
-            Flutter app development
           </a>
         </div>
         <div className="flex flex-col text-white gap-[10px] max-xl:hidden">
