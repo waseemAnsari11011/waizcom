@@ -45,9 +45,9 @@ function MyApp() {
       <div id="projects-section" className="projects">
         <Portfolio />
       </div>
-      {/* <div id="Review" className="section">
+      <div id="Review" className="section">
         <Review />
-      </div> */}
+      </div>
 
       <div id="IndusteriesExpert" className="section">
         <IndusteriesExpert />
