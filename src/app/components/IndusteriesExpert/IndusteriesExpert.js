@@ -4,8 +4,7 @@ const IndusteriesExpert = () => {
       <div className="w-full px-5 py-20 max-w-[1200px] mx-auto flex justify-between items-center  max-xl:flex-col">
         <div className="px-5">
           <h1 className="text-[40px] font-black mb-[40px] max-xl:text-center">
-            Industry{" "}
-            <span className="block max-xl:inline-block">Expertise</span>
+            Industry <span className="block max-xl:inline-block">We Serve</span>
           </h1>
           {/* <button className="max-md:w-[90%] py-3 px-7 mt-16 group flex justify-center items-center text-[#1E2A2E] gap-2 border border-[#1E2A2E] rounded-[50px] hover:bg-[#1E2A2E] duration-400 max-xl:absolute  max-xl:left-1/2  max-xl:bottom-0 max-xl:-translate-x-1/2">
             <span className=" duration-400 group-hover:text-white">
@@ -37,7 +36,7 @@ const IndusteriesExpert = () => {
             <div>
               <img src="/images/icon-2.avif" className="w-[70px]" />
             </div>
-            <p className="text-[#747e8b]">Travel & Booking</p>
+            <p className="text-[#747e8b]">Management Software</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
             <div>

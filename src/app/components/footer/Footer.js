@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { Link as ScrollLink } from "react-scroll";
+import { FiPhoneCall } from "react-icons/fi";
+
 import axios from "axios";
 
 const Footer = () => {
@@ -81,6 +83,15 @@ const Footer = () => {
           </h1>
           <p className="text-white my-[10px] max-xl:text-center">
             Fill the form and get a free consultation!
+          </p>
+          <p className="text-white my-[10px] max-xl:text-center flex items-center gap-2">
+            <a
+              href="tel:+918882202176"
+              className="flex items-center gap-2 text-[#fad171] hover:underline animate-ringing"
+            >
+              <FiPhoneCall className="text-[#fad171] text-xl animate-pulse" />
+              +91-88822-02176
+            </a>
           </p>
 
           {/* Display error message if present */}

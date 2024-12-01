@@ -33,15 +33,20 @@ const Header = () => {
     sendGAEvent("event", "contact_sidebar_clicked", { value: "contact" });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header
       className="bg-white fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-lg px-5 md:px-10 lg:px-16 py-5"
       style={{ zIndex: 2 }}
     >
-      <div className="flex justify-between items-center ">
-        <div className="brand-text text-2xl font-bold">
-          {/* {isMobile === true && (<Link href="/"><span className="text-linkedin">Q</span> <span>D</span> </Link>)}
-          {isMobile === false && (<Link href="/"><span className="text-linkedin">Quality</span> <span>Driven</span> </Link>)} */}
+      <div className="flex justify-between items-center">
+        <div
+          className="brand-text text-2xl font-bold cursor-pointer"
+          onClick={scrollToTop}
+        >
           <Image
             src="/waizcom.png"
             alt="Brand Image"
@@ -68,52 +73,52 @@ const Header = () => {
           {isMobile === false && (
             <div className="flex justify-between items-center space-x-10">
               <ScrollLink
-                to="intro-section" // Replace with the ID of the home section
+                to="intro-section"
                 smooth={true}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
-                className="text-header block  flex items-center cursor-pointer"
+                onClick={() => setShowSidebar(false)}
+                className="text-header block flex items-center cursor-pointer"
               >
                 <p>Home</p>
               </ScrollLink>
               <ScrollLink
-                to="about-section" // Replace with the ID of the home section
+                to="about-section"
                 smooth={true}
                 offset={-120}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
-                className="text-header block  flex items-center cursor-pointer"
+                onClick={() => setShowSidebar(false)}
+                className="text-header block flex items-center cursor-pointer"
               >
                 <p>About us</p>
               </ScrollLink>
               <ScrollLink
-                to="services-section" // Replace with the ID of the home section
+                to="services-section"
                 offset={-100}
                 smooth={true}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
-                className="text-header block  flex items-center cursor-pointer"
+                onClick={() => setShowSidebar(false)}
+                className="text-header block flex items-center cursor-pointer"
               >
                 <p>Services</p>
               </ScrollLink>
               <ScrollLink
-                to="projects-section" // Replace with the ID of the home section
+                to="projects-section"
                 smooth={true}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
-                className="text-header block  flex items-center cursor-pointer"
+                onClick={() => setShowSidebar(false)}
+                className="text-header block flex items-center cursor-pointer"
               >
                 <p>Projects</p>
               </ScrollLink>
               <ScrollLink
-                to="TechStack" // Replace with the ID of the home section
+                to="TechStack"
                 smooth={true}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
+                onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>Tech</p>
               </ScrollLink>
 
               <ScrollLink
-                to="contact-section" // Replace with the ID of the home section
+                to="contact-section"
                 smooth={true}
-                onClick={() => setShowSidebar(false)} // Close sidebar on click
+                onClick={() => setShowSidebar(false)}
                 className="get-in-touch-btn cursor-pointer"
               >
                 <p className="text-header-white">Get App Cost</p>
