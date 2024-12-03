@@ -30,7 +30,7 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <FaMapMarkerAlt />
                   </div>
 
@@ -39,7 +39,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <MdPattern />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -47,7 +47,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <MdNotifications />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -76,7 +76,7 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <AiOutlineShop />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -84,7 +84,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <FaSearch />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -92,7 +92,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <FaMap />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -139,7 +139,7 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <AiOutlineFilter />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -148,7 +148,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <FaFilePdf />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -156,7 +156,7 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/space.png)] text-[#fad171]">
+                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
                     <FaHandshake />
                   </div>
                   <p className=" font-medium w-[170px]">

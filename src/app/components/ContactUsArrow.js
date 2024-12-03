@@ -3,7 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 const ContactUs = () => {
   return (
-    <div className="bg-[#1e2a2e] text-white flex flex-col items-center py-20 px-5 mb-20">
+    <div className="bg-[#021b4b] text-white flex flex-col items-center py-20 px-5 mb-20">
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
         <img
@@ -13,7 +13,7 @@ const ContactUs = () => {
         />
         {/* Mobile Image */}
         <img
-          src="/cardMobile.avif"
+          src="/bg2.png"
           alt="Card"
           className="md:hidden w-full rounded-lg"
         />
@@ -28,9 +28,9 @@ const ContactUs = () => {
           <ScrollLink
             to="Footer" // Replace with the ID of the home section
             smooth={true}
-            className="bg-[#0658f6] hover:bg-[#0341bd] font-bold py-4 px-8 rounded-full"
+            className="bg-[#fad171] hover:bg-[#fad171] font-bold py-3 px-8 rounded-full"
           >
-            <p className="text-white">Contact us</p>
+            <p className="text-black">Contact us</p>
           </ScrollLink>
         </div>
       </div>

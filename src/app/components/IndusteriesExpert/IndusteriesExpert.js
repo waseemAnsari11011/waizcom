@@ -28,37 +28,37 @@ const IndusteriesExpert = () => {
         <div className="flex justify-between gap-4 flex-wrap w-[60%] max-xl:w-full">
           <div className="flex gap-5 items-center w-[46%]  max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-1.avif" className="w-[70px]" />
+              <img src="/images/ecommerce.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">E-commerce & Marketplaces</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]  max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-2.avif" className="w-[70px]" />
+              <img src="/images/management.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">Management Software</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-3.avif" className="w-[70px]" />
+              <img src="/images/health.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">Healthcare & Wellness</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-4.avif" className="w-[70px]" />
+              <img src="/images/media.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">Media & Entertainment</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-5.avif" className="w-[70px]" />
+              <img src="/images/logistics.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">Logistics & Transportation</p>
           </div>
           <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
             <div>
-              <img src="/images/icon-6.avif" className="w-[70px]" />
+              <img src="/images/social.png" className="w-[70px]" />
             </div>
             <p className="text-[#747e8b]">Social Networking</p>
           </div>

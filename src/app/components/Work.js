@@ -11,7 +11,7 @@ const Work = () => {
         WHAT WE OFFER
       </h1>
       <div className="mt-10 grid gap-10 md:grid-cols-2">
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/phone_icon.png"
             alt="Phone Icon"
@@ -29,7 +29,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/laptop_icon.png"
             alt="Laptop Icon"
@@ -47,7 +47,41 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+          <Image
+            src="/graphic.png"
+            alt="Laptop Icon"
+            width={100}
+            height={100}
+            className="mb-5"
+          />
+          <div>
+            <h2 className="font-semibold text-lg lg:text-xl">Graphic Design</h2>
+            <p className="text-sm mt-2">
+              Crafting visually appealing designs, including logo design and
+              branding, to effectively communicate your brand's identity and
+              engage your audience across various platforms.
+            </p>
+          </div>
+        </div>
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+          <Image
+            src="/marketing.png"
+            alt="Laptop Icon"
+            width={100}
+            height={100}
+            className="mb-5"
+          />
+          <div>
+            <h2 className="font-semibold text-lg lg:text-xl">Marketing</h2>
+            <p className="text-sm mt-2">
+              Offering comprehensive marketing solutions, including paid
+              campaigns on Google, Meta, and Instagram, as well as organic SEO
+              strategies to boost your online presence and reach.
+            </p>
+          </div>
+        </div>
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/support_icon.png"
             alt="Support Icon"
@@ -65,7 +99,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/exclamation_icon.png"
             alt="Exclamation Icon"
@@ -83,7 +117,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/tag_icon.png"
             alt="Tag Icon"
@@ -99,7 +133,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#1e2a2e] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
             src="/shield_icon.png"
             alt="Shield Icon"

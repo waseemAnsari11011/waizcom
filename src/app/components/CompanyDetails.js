@@ -22,7 +22,7 @@ const CompanyDetails = () => {
   });
 
   return (
-    <section ref={ref} className="bg-[#1e2a2e] py-10 md:py-20 mb-10 md:mb-20">
+    <section ref={ref} className="bg-[#021b4b] py-10 md:py-20 mb-10 md:mb-20">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
         <div className="flex flex-col items-center text-white">
           <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold">

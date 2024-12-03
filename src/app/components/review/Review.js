@@ -15,13 +15,13 @@ const Review = () => {
     };
   }, []);
   return (
-    <div className="w-full mx-auto my-8 relative bg-[url(/images/review-bg.png)] bg-cover bg-no-repeat ">
+    <div className="w-full mx-auto my-8 relative bg-[url(/images/bg1.png)] bg-cover bg-no-repeat ">
       <div className="px-5 py-20 max-w-[1200px] mx-auto">
         <h1 className="text-[40px] font-black mb-[40px] text-white max-xl:text-center">
           Clients are saying
         </h1>
         <div className="flex gap-[30px] flex-wrap max-xl:flex-col">
-          <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
+          <div className=" max-xl:w-full bg-[#02215d]  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
                 <img

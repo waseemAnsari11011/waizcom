@@ -75,7 +75,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-[#1e2a2e] w-full">
+    <div className="bg-[#021b4b] w-full">
       <div className="w-full max-w-[1200px] py-32 px-5 mx-auto flex gap-[60px]">
         <div className="w-1/2 max-xl:w-full">
           <h1 className="text-[38px] font-black max-md:text-[24px] text-white uppercase max-xl:text-center max-xl:mb-[10px]">
@@ -84,10 +84,10 @@ const Footer = () => {
           <p className="text-white my-[10px] max-xl:text-center">
             Fill the form and get a free consultation!
           </p>
-          <p className="text-white my-[10px] max-xl:text-center flex items-center gap-2">
+          <p className="text-white my-[10px] flex items-center gap-2 max-md:justify-center md:justify-start">
             <a
               href="tel:+918882202176"
-              className="flex items-center gap-2 text-[#fad171] hover:underline animate-ringing"
+              className="flex items-center gap-2 text-[#fad171] hover:underline"
             >
               <FiPhoneCall className="text-[#fad171] text-xl animate-pulse" />
               +91-88822-02176
@@ -175,7 +175,7 @@ const Footer = () => {
           </form>
         </div>
 
-        <div className="flex justify-center flex-col item-center w-[calc(50%-60px)] cell bg-[#222e31] border relative border-[#38434a] max-xl:hidden">
+        <div className="flex justify-center flex-col item-center w-[calc(50%-60px)] cell bg-[#02215d] border relative border-[#38434a] max-xl:hidden">
           <div className="flex justify-center mb-[40px]">
             <div className="flex items-center">
               <FaQuoteLeft className="text-[#fad171]" size={50} />

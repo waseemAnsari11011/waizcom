@@ -121,7 +121,7 @@ const Header = () => {
                 onClick={() => setShowSidebar(false)}
                 className="get-in-touch-btn cursor-pointer"
               >
-                <p className="text-header-white">Get App Cost</p>
+                <p className="text-header-black font-bold">Get App Cost</p>
               </ScrollLink>
             </div>
           )}
