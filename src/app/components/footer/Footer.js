@@ -267,9 +267,7 @@ const Footer = () => {
             </div> */}
             <div className="flex flex-col gap-4">
               {/* <p className="text-white text-center font-black">Anna Harissis</p> */}
-              <h2 className=" text-lg text-white">
-                Ceo & Co-Founder, Blue Kite
-              </h2>
+              <h2 className=" text-lg text-white">Ceo & Founder, Blue Kite</h2>
             </div>
           </div>
         </div>
