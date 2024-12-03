@@ -13,11 +13,11 @@ const ContactUs = () => {
         />
         {/* Mobile Image */}
         <img
-          src="/bg2.png"
+          src="/framex.png"
           alt="Card"
           className="md:hidden w-full rounded-lg"
         />
-        <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row justify-between items-center text-left p-5 md:p-20">
+        <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row  items-center text-left p-5 md:p-20">
           <div className="flex flex-col items-center mb-5 md:mb-0">
             <h2 className="text-2xl mt-5 md:mt-0 md:text-5xl font-bold text-center md:text-left">
               HAVE A GREAT IDEA?
