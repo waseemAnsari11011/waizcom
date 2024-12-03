@@ -21,7 +21,7 @@ const Review = () => {
           Clients are saying
         </h1>
         <div className="flex gap-[30px] flex-wrap max-xl:flex-col">
-          <div className=" max-xl:w-full bg-[#02215d]  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
+          <div className=" max-xl:w-full bg-[#02215d]  border border-[#0658f6] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
                 <img

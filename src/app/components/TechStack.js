@@ -1,6 +1,6 @@
 const TechMenu = ({ img, title, subTitle }) => {
   return (
-    <div className="backdrop-blur-sm cursor-pointer min-w-[180px] w-[180px] h-[130px] border-[0.5px] bg-[#021b4b] border-[#747e8b80] py-[10px] px-[20px] rounded-xl group hover:bg-gradient-to-b from-white/30 to-transparent max-md:min-w-[150px] max-md:w-[150px] ">
+    <div className="backdrop-blur-sm cursor-pointer min-w-[180px] w-[180px] h-[130px] border-[1px] bg-[#02215d] border-[#0658f6] py-[10px] px-[20px] rounded-xl group hover:bg-gradient-to-b from-white/30 to-transparent max-md:min-w-[150px] max-md:w-[150px] ">
       <div className="relative">
         {/* Image container with transition */}
         <div className="filter grayscale group-hover:grayscale-0 group-hover:backdrop-blur-none transition-all duration-300">

@@ -175,7 +175,7 @@ const Footer = () => {
           </form>
         </div>
 
-        <div className="flex justify-center flex-col item-center w-[calc(50%-60px)] cell bg-[#02215d] border relative border-[#38434a] max-xl:hidden">
+        <div className="flex justify-center flex-col item-center w-[calc(50%-60px)] cell bg-[#02215d] border relative border-[#0658f6] max-xl:hidden">
           <div className="flex justify-center mb-[40px]">
             <div className="flex items-center">
               <FaQuoteLeft className="text-[#fad171]" size={50} />
