@@ -7,9 +7,9 @@ const ContactUs = () => {
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
         <img
-          src="/bg3.png"
+          src="/bg4.png"
           alt="Card"
-          className="hidden md:block w-full  rounded-lg"
+          className="hidden md:block w-full h-[480px]  rounded-lg"
         />
 
         {/* Mobile Image */}
