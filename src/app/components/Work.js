@@ -11,7 +11,7 @@ const Work = () => {
         WHAT WE OFFER
       </h1>
       <div className="mt-10 grid gap-10 md:grid-cols-2">
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b]  hover:text-white rounded-2xl">
           <Image
             src="/phone_icon.png"
             alt="Phone Icon"

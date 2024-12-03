@@ -3,21 +3,22 @@ import { Link as ScrollLink } from "react-scroll";
 
 const ContactUs = () => {
   return (
-    <div className="bg-[#021b4b] text-white flex flex-col items-center py-20 px-5 mb-20">
+    <div className="bg-[url(/images/bg1.png)] text-white flex flex-col items-center py-20 px-5 mb-20">
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
         <img
-          src="/cardDesktop.png"
+          src="/bg3.png"
           alt="Card"
-          className="hidden md:block w-full rounded-lg"
+          className="hidden md:block w-full  rounded-lg"
         />
+
         {/* Mobile Image */}
         <img
           src="/framex.png"
           alt="Card"
           className="md:hidden w-full rounded-lg"
         />
-        <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row justify-between  items-center text-left p-5 md:p-20">
+        <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row md:justify-between  items-center text-left p-5 md:p-20">
           <div className="flex flex-col items-center mb-5 md:mb-0">
             <h2 className="text-2xl mt-5 md:mt-0 md:text-5xl font-bold text-center md:text-left">
               HAVE A GREAT IDEA?
