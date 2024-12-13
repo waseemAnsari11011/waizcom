@@ -2,18 +2,6 @@
 import { useState, useEffect } from "react";
 
 const Review = () => {
-  const [videoError, setVideoError] = useState(false);
-  useEffect(() => {
-    // Vimeo API script
-    const script = document.createElement("script");
-    script.src = "https://player.vimeo.com/api/player.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
   return (
     <div className="w-full mx-auto my-8 relative bg-[url(/images/bg1.png)] bg-cover bg-no-repeat ">
       <div className="px-5 py-20 max-w-[1200px] mx-auto">
@@ -37,26 +25,26 @@ const Review = () => {
                 <p className="text-white text-lg">Afsar Ahmad</p>
               </div>
             </div>
-            {!videoError && (
-              <div className="mt-2">
-                <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
-                  <iframe
-                    src="https://player.vimeo.com/video/1018166952?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    title="review_waizcom"
-                  ></iframe>
-                </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
+            <div className="mt-2">
+              <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
+                <iframe
+                  src="https://www.youtube.com/embed/oErAunM63Is?si=a1LHsrjvl-c7d75F"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                ></iframe>
               </div>
-            )}
+            </div>
+
             <p className="mt-2 text-white">
               "I had a great experience working with Waizcom on my project—their
               work quality was outstanding, they delivered on time, maintained
