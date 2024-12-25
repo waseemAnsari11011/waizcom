@@ -22,7 +22,7 @@ const Portfolio = () => {
             <div className="w-[50%] max-xl:w-full">
               <img
                 className="w-full rounded-2xl"
-                src="multi_vendor_mobile.jpg"
+                src="carousel_mobile/multi_vendor_mobile.jpg"
               />
             </div>
             <div className="p-[40px] max-xl:p-5">
@@ -58,7 +58,7 @@ const Portfolio = () => {
               {/* <div className="flex justify-center items-center md:justify-start mt-5 md:mt-10">
                 <a href="https://play.google.com/store/apps/details?id=com.sevabazarapp&pcampaignid=web_share">
                   <img
-                    src="/images/google_play.webp"
+                    src="carousel_mobile//images/google_play.webp"
                     alt="Google Play"
                     className="h-16"
                   />
@@ -69,7 +69,10 @@ const Portfolio = () => {
 
           <div className="w-full flex   border border-[#747e8b80]  rounded-2xl max-xl:flex-col">
             <div className="w-[50%] max-xl:w-full">
-              <img className="w-full rounded-2xl" src="bluekite_mobile.png" />
+              <img
+                className="w-full rounded-2xl"
+                src="carousel_mobile/bluekite_mobile.png"
+              />
             </div>
             <div className="p-[40px] max-xl:p-5">
               <h1 className="text-[24px] font-black ">Blue Kite</h1>
@@ -104,7 +107,7 @@ const Portfolio = () => {
               {/* <div className="flex justify-center items-center md:justify-start mt-5 md:mt-10">
                 <a href="https://play.google.com/store/apps/details?id=com.bluekiteapp&pcampaignid=web_share">
                   <img
-                    src="/images/google_play.webp"
+                    src="carousel_mobile//images/google_play.webp"
                     alt="Google Play"
                     className="h-16"
                   />
@@ -132,7 +135,10 @@ const Portfolio = () => {
           </div>
           <div className="w-full flex   border border-[#747e8b80]  rounded-2xl max-xl:flex-col">
             <div className="w-[50%] max-xl:w-full">
-              <img className="w-full rounded-2xl" src="yos_mobile.png" />
+              <img
+                className="w-full rounded-2xl"
+                src="carousel_mobile/yos_mobile.png"
+              />
             </div>
             <div className="p-[40px] max-xl:p-5">
               <h1 className="text-[24px] font-black ">Yos</h1>
@@ -167,7 +173,7 @@ const Portfolio = () => {
               {/* <div className="flex justify-center items-center md:justify-start mt-5 md:mt-10">
                 <a href="https://www.apple.com/app-store/">
                   <img
-                    src="/images/app_store.png"
+                    src="carousel_mobile//images/app_store.png"
                     alt="Google Play"
                     className="h-16"
                   />

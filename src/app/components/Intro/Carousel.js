@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -13,10 +13,10 @@ const Carousel = () => {
     };
 
     handleResize(); // Initialize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -28,7 +28,7 @@ const Carousel = () => {
       currentIndex = (currentIndex + 1) % totalItems;
       carouselRef.current.scrollTo({
         left: carouselRef.current.clientWidth * currentIndex,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }, intervalTime);
 
@@ -42,31 +42,75 @@ const Carousel = () => {
           <React.Fragment key={i}>
             <div className="carousel-item">
               <picture>
-                <source media="(max-width: 767px)" srcSet="/multi_vendor_mobile.jpg" />
-                <source media="(min-width: 768px)" srcSet="/multi_vendor_desktop.jpg" />
-                <img src="/multi_vendor_desktop.jpg" alt={`Image 1-${i}`} width="400" height="300" />
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="/carousel_mobile/multi_vendor_mobile.jpg"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/carousel_desktop/multi_vendor_desktop.jpg"
+                />
+                <img
+                  src="/carousel_desktop/multi_vendor_desktop.jpg"
+                  alt={`Image 1-${i}`}
+                  width="400"
+                  loading="lazy"
+                />
               </picture>
             </div>
             <div className="carousel-item">
               <picture>
-                <source media="(max-width: 767px)" srcSet="/bluekite_mobile.png" />
-                <source media="(min-width: 768px)" srcSet="/bluekite_desktop.png" />
-                <img src="/bluekite_desktop.png" alt={`Image 1-${i}`} width="400" height="300" />
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="/carousel_mobile/bluekite_mobile.png"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/carousel_desktop/bluekite_desktop.png"
+                />
+                <img
+                  src="/carousel_desktop/bluekite_desktop.png"
+                  alt={`Image 1-${i}`}
+                  width="400"
+                  loading="lazy"
+                />
               </picture>
             </div>
             <div className="carousel-item">
               <picture>
-                <source media="(max-width: 767px)" srcSet="/yos_mobile.png" />
-                <source media="(min-width: 768px)" srcSet="/yos_desktop.png" />
-                <img src="/yos_desktop.png" alt={`Image 1-${i}`} width="400" height="300" />
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="/carousel_mobile/yos_mobile.png"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/carousel_desktop/yos_desktop.png"
+                />
+                <img
+                  src="/carousel_desktop/yos_desktop.png"
+                  alt={`Image 1-${i}`}
+                  width="400"
+                  loading="lazy"
+                />
               </picture>
             </div>
-            
+
             <div className="carousel-item">
               <picture>
-                <source media="(max-width: 767px)" srcSet="/laundry_service_mobile.jpg" />
-                <source media="(min-width: 768px)" srcSet="/laundry_desktop.jpg" />
-                <img src="/laundry_desktop.jpg" alt={`Image 2-${i}`} width="400" height="300" />
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="/carousel_mobile/laundry_service_mobile.jpg"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/carousel_desktop/laundry_desktop.jpg"
+                />
+                <img
+                  src="/carousel_desktop/laundry_desktop.jpg"
+                  alt={`Image 2-${i}`}
+                  width="400"
+                  loading="lazy"
+                />
               </picture>
             </div>
           </React.Fragment>
