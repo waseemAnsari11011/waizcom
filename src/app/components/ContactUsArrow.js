@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
+import { useInView } from "react-intersection-observer";
 
 const ContactUs = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+  });
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setBgLoaded(true);
+    }
+  }, [inView]);
   return (
-    <div className="bg-[url(/images/bg1.png)] text-white flex flex-col items-center py-20 px-5 mb-20">
+    <section
+      ref={ref}
+      className={`${
+        bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
+      } transition-opacity duration-500  text-white flex flex-col items-center py-20 px-5 mb-20`}
+    >
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
         <img
           src="/improved.png"
           alt="Card"
           className="hidden md:block w-full h-[350px]  rounded-lg"
+          loading="lazy"
         />
 
         {/* Mobile Image */}
@@ -17,6 +34,7 @@ const ContactUs = () => {
           src="/framex.png"
           alt="Card"
           className="md:hidden w-full rounded-lg"
+          loading="lazy"
         />
         <div className="absolute inset-0 top-10 md:top-20 flex flex-col md:flex-row md:justify-between  items-center text-left p-5 md:p-20">
           <div className="flex flex-col items-center mb-5 md:mb-0">
@@ -35,7 +53,7 @@ const ContactUs = () => {
           </ScrollLink>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

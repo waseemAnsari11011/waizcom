@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+
 import {
   FaMapMarkerAlt,
   FaSearch,
@@ -11,8 +14,18 @@ import { AiOutlineShop, AiOutlineFilter } from "react-icons/ai";
 // import { AiOutlineShop } from "react-icons/ai";
 
 const Portfolio = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+  });
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setBgLoaded(true);
+    }
+  }, [inView]);
   return (
-    <div className="w-full mx-auto relative ">
+    <section ref={ref} className="w-full mx-auto relative ">
       <div className="w-full px-5 py-8 max-w-[1200px] mx-auto">
         <h1 className="text-[40px] font-black mb-[40px] max-xl:text-center">
           Portfolio
@@ -23,6 +36,7 @@ const Portfolio = () => {
               <img
                 className="w-full rounded-2xl"
                 src="carousel_mobile/multi_vendor_mobile.jpg"
+                loading="lazy"
               />
             </div>
             <div className="p-[40px] max-xl:p-5">
@@ -30,7 +44,13 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <FaMapMarkerAlt />
                   </div>
 
@@ -39,7 +59,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <MdPattern />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -47,7 +73,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <MdNotifications />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -72,6 +104,7 @@ const Portfolio = () => {
               <img
                 className="w-full rounded-2xl"
                 src="carousel_mobile/bluekite_mobile.png"
+                loading="lazy"
               />
             </div>
             <div className="p-[40px] max-xl:p-5">
@@ -79,7 +112,13 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <AiOutlineShop />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -87,7 +126,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <FaSearch />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -95,7 +140,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <FaMap />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -138,6 +189,7 @@ const Portfolio = () => {
               <img
                 className="w-full rounded-2xl"
                 src="carousel_mobile/yos_mobile.png"
+                loading="lazy"
               />
             </div>
             <div className="p-[40px] max-xl:p-5">
@@ -145,7 +197,13 @@ const Portfolio = () => {
               <p className="uppercase text-[#747e8b]">Business</p>
               <div className="mt-[40px] flex gap-6 max-xl:hidden">
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <AiOutlineFilter />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -154,7 +212,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <FaFilePdf />
                   </div>
                   <p className="font-medium w-[170px]">
@@ -162,7 +226,13 @@ const Portfolio = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover bg-[url(/images/btn.png)] text-[#fad171]">
+                  <div
+                    className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
+                      bgLoaded
+                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        : "opacity-0"
+                    } transition-opacity duration-500  text-[#fad171]`}
+                  >
                     <FaHandshake />
                   </div>
                   <p className=" font-medium w-[170px]">
@@ -221,7 +291,7 @@ const Portfolio = () => {
           </button> */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

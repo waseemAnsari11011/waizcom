@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 
@@ -20,11 +20,20 @@ const CompanyDetails = () => {
   const [ref, inView] = useInView({
     threshold: 0.3,
   });
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setBgLoaded(true);
+    }
+  }, [inView]);
 
   return (
     <section
       ref={ref}
-      className="bg-[url(/images/bg1.png)] py-10 md:py-20 mb-10 md:mb-20"
+      className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-500 ${
+        bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
+      }`}
     >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
         <div className="flex flex-col items-center text-white">
@@ -66,7 +75,7 @@ const CompanyDetails = () => {
             </span>
           </span>
           <span className="mt-2 text-base md:text-lg lg:text-xl">
-            client Rating
+            Client Rating
           </span>
         </div>
       </div>

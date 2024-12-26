@@ -1,10 +1,13 @@
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+
 const TechMenu = ({ img, title, subTitle }) => {
   return (
     <div className="backdrop-blur-sm cursor-pointer min-w-[180px] w-[180px] h-[130px] border-[1px] bg-[#02215d] border-[#0658f6] py-[10px] px-[20px] rounded-xl group hover:bg-gradient-to-b from-white/30 to-transparent max-md:min-w-[150px] max-md:w-[150px] ">
       <div className="relative">
         {/* Image container with transition */}
         <div className="filter grayscale group-hover:grayscale-0 group-hover:backdrop-blur-none transition-all duration-300">
-          <img src={img} alt="tech-stack" />
+          <img src={img} alt="tech-stack" loading="lazy" />
         </div>
         <h1 className="mt-2 font-bold text-white">{title}</h1>
         <p className="text-[#8d9091]">{subTitle}</p>
@@ -14,6 +17,17 @@ const TechMenu = ({ img, title, subTitle }) => {
 };
 
 const TechStack = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+  });
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setBgLoaded(true);
+    }
+  }, [inView]);
+
   const Tech = [
     {
       img: "/images/tech-1.svg",
@@ -83,7 +97,12 @@ const TechStack = () => {
   ];
 
   return (
-    <div className="w-full mx-auto my-5 relative bg-[url(/images/bg1.png)] bg-cover bg-no-repeat effect">
+    <section
+      ref={ref}
+      className={`${
+        bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
+      } transition-opacity duration-500   w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect`}
+    >
       <div className="w-full px-5 flex items-center justify-between max-w-[1200px] mx-auto max-xl:max-w-full max-xl:flex-col max-xl:py-12  max-xl:px-0">
         <h1 className="text-[42px] font-black text-white pb-20 leading-[50px] max-xl:pb-8 max-md:text-[28px] max-md:text-center max-md:px-5">
           Modern
@@ -122,7 +141,7 @@ const TechStack = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

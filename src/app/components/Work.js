@@ -13,11 +13,12 @@ const Work = () => {
       <div className="mt-10 grid gap-10 md:grid-cols-2">
         <div className="p-5 brand-light group hover:bg-[#021b4b]  hover:text-white rounded-2xl">
           <Image
-            src="/phone_icon.png"
+            src="/offer/phone_icon.png"
             alt="Phone Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">
@@ -31,11 +32,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/laptop_icon.png"
+            src="/offer/laptop_icon.png"
             alt="Laptop Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">
@@ -49,11 +51,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/graphic.png"
+            src="/offer/graphic.png"
             alt="Laptop Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">Graphic Design</h2>
@@ -66,11 +69,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/marketing.png"
+            src="/offer/marketing.png"
             alt="Laptop Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">Marketing</h2>
@@ -83,11 +87,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/support_icon.png"
+            src="/offer/support_icon.png"
             alt="Support Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">
@@ -101,11 +106,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/exclamation_icon.png"
+            src="/offer/exclamation_icon.png"
             alt="Exclamation Icon"
             width={100}
             height={100}
             className="mb-5 rotate-180"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">
@@ -119,11 +125,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/tag_icon.png"
+            src="/offer/tag_icon.png"
             alt="Tag Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">Fixed Priced</h2>
@@ -135,11 +142,12 @@ const Work = () => {
         </div>
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
           <Image
-            src="/shield_icon.png"
+            src="/offer/shield_icon.png"
             alt="Shield Icon"
             width={100}
             height={100}
             className="mb-5"
+            loading="lazy"
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">

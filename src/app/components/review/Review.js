@@ -15,6 +15,7 @@ const Review = () => {
                 <img
                   src="/bluekiteProfile.png"
                   className="w-[54px] rounded-full"
+                  loading="lazy"
                 />
               </div>
 
@@ -28,6 +29,7 @@ const Review = () => {
             <div className="mt-2">
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
+                  loading="lazy"
                   src="https://www.youtube.com/embed/oErAunM63Is?si=a1LHsrjvl-c7d75F"
                   title="YouTube video player"
                   frameBorder="0"
