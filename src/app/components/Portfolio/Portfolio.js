@@ -49,7 +49,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <FaMapMarkerAlt />
                   </div>
@@ -64,7 +64,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <MdPattern />
                   </div>
@@ -78,7 +78,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <MdNotifications />
                   </div>
@@ -117,7 +117,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <AiOutlineShop />
                   </div>
@@ -131,7 +131,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <FaSearch />
                   </div>
@@ -145,7 +145,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <FaMap />
                   </div>
@@ -202,7 +202,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <AiOutlineFilter />
                   </div>
@@ -217,7 +217,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <FaFilePdf />
                   </div>
@@ -231,7 +231,7 @@ const Portfolio = () => {
                       bgLoaded
                         ? "bg-[url(/images/btn.png)] opacity-100"
                         : "opacity-0"
-                    } transition-opacity duration-500  text-[#fad171]`}
+                    } transition-opacity duration-100  text-[#fad171]`}
                   >
                     <FaHandshake />
                   </div>

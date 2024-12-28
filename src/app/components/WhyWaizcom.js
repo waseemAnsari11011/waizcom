@@ -21,7 +21,7 @@ const WhyWaizcom = () => {
         <div
           className={`${
             bgLoaded ? "bg-[url(/images/noise1.png)] opacity-100" : "opacity-0"
-          } transition-opacity duration-500 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
+          } transition-opacity duration-100 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
         >
           <h3 className="text-4xl font-bold mb-4">01</h3>
           <h4 className="text-2xl font-semibold mb-2">

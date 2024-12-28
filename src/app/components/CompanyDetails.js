@@ -31,7 +31,7 @@ const CompanyDetails = () => {
   return (
     <section
       ref={ref}
-      className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-500 ${
+      className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-100 ${
         bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
       }`}
     >

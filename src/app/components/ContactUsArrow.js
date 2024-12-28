@@ -18,7 +18,7 @@ const ContactUs = () => {
       ref={ref}
       className={`${
         bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
-      } transition-opacity duration-500  text-white flex flex-col items-center py-20 px-5 mb-20`}
+      } transition-opacity duration-100  text-white flex flex-col items-center py-20 px-5 mb-20`}
     >
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
