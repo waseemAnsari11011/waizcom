@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 const ContactUs = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
   });
   const [bgLoaded, setBgLoaded] = useState(false);
 
@@ -15,10 +15,11 @@ const ContactUs = () => {
   }, [inView]);
   return (
     <section
-      ref={ref}
-      className={`${
-        bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
-      } transition-opacity duration-100  text-white flex flex-col items-center py-20 px-5 mb-20`}
+      // ref={ref}
+      // className={`${
+      //   bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
+      // } transition-opacity duration-100  text-white flex flex-col items-center py-20 px-5 mb-20`}
+      className={`bg-[url(/images/bg1.png)]  text-white flex flex-col items-center py-20 px-5 mb-20`}
     >
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}

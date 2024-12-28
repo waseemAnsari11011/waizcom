@@ -18,7 +18,7 @@ const TechMenu = ({ img, title, subTitle }) => {
 
 const TechStack = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
   });
   const [bgLoaded, setBgLoaded] = useState(false);
 

@@ -15,7 +15,7 @@ import { AiOutlineShop, AiOutlineFilter } from "react-icons/ai";
 
 const Portfolio = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
   });
   const [bgLoaded, setBgLoaded] = useState(false);
 
