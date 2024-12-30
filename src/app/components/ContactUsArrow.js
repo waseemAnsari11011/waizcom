@@ -24,7 +24,7 @@ const ContactUs = () => {
       <div className="relative w-full max-w-6xl">
         {/* Desktop Image */}
         <img
-          src="/improved.png"
+          src="/bg/improved.png"
           alt="Card"
           className="hidden md:block w-full h-[350px]  rounded-lg"
           loading="lazy"
@@ -32,7 +32,7 @@ const ContactUs = () => {
 
         {/* Mobile Image */}
         <img
-          src="/framex.png"
+          src="/bg/framex.png"
           alt="Card"
           className="md:hidden w-full rounded-lg"
           loading="lazy"
