@@ -47,7 +47,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -62,7 +62,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -76,7 +76,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -115,7 +115,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -129,7 +129,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -143,7 +143,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -200,7 +200,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -215,7 +215,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >
@@ -229,7 +229,7 @@ const Portfolio = () => {
                   <div
                     className={`w-[170px] mb-2 p-4 flex justify-center border-[0.5px] border-[#747e8b80] items-center font-black text-[40px] rounded-[75px] overflow-hidden shadow-[inset 0 0 10px 0 #2a2929] uppercase bg-no-repeat bg-cover ${
                       bgLoaded
-                        ? "bg-[url(/images/btn.png)] opacity-100"
+                        ? "bg-[url(/bg/btn.png)] opacity-100"
                         : "opacity-0"
                     } transition-opacity duration-100  text-[#fad171]`}
                   >

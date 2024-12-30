@@ -20,7 +20,9 @@ const WhyWaizcom = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-4">
         <div
           className={`${
-            bgLoaded ? "bg-[url(/images/noise1.png)] opacity-100" : "opacity-0"
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
           } transition-opacity duration-100 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
         >
           <h3 className="text-4xl font-bold mb-4">01</h3>
@@ -40,7 +42,9 @@ const WhyWaizcom = () => {
         </div>
         <div
           className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
-            bgLoaded ? "bg-[url(/images/noise1.png)] opacity-100" : "opacity-0"
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">02</h3>
@@ -53,7 +57,9 @@ const WhyWaizcom = () => {
         </div>
         <div
           className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
-            bgLoaded ? "bg-[url(/images/noise1.png)] opacity-100" : "opacity-0"
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">03</h3>
@@ -71,7 +77,9 @@ const WhyWaizcom = () => {
         </div>
         <div
           className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
-            bgLoaded ? "bg-[url(/images/noise1.png)] opacity-100" : "opacity-0"
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">04</h3>

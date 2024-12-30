@@ -100,7 +100,7 @@ const TechStack = () => {
     <section
       ref={ref}
       className={`${
-        bgLoaded ? "bg-[url(/images/bg1.png)] opacity-100" : "opacity-0"
+        bgLoaded ? "bg-[url(/bg/bg1.png)] opacity-100" : "opacity-0"
       } transition-opacity duration-100   w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect`}
     >
       <div className="w-full px-5 flex items-center justify-between max-w-[1200px] mx-auto max-xl:max-w-full max-xl:flex-col max-xl:py-12  max-xl:px-0">

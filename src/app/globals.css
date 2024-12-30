@@ -271,7 +271,7 @@ body {
 }
 
 .card-bg {
-  background-image: url("../../public/images/noise1.png");
+  background-image: url("../../public/bg/noise1.png");
   background-size: cover;
   background-position: center;
 }

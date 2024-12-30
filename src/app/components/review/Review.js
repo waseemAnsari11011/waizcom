@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const Review = () => {
   return (
-    <div className="w-full mx-auto my-8 relative bg-[url(/images/bg1.png)] bg-cover bg-no-repeat ">
+    <div className="w-full mx-auto my-8 relative bg-[url(/bg/bg1.png)] bg-cover bg-no-repeat ">
       <div className="px-5 py-20 max-w-[1200px] mx-auto">
         <h1 className="text-[40px] font-black mb-[40px] text-white max-xl:text-center">
           Clients are saying
