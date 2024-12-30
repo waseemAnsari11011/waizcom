@@ -18,7 +18,7 @@ const AnimatedNumber = ({ value }) => {
 
 const CompanyDetails = () => {
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0,
   });
   const [bgLoaded, setBgLoaded] = useState(false);
 
