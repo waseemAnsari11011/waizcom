@@ -31,9 +31,10 @@ const CompanyDetails = () => {
   return (
     <section
       ref={ref}
-      className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-100 w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect ${
-        bgLoaded ? "bg-[url(/bg/bg1.png)] opacity-100" : "opacity-0"
-      }`}
+      // className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-100 w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect ${
+      //   bgLoaded ? "bg-[url(/bg/bg1.png)] opacity-100" : "opacity-0"
+      // }`}
+      className={`py-10 md:py-20 mb-10 md:mb-20 transition-opacity duration-100 w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect bg-[url(/bg/bg1.png)] `}
     >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
         <div className="flex flex-col items-center text-white">
