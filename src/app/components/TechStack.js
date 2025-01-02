@@ -17,17 +17,6 @@ const TechMenu = ({ img, title, subTitle }) => {
 };
 
 const TechStack = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-  });
-  const [bgLoaded, setBgLoaded] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setBgLoaded(true);
-    }
-  }, [inView]);
-
   const Tech = [
     {
       img: "/images/tech-1.svg",
@@ -98,10 +87,7 @@ const TechStack = () => {
 
   return (
     <section
-      ref={ref}
-      className={`${
-        bgLoaded ? "bg-[url(/bg/bg1.png)] opacity-100" : "opacity-0"
-      } transition-opacity duration-100   w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect`}
+      className={`bg-[url(/bg/bg1.png)]  w-full mx-auto my-5 relative  bg-cover bg-no-repeat effect`}
     >
       <div className="w-full px-5 flex items-center justify-between max-w-[1200px] mx-auto max-xl:max-w-full max-xl:flex-col max-xl:py-12  max-xl:px-0">
         <h1 className="text-[42px] font-black text-white pb-20 leading-[50px] max-xl:pb-8 max-md:text-[28px] max-md:text-center max-md:px-5">
