@@ -7,11 +7,27 @@ const Work = () => {
       className="px-5 md:px-10 lg:px-16 relative bg-white mb-10 md:mb-20"
       style={{ zIndex: 1 }}
     >
+      <style jsx>{`
+        :root {
+          --box-scale: 100%; /* Default box scale */
+        }
+
+        @media (max-width: 768px) {
+          :root {
+            --box-scale: 50%; /* Decrease box size on smaller screens */
+          }
+        }
+
+        .service-box {
+          transform: scale(var(--box-scale));
+          transform-origin: top left;
+        }
+      `}</style>
       <h1 className="text-3xl md:text-4xl font-bold leading-none md:leading-tight mb-6 md:mb-0">
         WHAT WE OFFER
       </h1>
       <div className="mt-10 grid gap-10 md:grid-cols-2">
-        <div className="p-5 brand-light group hover:bg-[#021b4b]  hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/phone_icon.png"
             alt="Phone Icon"
@@ -30,7 +46,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/laptop_icon.png"
             alt="Laptop Icon"
@@ -49,7 +65,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/graphic.png"
             alt="Laptop Icon"
@@ -67,7 +83,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/marketing.png"
             alt="Laptop Icon"
@@ -85,7 +101,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/support_icon.png"
             alt="Support Icon"
@@ -104,7 +120,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/exclamation_icon.png"
             alt="Exclamation Icon"
@@ -123,7 +139,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/tag_icon.png"
             alt="Tag Icon"
@@ -140,7 +156,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl">
+        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/shield_icon.png"
             alt="Shield Icon"
