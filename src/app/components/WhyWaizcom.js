@@ -30,10 +30,7 @@ const WhyWaizcom = () => {
             Fast launch and revenue
           </h4>
           <ul className="list-disc pl-5 space-y-2">
-            <li>
-              We launch MVPs within 3 months and full-featured products within
-              5+ months.
-            </li>
+            <li>We launch your product within 3 months.</li>
             <li>
               100% of our projects are delivered strictly on deadlines and
               within budget.

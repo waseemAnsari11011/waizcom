@@ -78,7 +78,7 @@ const IntroSection = () => {
             </h1>
 
             <p className="text-xl md:text-xl font-medium py-1.5 lg:py-2">
-              For Startups and SMEs 🚀
+              Your partner for digital growth! 🚀
             </p>
             {/* <div className="flex items-center">
               <div className="w-70"> 
