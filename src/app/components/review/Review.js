@@ -128,33 +128,48 @@ const Review = () => {
               </span>
             </p>
           </div>
-          {/* <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
+          <div className=" max-xl:w-full bg-[#02215d]  border border-[#0658f6] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
                 <img
-                  src="/sevabazarProfile.png"
+                  src="/coslomart.jpg"
                   className="w-[54px] rounded-full"
+                  loading="lazy"
                 />
               </div>
+
               <div>
                 <h2 className="flex gap-2 font-bold text-xl text-white">
-                  Seva Bazar 🇮🇳
+                  Coslo Mart Private Limited 🇮🇳
                 </h2>
-                <p className="text-white text-lg">Istiyak</p>
+                <p className="text-white text-lg">Vinod Simson</p>
               </div>
             </div>
+            <div className="mt-2">
+              <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
+                <iframe
+                  loading="lazy"
+                  src="https://www.youtube.com/embed/LMUDEYkDDzI"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                ></iframe>
+              </div>
+            </div>
+
             <p className="mt-2 text-white">
-              “I had a fantastic experience working with Waizcom on my project,
-              as their quality of work was exceptional, showcasing great
-              attention to detail and a professional final result. The project
-              was completed on time, and they honored their commitments, which
-              was crucial for me. Communication throughout the process was
-              smooth, with a clear Excel sheet tracking task statuses, making it
-              easy to follow progress. They efficiently solved any complex
-              issues that arose, providing practical and timely solutions.
-              Overall, their impressive technical expertise and the value for
-              money made my investment feel worthwhile, and I am very satisfied
-              with the outcome!”
+              "It's been a great experience working with this team, and I truly
+              enjoyed collaborating with them. In three words, I’d describe them
+              as a young, talented hub."
             </p>
             <p className="text-[#fad171] flex gap-1 items-center mt-5">
               5.0
@@ -229,7 +244,7 @@ const Review = () => {
                 </svg>
               </span>
             </p>
-          </div> */}
+          </div>
 
           {/* <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
