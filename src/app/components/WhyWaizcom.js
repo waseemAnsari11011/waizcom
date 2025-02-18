@@ -19,13 +19,30 @@ const WhyWaizcom = () => {
       </h2>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-4">
         <div
+          className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
+          } transition-opacity duration-500`}
+        >
+          <h3 className="text-4xl font-bold mb-4">01</h3>
+          <h4 className="text-2xl font-semibold mb-2">3% goes to donation</h4>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Donating 3% of every money earned from clients to a charity of the
+              client's choice or to causes waizcom supports
+            </li>
+            <li>donations are directed towards helping the poor and needy</li>
+          </ul>
+        </div>
+        <div
           className={`${
             bgLoaded
               ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
               : "opacity-0"
           } transition-opacity duration-100 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
         >
-          <h3 className="text-4xl font-bold mb-4">01</h3>
+          <h3 className="text-4xl font-bold mb-4">02</h3>
           <h4 className="text-2xl font-semibold mb-2">
             Fast launch and revenue
           </h4>
@@ -44,7 +61,7 @@ const WhyWaizcom = () => {
               : "opacity-0"
           } transition-opacity duration-500`}
         >
-          <h3 className="text-4xl font-bold mb-4">02</h3>
+          <h3 className="text-4xl font-bold mb-4">03</h3>
           <h4 className="text-2xl font-semibold mb-2">Built for scalability</h4>
           <ul className="list-disc pl-5 space-y-2">
             <li>We use the most innovative development technologies.</li>
@@ -52,26 +69,7 @@ const WhyWaizcom = () => {
             <li>Free warranty period and SLA support.</li>
           </ul>
         </div>
-        <div
-          className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
-            bgLoaded
-              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
-              : "opacity-0"
-          } transition-opacity duration-500`}
-        >
-          <h3 className="text-4xl font-bold mb-4">03</h3>
-          <h4 className="text-2xl font-semibold mb-2">Secure and safe</h4>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              Our apps comply with data protection and domain-specific
-              regulations.
-            </li>
-            <li>
-              You preserve all the IP rights according to the non-competition
-              contract we sign.
-            </li>
-          </ul>
-        </div>
+
         <div
           className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
             bgLoaded
