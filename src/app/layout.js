@@ -7,8 +7,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Quality Driven Tech",
-  description: "Quality is Priority",
+  title: "Waizcom Technologies - Quality Driven Tech",
+  description:
+    "Waizcom Technologies | Quality is Priority | Expert Software Development Services",
 };
 
 export default function RootLayout({ children }) {
