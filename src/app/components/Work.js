@@ -112,7 +112,7 @@ const Work = () => {
           />
           <div>
             <h2 className="font-semibold text-lg lg:text-xl">
-              1 months free support
+              3-mo maintenance, 12-mo hosting.
             </h2>
             <p className="text-sm mt-2">
               Get peace of mind with our complimentary support package, included
