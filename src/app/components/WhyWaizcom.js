@@ -26,13 +26,20 @@ const WhyWaizcom = () => {
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">01</h3>
-          <h4 className="text-2xl font-semibold mb-2">3% goes to donation</h4>
+          <h4 className="text-2xl font-semibold mb-2">Development</h4>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Donating 3% of every money earned from clients to a charity of the
-              client's choice or to causes waizcom supports
+              Build fully functional Android, iOS, and web apps tailored to your
+              business needs.
             </li>
-            <li>donations are directed towards helping the poor and needy</li>
+            <li>
+              Proactive updates, bug fixes, and technical support to keep your
+              apps running smoothly.
+            </li>
+            <li>
+              Future-proof your business with adaptable technology that grows
+              with your goals.
+            </li>
           </ul>
         </div>
         <div
@@ -43,14 +50,18 @@ const WhyWaizcom = () => {
           } transition-opacity duration-100 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
         >
           <h3 className="text-4xl font-bold mb-4">02</h3>
-          <h4 className="text-2xl font-semibold mb-2">
-            Fast launch and revenue
-          </h4>
+          <h4 className="text-2xl font-semibold mb-2">Design</h4>
           <ul className="list-disc pl-5 space-y-2">
-            <li>We launch your product within 3 months.</li>
             <li>
-              100% of our projects are delivered strictly on deadlines and
-              within budget.
+              Unique, custom logos in versatile formats (vector, PNG, SVG).
+            </li>
+            <li>
+              Email signatures, business cards, and company profiles for a
+              unified identity.
+            </li>
+            <li>
+              Consistent guidelines for colors, typography, and style to
+              maintain professionalism across all platforms.
             </li>
           </ul>
         </div>
@@ -62,11 +73,17 @@ const WhyWaizcom = () => {
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">03</h3>
-          <h4 className="text-2xl font-semibold mb-2">Built for scalability</h4>
+          <h4 className="text-2xl font-semibold mb-2">Marketing & Branding</h4>
           <ul className="list-disc pl-5 space-y-2">
-            <li>We use the most innovative development technologies.</li>
-            <li>We help to scale your product after the launch.</li>
-            <li>Free warranty period and SLA support.</li>
+            <li>Targeted campaigns to reach your audience.</li>
+            <li>
+              12 curated images/text posts + 6 high-impact reels to keep your
+              social media fresh.
+            </li>
+            <li>
+              Optimize search rankings and streamline engagement with expert
+              social media management.
+            </li>
           </ul>
         </div>
 
@@ -78,13 +95,10 @@ const WhyWaizcom = () => {
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">04</h3>
-          <h4 className="text-2xl font-semibold mb-2">
-            Your One-Stop Digital Solution Provider
-          </h4>
+          <h4 className="text-2xl font-semibold mb-2">Risk-Free</h4>
           <ul className="list-disc pl-5 space-y-2">
-            <li>App Development Excellence</li>
-            <li> Creative Graphic Design & Branding</li>
-            <li>Strategic Marketing Services</li>
+            <li> Cancel anytime before 30 days for a full refund.</li>
+            <li> Unlimited modifications until you are fully satisfied.</li>
           </ul>
         </div>
       </div>
