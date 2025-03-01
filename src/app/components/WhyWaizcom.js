@@ -98,7 +98,7 @@ const WhyWaizcom = () => {
           <h4 className="text-2xl font-semibold mb-2">Risk-Free</h4>
           <ul className="list-disc pl-5 space-y-2">
             <li> Cancel anytime before 30 days for a full refund.</li>
-            <li> Unlimited modifications until you are fully satisfied.</li>
+            {/* <li> Unlimited modifications until you are fully satisfied.</li> */}
           </ul>
         </div>
       </div>
