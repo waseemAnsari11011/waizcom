@@ -363,12 +363,12 @@ const Footer = () => {
         <div className="flex flex-col text-white gap-[10px]  max-xl:hidden">
           <h1 className="mb-2 font-bold text-xl">Services</h1>
 
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
+          {/* <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Logo design
-          </a>
-          <a className="cursor-pointer hover:text-[#fad171] duration-300">
+          </a> */}
+          {/* <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Marketing
-          </a>
+          </a> */}
           <a className="cursor-pointer hover:text-[#fad171] duration-300">
             Mobile App development
           </a>

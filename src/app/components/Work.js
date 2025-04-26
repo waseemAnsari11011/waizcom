@@ -65,7 +65,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
+        {/* <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/graphic.png"
             alt="Laptop Icon"
@@ -82,8 +82,8 @@ const Work = () => {
               engage your audience across various platforms.
             </p>
           </div>
-        </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
+        </div> */}
+        {/* <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/marketing.png"
             alt="Laptop Icon"
@@ -100,7 +100,7 @@ const Work = () => {
               strategies to boost your online presence and reach.
             </p>
           </div>
-        </div>
+        </div> */}
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/support_icon.png"

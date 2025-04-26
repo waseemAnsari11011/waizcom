@@ -64,9 +64,8 @@ const WhyWaizcom = () => {
           <h3 className="text-4xl font-bold mb-4">03</h3>
           <h4 className="text-2xl font-semibold mb-2">Built for scalability</h4>
           <ul className="list-disc pl-5 space-y-2">
-            <li>We use the most innovative development technologies.</li>
+            <li>We use the latest development technologies.</li>
             <li>We help to scale your product after the launch.</li>
-            <li>Free warranty period and SLA support.</li>
           </ul>
         </div>
         <div
