@@ -116,7 +116,7 @@ const Header = () => {
               </ScrollLink>
 
               <ScrollLink
-                to="contact-section"
+                to="Footer"
                 smooth={true}
                 onClick={() => setShowSidebar(false)}
                 className="get-in-touch-btn cursor-pointer"
