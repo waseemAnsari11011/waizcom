@@ -26,20 +26,47 @@ const WhyWaizcom = () => {
           } transition-opacity duration-500`}
         >
           <h3 className="text-4xl font-bold mb-4">01</h3>
-          <h4 className="text-2xl font-semibold mb-2">Development</h4>
+          <h4 className="text-2xl font-semibold mb-2">3% goes to donation</h4>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              Build fully functional Android, iOS, and web apps tailored to your
-              business needs.
+              Donating 3% of every money earned from clients to a charity of the
+              client's choice or to causes waizcom supports
             </li>
+            <li>donations are directed towards helping the poor and needy</li>
+          </ul>
+        </div>
+        <div
+          className={`${
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
+          } transition-opacity duration-100 bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl `}
+        >
+          <h3 className="text-4xl font-bold mb-4">02</h3>
+          <h4 className="text-2xl font-semibold mb-2">
+            Fast launch and revenue
+          </h4>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>We launch your product within 3 months.</li>
             <li>
-              Proactive updates, bug fixes, and technical support to keep your
-              apps running smoothly.
+              100% of our projects are delivered strictly on deadlines and
+              within budget.
             </li>
-            <li>
-              Future-proof your business with adaptable technology that grows
-              with your goals.
-            </li>
+          </ul>
+        </div>
+        <div
+          className={`bg-[#f4f5f6] p-6 md:p-8 shadow rounded-2xl ${
+            bgLoaded
+              ? "bg-[url(/bg/noise1.png)] w-full mx-auto my-5 relative  bg-cover bg-no-repeat  opacity-100"
+              : "opacity-0"
+          } transition-opacity duration-500`}
+        >
+          <h3 className="text-4xl font-bold mb-4">03</h3>
+          <h4 className="text-2xl font-semibold mb-2">Built for scalability</h4>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>We use the most innovative development technologies.</li>
+            <li>We help to scale your product after the launch.</li>
+            <li>Free warranty period and SLA support.</li>
           </ul>
         </div>
         <div
