@@ -26,6 +26,16 @@ const IndusteriesExpert = () => {
           </button> */}
         </div>
         <div className="flex justify-between gap-4 flex-wrap w-[60%] max-xl:w-full">
+          <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
+            <div>
+              <img
+                loading="lazy"
+                src="/images/kaaba.png"
+                className="w-[70px]"
+              />
+            </div>
+            <p className="text-[#747e8b]">Hajj/Umrah Travel Agencies</p>
+          </div>
           <div className="flex gap-5 items-center w-[46%]  max-md:flex-col max-md:items-start">
             <div>
               <img
@@ -55,36 +65,6 @@ const IndusteriesExpert = () => {
               />
             </div>
             <p className="text-[#747e8b]">Healthcare & Wellness</p>
-          </div>
-          <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
-            <div>
-              <img
-                loading="lazy"
-                src="/images/media.png"
-                className="w-[70px]"
-              />
-            </div>
-            <p className="text-[#747e8b]">Media & Entertainment</p>
-          </div>
-          <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
-            <div>
-              <img
-                loading="lazy"
-                src="/images/logistics.png"
-                className="w-[70px]"
-              />
-            </div>
-            <p className="text-[#747e8b]">Logistics & Transportation</p>
-          </div>
-          <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
-            <div>
-              <img
-                loading="lazy"
-                src="/images/social.png"
-                className="w-[70px]"
-              />
-            </div>
-            <p className="text-[#747e8b]">Social Networking</p>
           </div>
         </div>
       </div>
