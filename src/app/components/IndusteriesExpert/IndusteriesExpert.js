@@ -46,26 +46,6 @@ const IndusteriesExpert = () => {
             </div>
             <p className="text-[#747e8b]">E-commerce & Marketplaces</p>
           </div>
-          <div className="flex gap-5 items-center w-[46%]  max-md:flex-col max-md:items-start">
-            <div>
-              <img
-                loading="lazy"
-                src="/images/management.png"
-                className="w-[70px]"
-              />
-            </div>
-            <p className="text-[#747e8b]">Management Software</p>
-          </div>
-          <div className="flex gap-5 items-center w-[46%]   max-md:flex-col max-md:items-start">
-            <div>
-              <img
-                loading="lazy"
-                src="/images/health.png"
-                className="w-[70px]"
-              />
-            </div>
-            <p className="text-[#747e8b]">Healthcare & Wellness</p>
-          </div>
         </div>
       </div>
     </div>
