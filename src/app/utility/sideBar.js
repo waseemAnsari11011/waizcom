@@ -22,7 +22,7 @@ const SideBar = ({ showSidebar, setShowSidebar, toggleSidebar }) => {
       <div>
         <div className="flex justify-between items-center p-4 px-6">
           <Image
-            src="/waizcom.png"
+            src="/ecarts.png"
             alt="Brand Image"
             width={160}
             height={100}

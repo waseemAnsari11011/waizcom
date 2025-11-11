@@ -48,7 +48,7 @@ const Header = () => {
           onClick={scrollToTop}
         >
           <Image
-            src="/waizcom.png"
+            src="/ecarts.png"
             alt="Brand Image"
             width={160}
             height={100}
