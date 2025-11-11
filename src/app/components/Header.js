@@ -50,8 +50,8 @@ const Header = () => {
           <Image
             src="/ecarts.png"
             alt="Brand Image"
-            width={160}
-            height={100}
+            width={120}
+            height={60}
             priority={true}
           />
         </div>
