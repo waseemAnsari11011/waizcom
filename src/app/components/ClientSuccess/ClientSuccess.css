@@ -1,4 +1,4 @@
-/* Portfolio Showcase Styles */
+/* ClientSuccess.css */
 
 .ps656-container {
   min-height: 100vh;
@@ -529,14 +529,13 @@
   background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.5),
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
 }
 
 .ps656-monitor-bezel-787::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -605,7 +604,6 @@
   }
 }
 
-
 @media (min-width: 640px) {
   .ps656-corner-accent {
     width: 10rem;
@@ -619,5 +617,3 @@
     height: 12rem;
   }
 }
-
-

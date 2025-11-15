@@ -1,46 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import './ClientSuccess.css';
+import React, { useState, useEffect } from "react";
+import "./ClientSuccess.css";
 
 const PortfolioShowcase = () => {
   const portfolioItems = [
     {
-      category: "ENERGY & OIL",
-      title: "ENERGY SAVING APP",
-      type: "Native iOS & Android",
-      categoryLabel: "Enterprise",
-      services: [
-        "iOS App Development",
-        "Android App Development",
-        "MVP Development",
-        "Web Development",
-        "UX/UI Design"
+      category: "Food Delivery",
+      title: "BLUEKITE",
+      about: [
+        "Food delivery app",
+        "Seamless ordering experience",
+        "Real-time order tracking",
       ],
-      result: "Proven 26% lower electricity bills",
-      images: [
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=600&fit=crop"
+      results: [
+        { emoji: "🚀", value: "1.4K+", label: "App Installs", sublabel: "" },
+        { emoji: "💹", value: "800+", label: "Monthly Orders", sublabel: "" },
+        { emoji: "💰", value: "₹1.3L+", label: "Monthly Sales", sublabel: "" },
       ],
-      Monitorimage: "/dash.png"
+      images: ["bluekite1.jpeg", "bluekite2.jpeg"],
+      Monitorimage: "bluekite_Admin.png",
     },
     {
-      category: "E-COMMERCE",
-      title: "SHOPPING PLATFORM",
-      type: "Progressive Web App",
-      categoryLabel: "Retail",
-      services: [
-        "React Development",
-        "Payment Integration",
-        "Cloud Architecture",
-        "Performance Optimization",
-        "SEO Strategy"
+      category: "Hybrid E-Commerce",
+      title: "COSLOMART",
+      about: [
+        "India's First Hybrid E-Commerce Platform",
+        "Real Estate, Products and Services",
+        "B2B and B2C in single platform",
       ],
-      result: "150% increase in conversion rate",
-      images: [
-        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=600&fit=crop"
+      results: [
+        {
+          emoji: "💹",
+          value: "5K+",
+          label: "Monthly Impressions",
+          sublabel: "(SEO)",
+        },
+        {
+          emoji: "🚀",
+          value: "150",
+          label: "Monthly Clicks",
+          sublabel: "(SEO)",
+        },
+        {
+          emoji: "🎯",
+          value: "9.3",
+          label: "Average Position",
+          sublabel: "(SEO)",
+        },
       ],
-      Monitorimage: "bluekite_Admin.png"
-    }
+      images: ["coslomart1.jpeg", "coslomart2.jpeg"],
+      Monitorimage: "/dash.png",
+    },
   ];
 
   return (
@@ -48,9 +57,7 @@ const PortfolioShowcase = () => {
       <div className="ps656-max-width">
         {/* Header */}
         <div className="ps656-header">
-          <h1 className="ps656-title">
-            Our Portfolio
-          </h1>
+          <h1 className="ps656-title">Our Portfolio</h1>
           <p className="ps656-subtitle">
             Delivering exceptional digital solutions
           </p>
@@ -59,9 +66,9 @@ const PortfolioShowcase = () => {
         {/* Portfolio Items */}
         <div className="ps656-portfolio-grid">
           {portfolioItems.map((project, projectIndex) => (
-            <PortfolioCard 
-              key={projectIndex} 
-              project={project} 
+            <PortfolioCard
+              key={projectIndex}
+              project={project}
               index={projectIndex}
             />
           ))}
@@ -69,8 +76,8 @@ const PortfolioShowcase = () => {
       </div>
 
       {/* FontAwesome CDN */}
-      <link 
-        rel="stylesheet" 
+      <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
     </div>
@@ -82,20 +89,20 @@ const PortfolioCard = ({ project, index }) => {
   const [showMonitor, setShowMonitor] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setShowMonitor(prev => !prev);
-    }, showMonitor ? 3000 : 2000); // 3 seconds for monitor, 2 seconds for phones
+    const interval = setInterval(
+      () => {
+        setShowMonitor((prev) => !prev);
+      },
+      showMonitor ? 3000 : 2000
+    );
 
     return () => clearInterval(interval);
   }, [showMonitor]);
 
   useEffect(() => {
-    // Update phone images when monitor is not showing
     if (!showMonitor) {
       const imageInterval = setInterval(() => {
-        setCurrentImageIndex((prev) => 
-          (prev + 1) % project.images.length
-        );
+        setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
       }, 2000);
 
       return () => clearInterval(imageInterval);
@@ -113,7 +120,7 @@ const PortfolioCard = ({ project, index }) => {
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.2
+              opacity: Math.random() * 0.5 + 0.2,
             }}
           />
         ))}
@@ -126,46 +133,48 @@ const PortfolioCard = ({ project, index }) => {
           {/* Category Badge */}
           <div className="ps656-badge">
             <i className="fas fa-bolt ps656-badge-icon"></i>
-            <span className="ps656-badge-text">
-              {project.category}
-            </span>
+            <span className="ps656-badge-text">{project.category}</span>
           </div>
 
           {/* Title */}
-          <h2 className="ps656-project-title">
-            {project.title}
-          </h2>
+          <h2 className="ps656-project-title">{project.title}</h2>
 
-          {/* Category */}
+          {/* About */}
           <div className="ps656-info-block">
-            <p className="ps656-info-label">Category:</p>
-            <p className="ps656-info-value">
-              {project.categoryLabel}
-            </p>
+            <p className="ps656-info-label">About:</p>
+            <div style={{ marginTop: "0.5rem" }}>
+              {project.about.map((item, idx) => (
+                <p
+                  key={idx}
+                  className="ps656-services-text"
+                  style={{ marginBottom: "0.25rem" }}
+                >
+                  • {item}
+                </p>
+              ))}
+            </div>
           </div>
 
-          {/* Type */}
+          {/* Results */}
           <div className="ps656-info-block">
-            <p className="ps656-info-label">Type:</p>
-            <p className="ps656-info-value">
-              {project.type}
-            </p>
-          </div>
-
-          {/* Services */}
-          <div className="ps656-info-block">
-            <p className="ps656-info-label">Services:</p>
-            <p className="ps656-services-text">
-              {project.services.join(', ')}
-            </p>
-          </div>
-
-          {/* Result */}
-          <div className="ps656-info-block">
-            <p className="ps656-info-label">Result:</p>
-            <p className="ps656-result-text">
-              {project.result}
-            </p>
+            <p className="ps656-info-label">Results:</p>
+            <div
+              style={{
+                marginTop: "0.75rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              {project.results.map((result, idx) => (
+                <div key={idx}>
+                  <p className="ps656-result-text">
+                    {result.emoji} {result.value} {result.label}{" "}
+                    {result.sublabel}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -177,7 +186,11 @@ const PortfolioCard = ({ project, index }) => {
           <div className="ps656-corner-accent"></div>
 
           {/* Phone Mockups Container */}
-          <div className={`ps656-phones-container ${showMonitor ? 'ps656-phones-hide' : ''}`}>
+          <div
+            className={`ps656-phones-container ${
+              showMonitor ? "ps656-phones-hide" : ""
+            }`}
+          >
             {/* Left Phone */}
             <div className="ps656-phone-left">
               <div className="ps656-phone">
@@ -195,7 +208,11 @@ const PortfolioCard = ({ project, index }) => {
               <div className="ps656-phone">
                 <div className="ps656-notch" />
                 <img
-                  src={project.images[(currentImageIndex + 1) % project.images.length]}
+                  src={
+                    project.images[
+                      (currentImageIndex + 1) % project.images.length
+                    ]
+                  }
                   alt="App preview"
                   className="ps656-phone-image"
                 />
@@ -204,7 +221,11 @@ const PortfolioCard = ({ project, index }) => {
           </div>
 
           {/* Monitor Container */}
-          <div className={`ps656-monitor-container-787 ${showMonitor ? 'ps656-monitor-show-787' : ''}`}>
+          <div
+            className={`ps656-monitor-container-787 ${
+              showMonitor ? "ps656-monitor-show-787" : ""
+            }`}
+          >
             <div className="ps656-monitor-787">
               {/* Monitor Frame */}
               <div className="ps656-monitor-bezel-787">
@@ -231,9 +252,7 @@ const PortfolioCard = ({ project, index }) => {
                 key={idx}
                 onClick={() => setCurrentImageIndex(idx)}
                 className={`ps656-indicator ${
-                  idx === currentImageIndex 
-                    ? 'ps656-indicator-active' 
-                    : ''
+                  idx === currentImageIndex ? "ps656-indicator-active" : ""
                 }`}
               />
             ))}
