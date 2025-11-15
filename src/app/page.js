@@ -14,6 +14,7 @@ import TechStack from "./components/TechStack";
 import Portfolio from "./components/Portfolio/Portfolio";
 import IndusteriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 import Review from "./components/review/Review";
+import ClientSuccess from "./components/ClientSuccess/ClientSuccess";
 import Footer from "./components/footer/Footer";
 
 function MyApp() {
@@ -47,6 +48,10 @@ function MyApp() {
       </div>
       <div id="Review" className="section">
         <Review />
+      </div>
+
+        <div id="ClientSuccess" className="section">
+        <ClientSuccess />
       </div>
 
       <div id="IndusteriesExpert" className="section">

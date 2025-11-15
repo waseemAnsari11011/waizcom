@@ -1,0 +1,623 @@
+/* Portfolio Showcase Styles */
+
+.ps656-container {
+  min-height: 100vh;
+
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .ps656-container {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ps656-container {
+    padding: 2rem 2rem;
+  }
+}
+
+.ps656-max-width {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.ps656-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ps656-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .ps656-title {
+    font-size: 3rem;
+  }
+}
+
+/* @media (min-width: 1024px) {
+  .ps656-title {
+    font-size: 3.75rem;
+  }
+} */
+
+.ps656-subtitle {
+  color: #9ca3af;
+  font-size: 1.125rem;
+}
+
+/* Portfolio Grid */
+.ps656-portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .ps656-portfolio-grid {
+    gap: 3rem;
+  }
+}
+
+/* Portfolio Card */
+.ps656-card {
+  position: relative;
+  background: linear-gradient(to bottom right, #1e293b, #0f172a);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  .ps656-card {
+    border-radius: 1.5rem;
+  }
+}
+
+/* Starry Background */
+.ps656-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+}
+
+.ps656-star {
+  position: absolute;
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: white;
+  border-radius: 9999px;
+}
+
+/* Main Content */
+.ps656-content {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 500px;
+}
+
+@media (min-width: 768px) {
+  .ps656-content {
+    min-height: 600px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ps656-content {
+    flex-direction: row;
+  }
+}
+
+/* Project Details Section */
+.ps656-details {
+  flex: 1;
+  padding: 1.5rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .ps656-details {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-details {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ps656-details {
+    padding: 4rem;
+  }
+}
+
+/* Category Badge */
+.ps656-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #6b7280;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+}
+
+.ps656-badge-icon {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.ps656-badge-text {
+  color: #d1d5db;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .ps656-badge-text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Project Title */
+.ps656-project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #facc15;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .ps656-project-title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-project-title {
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+  }
+}
+/* 
+@media (min-width: 1024px) {
+  .ps656-project-title {
+    font-size: 3rem;
+  }
+} */
+
+/* Info Blocks */
+.ps656-info-block {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .ps656-info-block {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.ps656-info-label {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .ps656-info-label {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-info-label {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.ps656-info-value {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .ps656-info-value {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-info-value {
+    font-size: 1.25rem;
+  }
+}
+
+.ps656-services-text {
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .ps656-services-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-services-text {
+    font-size: 1.125rem;
+  }
+}
+
+.ps656-result-text {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .ps656-result-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-result-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Images Section */
+.ps656-images-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  min-height: 400px;
+}
+
+@media (min-width: 640px) {
+  .ps656-images-section {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-images-section {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ps656-images-section {
+    padding: 3rem;
+  }
+}
+
+/* Diagonal Red Accent */
+.ps656-diagonal-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 66.666667%;
+  height: 66.666667%;
+  background: linear-gradient(to bottom right, #0c4ccc, #003399);
+  opacity: 0.8;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Phones Container */
+.ps656-phones-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.75);
+}
+
+@media (min-width: 640px) {
+  .ps656-phones-container {
+    gap: 1rem;
+    transform: scale(0.9);
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-phones-container {
+    gap: 1.5rem;
+    transform: scale(1);
+  }
+}
+
+/* Phone Containers */
+.ps656-phone-left {
+  transform: rotate(-6deg);
+  transition: transform 0.5s;
+}
+
+.ps656-phone-left:hover {
+  transform: rotate(0deg);
+}
+
+.ps656-phone-right {
+  transform: rotate(6deg);
+  transition: transform 0.5s;
+}
+
+.ps656-phone-right:hover {
+  transform: rotate(0deg);
+}
+
+/* Base styles */
+.ps656-phone {
+  position: relative;
+  width: 10rem;
+  height: 20rem;
+  background-color: black;
+  border-radius: 2rem;
+  border: 4px solid #4a4a4a;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Tablet - 768px and up */
+@media (max-width: 768px) {
+  .ps656-phone {
+    width: 7.5rem;
+    height: 16rem;
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  .ps656-phone {
+    width: 16rem;
+    height: 32rem;
+  }
+}
+
+/* Phone Notch */
+.ps656-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 1.25rem;
+  background-color: black;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 20;
+}
+
+@media (min-width: 640px) {
+  .ps656-notch {
+    width: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-notch {
+    width: 8rem;
+    height: 1.75rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+  }
+}
+
+/* Phone Image */
+.ps656-phone-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image Indicators */
+.ps656-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+@media (min-width: 768px) {
+  .ps656-indicators {
+    bottom: 2rem;
+  }
+}
+
+.ps656-indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #6b7280;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ps656-indicator:hover {
+  background-color: #9ca3af;
+}
+
+.ps656-indicator-active {
+  background-color: #facc15;
+  width: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ps656-indicator-active {
+    width: 2rem;
+  }
+}
+
+/* Corner Accent */
+.ps656-corner-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8rem;
+  height: 8rem;
+  background-color: #1f6aff;
+  opacity: 0.4;
+  clip-path: polygon(100% 50%, 100% 100%, 50% 100%);
+}
+
+/* Monitor Container - 787 */
+.ps656-monitor-container-787 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(100%);
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+  z-index: 10;
+}
+
+.ps656-monitor-show-787 {
+  transform: translate(-50%, -50%) translateX(0);
+  opacity: 1;
+}
+
+/* Phone container hide state */
+.ps656-phones-container {
+  transition: all 0.8s ease-in-out;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ps656-phones-hide {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* Monitor Design - 787 */
+.ps656-monitor-787 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ps656-monitor-bezel-787 {
+  width: 570px;
+  height: 320px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.ps656-monitor-bezel-787::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.ps656-monitor-screen-787 {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ps656-monitor-image-787 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Monitor Stand - 787 */
+.ps656-monitor-stand-787 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5px;
+}
+
+.ps656-monitor-stand-neck-787 {
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(to bottom, #333, #222);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ps656-monitor-stand-base-787 {
+  width: 150px;
+  height: 12px;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments for monitor */
+@media (max-width: 768px) {
+  .ps656-monitor-bezel-787 {
+    width: 300px;
+    height: 180px;
+    padding: 10px;
+  }
+
+  .ps656-monitor-stand-neck-787 {
+    width: 40px;
+    height: 30px;
+  }
+
+  .ps656-monitor-stand-base-787 {
+    width: 100px;
+    height: 10px;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .ps656-corner-accent {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ps656-corner-accent {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+

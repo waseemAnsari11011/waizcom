@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <header
       className="bg-white fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-lg px-5 md:px-10 lg:px-16 py-5"
-      style={{ zIndex: 2 }}
+      style={{ zIndex: 100}}
     >
       <div className="flex justify-between items-center">
         <div
