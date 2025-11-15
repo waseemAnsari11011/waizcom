@@ -74,11 +74,11 @@ const IntroSection = () => {
                 </div>
               </div>
               <br />
-              mobile and web apps
+              E-commerce Apps
             </h1>
 
             <p className="text-xl md:text-xl font-medium py-1.5 lg:py-2">
-              Your partner for digital growth! 🚀
+              Your partner for e-commerce growth! 🚀
             </p>
             {/* <div className="flex items-center">
               <div className="w-70"> 

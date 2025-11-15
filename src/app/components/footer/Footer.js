@@ -380,7 +380,7 @@ const Footer = () => {
           <h1 className="mb-2 font-bold text-xl">Company</h1>
 
           <ScrollLink
-            to="IndusteriesExpert" // Replace with the actual ID for the Expertise section
+            to="IndustriesExpert" // Replace with the actual ID for the Expertise section
             smooth={true}
             className="cursor-pointer hover:text-[#fad171] duration-300"
             //onClick={() => setShowSidebar(false)} // If you want to close the sidebar on click

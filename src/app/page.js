@@ -12,10 +12,10 @@ import ContactUs from "./components/ContactUsArrow";
 import WhyWaizcom from "./components/WhyWaizcom";
 import TechStack from "./components/TechStack";
 import Portfolio from "./components/Portfolio/Portfolio";
-import IndusteriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 import Review from "./components/review/Review";
 import ClientSuccess from "./components/ClientSuccess/ClientSuccess";
 import Footer from "./components/footer/Footer";
+import IndustriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 
 function MyApp() {
   return (
@@ -50,12 +50,8 @@ function MyApp() {
         <Review />
       </div>
 
-        <div id="ClientSuccess" className="section">
-        <ClientSuccess />
-      </div>
-
-      <div id="IndusteriesExpert" className="section">
-        <IndusteriesExpert />
+      <div id="IndustriesExpert" className="section">
+        <IndustriesExpert />
       </div>
       <div id="Footer" className="section">
         <Footer />
