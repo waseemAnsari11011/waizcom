@@ -120,7 +120,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
+        {/* <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/exclamation_icon.png"
             alt="Exclamation Icon"
@@ -138,7 +138,7 @@ const Work = () => {
               timeline, we'll incur a penalty of 5% of the total project value.
             </p>
           </div>
-        </div>
+        </div> */}
         <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/tag_icon.png"
@@ -156,7 +156,7 @@ const Work = () => {
             </p>
           </div>
         </div>
-        <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
+        {/* <div className="p-5 brand-light group hover:bg-[#021b4b] hover:text-white rounded-2xl service-box">
           <Image
             src="/offer/shield_icon.png"
             alt="Shield Icon"
@@ -176,7 +176,7 @@ const Work = () => {
               licensing fees, no dependencies - you own it all.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

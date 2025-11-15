@@ -12,10 +12,10 @@ import ContactUs from "./components/ContactUsArrow";
 import WhyWaizcom from "./components/WhyWaizcom";
 import TechStack from "./components/TechStack";
 import Portfolio from "./components/Portfolio/Portfolio";
+import IndusteriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 import Review from "./components/review/Review";
 import ClientSuccess from "./components/ClientSuccess/ClientSuccess";
 import Footer from "./components/footer/Footer";
-import IndustriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 
 function MyApp() {
   return (
@@ -36,22 +36,22 @@ function MyApp() {
       <div id="ContactUs" className="section">
         <ContactUs />
       </div>
-      <div id="WhyWaizcom" className="section">
-        <WhyWaizcom />
+      <div id="ClientSuccess" className="section">
+        <ClientSuccess />
       </div>
       <div id="TechStack" className="section">
         <TechStack />
       </div>
-
-      <div id="projects-section" className="projects">
-        <Portfolio />
+      <div id="WhyWaizcom" className="section">
+        <WhyWaizcom />
       </div>
+
       <div id="Review" className="section">
         <Review />
       </div>
 
-      <div id="IndustriesExpert" className="section">
-        <IndustriesExpert />
+      <div id="IndusteriesExpert" className="section">
+        <IndusteriesExpert />
       </div>
       <div id="Footer" className="section">
         <Footer />

@@ -7,9 +7,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Waizcom Technologies - Quality Driven Tech",
+  title: "ecarts.agency - Custom Ecommerce App Development",
   description:
-    "Waizcom Technologies | Quality is Priority | Expert Software Development Services",
+    "Partner with ecarts.agency for expert ecommerce app development. We build high-quality, scalable ecommerce solutions to grow your business.",
 };
 
 export default function RootLayout({ children }) {
