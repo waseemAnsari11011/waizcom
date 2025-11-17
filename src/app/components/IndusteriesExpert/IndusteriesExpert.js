@@ -13,7 +13,7 @@ const IndustriesExpert = () => {
       title: "Grocery Delivery",
     },
     {
-      icon: "/serveicons/10806958_4572220-removebg-preview (1).png",
+      icon: "/serveicons/2098674_268150-P5HM3K-446-removebg-preview.png",
       title: "B2B Marketplaces",
     },
     {
