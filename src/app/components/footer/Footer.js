@@ -148,7 +148,7 @@ const Footer = () => {
             <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
               <label>Company</label>
               <input
-                placeholder="waizcom"
+                placeholder="ecarts"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
               />
             </div>
@@ -182,7 +182,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="mt-2 text-white text-center px-12">
-            "I had a great experience working with Waizcom on my project—their
+            "I had a great experience working with ecarts on my project—their
             work quality was outstanding, they delivered on time, maintained
             smooth communication with clear progress tracking, solved complex
             problems efficiently, demonstrated impressive technical expertise,
@@ -275,10 +275,10 @@ const Footer = () => {
       <div className="w-full h-[1px] bg-[#f0f0f133]"></div>
       <div className="w-full px-5 py-20 max-w-[1200px] mx-auto flex justify-between items-start max-xl:justify-start  max-xl:gap-20 max-md:flex-col  max-md:gap-10">
         <div className="flex flex-col gap-10 ">
-          <div>
+          <div style={{background:'white',padding:'5px'}}>
             <img
-              src="/waizcom_white.png"
-              alt="Waizcom Logo"
+              src="/ecarts.png"
+              alt="ecarts Logo"
               style={{ width: "200px", height: "auto" }}
             />
           </div>

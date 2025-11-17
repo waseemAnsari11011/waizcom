@@ -48,7 +48,7 @@ const Review = () => {
             </div>
 
             <p className="mt-2 text-white">
-              "I had a great experience working with Waizcom on my project—their
+              "I had a great experience working with ecarts on my project—their
               work quality was outstanding, they delivered on time, maintained
               smooth communication with clear progress tracking, solved complex
               problems efficiently, demonstrated impressive technical expertise,

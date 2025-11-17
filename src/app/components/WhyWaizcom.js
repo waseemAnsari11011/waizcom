@@ -15,7 +15,7 @@ const WhyWaizcom = () => {
   return (
     <section ref={ref} className="px-4 md:px-10 lg:px-16 mb-10 md:mb-20">
       <h2 className="text-center text-4xl font-bold mb-8 md:mb-12">
-        WHY WAIZCOM
+        WHY ECARTS
       </h2>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-4">
         <div
@@ -30,7 +30,7 @@ const WhyWaizcom = () => {
           <ul className="list-disc pl-5 space-y-2">
             <li>
               Donating 3% of every money earned from clients to a charity of the
-              client's choice or to causes waizcom supports
+              client's choice or to causes ecarts supports
             </li>
             <li>donations are directed towards helping the poor and needy</li>
           </ul>
