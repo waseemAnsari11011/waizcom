@@ -30,7 +30,7 @@ const Review = () => {
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
                   loading="lazy"
-                  src="https://www.youtube.com/embed/oErAunM63Is?si=a1LHsrjvl-c7d75F"
+                  src="https://www.youtube.com/embed/lkgbDb9cCb8"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -149,7 +149,7 @@ const Review = () => {
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
                   loading="lazy"
-                  src="https://www.youtube.com/embed/LMUDEYkDDzI"
+                  src="https://www.youtube.com/embed/5VYygaaM9SQ"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
