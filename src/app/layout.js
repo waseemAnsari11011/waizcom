@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* facebook domain verify */}
-         <meta name="facebook-domain-verification" content="3cc0npli8rlmy7zbw17cb6anigrbye" />
+        <meta name="facebook-domain-verification" content="zb22go5ehqyp0ivho35zgwnfip2bq0" />
         {/* Preconnect for VWO */}
         <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 
