@@ -1,11 +1,6 @@
 "use client";
-import Header from "../app/components/Header";
-
 import IntroSection from "./components/Intro/IntroSection";
-
 import Work from "./components/Work";
-
-// import Portfolio from "./components/Portfolio";
 import Clients from "./components/Clients";
 import CompanyDetails from "./components/CompanyDetails";
 import ContactUs from "./components/ContactUsArrow";
@@ -15,12 +10,11 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import IndusteriesExpert from "./components/IndusteriesExpert/IndusteriesExpert";
 import Review from "./components/review/Review";
 import ClientSuccess from "./components/ClientSuccess/ClientSuccess";
-import Footer from "./components/footer/Footer";
+import BlogList from "./components/Blog/BlogList";
 
 function MyApp() {
   return (
     <div className="bg-white">
-      <Header />
       <div id="intro" className="section">
         <IntroSection />
       </div>
@@ -53,8 +47,9 @@ function MyApp() {
       <div id="IndusteriesExpert" className="section">
         <IndusteriesExpert />
       </div>
-      <div id="Footer" className="section">
-        <Footer />
+
+      <div id="Blog" className="section">
+        <BlogList />
       </div>
     </div>
   );

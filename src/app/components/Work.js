@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image"; // Import Image from Next.js for optimized loading
 
 const Work = () => {

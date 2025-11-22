@@ -5,6 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { sendGAEvent } from "@next/third-parties/google";
 import SideBar from "../utility/sideBar";
 import { Link as ScrollLink } from "react-scroll";
+import Link from "next/link";
 import Image from "next/image";
 
 const Header = () => {
@@ -40,7 +41,7 @@ const Header = () => {
   return (
     <header
       className="bg-white fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-lg px-5 md:px-10 lg:px-16 py-5"
-      style={{ zIndex: 100}}
+      style={{ zIndex: 100 }}
     >
       <div className="flex justify-between items-center">
         <div
@@ -72,48 +73,41 @@ const Header = () => {
           )}
           {isMobile === false && (
             <div className="flex justify-between items-center space-x-10">
-              <ScrollLink
-                to="intro-section"
-                smooth={true}
+              <Link
+                href="/"
                 onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>Home</p>
-              </ScrollLink>
-              <ScrollLink
-                to="about-section"
-                smooth={true}
-                offset={-120}
+              </Link>
+              <Link
+                href="/about-us"
                 onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>About us</p>
-              </ScrollLink>
-              <ScrollLink
-                to="services-section"
-                offset={-100}
-                smooth={true}
+              </Link>
+              <Link
+                href="/services"
                 onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>Services</p>
-              </ScrollLink>
-              <ScrollLink
-                to="projects-section"
-                smooth={true}
+              </Link>
+              <Link
+                href="/projects"
                 onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>Projects</p>
-              </ScrollLink>
-              <ScrollLink
-                to="TechStack"
-                smooth={true}
+              </Link>
+              <Link
+                href="/tech"
                 onClick={() => setShowSidebar(false)}
                 className="text-header block flex items-center cursor-pointer"
               >
                 <p>Tech</p>
-              </ScrollLink>
+              </Link>
 
               <ScrollLink
                 to="Footer"

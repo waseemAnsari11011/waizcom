@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import "./ClientSuccess.css";
 
@@ -109,18 +110,29 @@ const PortfolioCard = ({ project, index }) => {
     }
   }, [showMonitor, project.images.length]);
 
+  const [stars, setStars] = useState([]);
+
+  useEffect(() => {
+    const newStars = [...Array(30)].map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      opacity: Math.random() * 0.5 + 0.2,
+    }));
+    setStars(newStars);
+  }, []);
+
   return (
     <div className="ps656-card">
       {/* Starry Background */}
       <div className="ps656-stars">
-        {[...Array(30)].map((_, i) => (
+        {stars.map((star, i) => (
           <div
             key={i}
             className="ps656-star"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.2,
+              top: star.top,
+              left: star.left,
+              opacity: star.opacity,
             }}
           />
         ))}
@@ -187,9 +199,8 @@ const PortfolioCard = ({ project, index }) => {
 
           {/* Phone Mockups Container */}
           <div
-            className={`ps656-phones-container ${
-              showMonitor ? "ps656-phones-hide" : ""
-            }`}
+            className={`ps656-phones-container ${showMonitor ? "ps656-phones-hide" : ""
+              }`}
           >
             {/* Left Phone */}
             <div className="ps656-phone-left">
@@ -210,7 +221,7 @@ const PortfolioCard = ({ project, index }) => {
                 <img
                   src={
                     project.images[
-                      (currentImageIndex + 1) % project.images.length
+                    (currentImageIndex + 1) % project.images.length
                     ]
                   }
                   alt="App preview"
@@ -222,9 +233,8 @@ const PortfolioCard = ({ project, index }) => {
 
           {/* Monitor Container */}
           <div
-            className={`ps656-monitor-container-787 ${
-              showMonitor ? "ps656-monitor-show-787" : ""
-            }`}
+            className={`ps656-monitor-container-787 ${showMonitor ? "ps656-monitor-show-787" : ""
+              }`}
           >
             <div className="ps656-monitor-787">
               {/* Monitor Frame */}
@@ -251,9 +261,8 @@ const PortfolioCard = ({ project, index }) => {
               <button
                 key={idx}
                 onClick={() => setCurrentImageIndex(idx)}
-                className={`ps656-indicator ${
-                  idx === currentImageIndex ? "ps656-indicator-active" : ""
-                }`}
+                className={`ps656-indicator ${idx === currentImageIndex ? "ps656-indicator-active" : ""
+                  }`}
               />
             ))}
           </div>

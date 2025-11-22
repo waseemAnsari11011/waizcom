@@ -2,6 +2,7 @@ import React from "react";
 import { Transition } from "@headlessui/react";
 import { FiFileText, FiMessageSquare } from "react-icons/fi";
 import Image from "next/image";
+import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 
 import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
@@ -36,50 +37,41 @@ const SideBar = ({ showSidebar, setShowSidebar, toggleSidebar }) => {
           </button>
         </div>
         <div className="mt-19">
-          <ScrollLink
-            to="intro-section" // Replace with the ID of the home section
-            smooth={true}
+          <Link
+            href="/"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">Home</p>
-          </ScrollLink>
-          <ScrollLink
-            offset={-100}
-            to="about-section" // Replace with the ID of the home section
-            smooth={true}
+          </Link>
+          <Link
+            href="/about-us"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">About</p>
-          </ScrollLink>
-          <ScrollLink
-            offset={-100}
-            to="services-section" // Replace with the ID of the home section
-            smooth={true}
+          </Link>
+          <Link
+            href="/services"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">Services</p>
-          </ScrollLink>
-          <ScrollLink
-            offset={-100}
-            to="TechStack" // Replace with the ID of the home section
-            smooth={true}
+          </Link>
+          <Link
+            href="/tech"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">Tech</p>
-          </ScrollLink>
-          <ScrollLink
-            offset={-85}
-            to="projects-section" // Replace with the ID of the home section
-            smooth={true}
+          </Link>
+          <Link
+            href="/projects"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">Projects</p>
-          </ScrollLink>
+          </Link>
 
           <ScrollLink
             to="Footer" // Replace with the ID of the home section
