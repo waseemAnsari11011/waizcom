@@ -3,20 +3,37 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import useSWR from "swr";
 import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const CreateBlog = () => {
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+const EditBlog = ({ params }) => {
     const session = useSession();
     const router = useRouter();
+    const { data: blog, isLoading } = useSWR(`/api/blogs/${params.slug}`, fetcher);
+
     const [content, setContent] = useState("");
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
+    const [tags, setTags] = useState("");
 
     useEffect(() => {
         if (session.status === "unauthenticated") {
             router.push("/admin/login");
         }
     }, [session.status, router]);
+
+    useEffect(() => {
+        if (blog) {
+            setTitle(blog.title);
+            setImage(blog.image);
+            setContent(blog.content);
+            setTags(blog.tags.join(", "));
+        }
+    }, [blog]);
 
     const modules = useMemo(
         () => ({
@@ -38,30 +55,28 @@ const CreateBlog = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const title = e.target.title.value;
-        const slug = title
+        const newSlug = title
             .toLowerCase()
             .trim()
             .replace(/[^\w\s-]/g, "")
             .replace(/[\s_-]+/g, "-")
             .replace(/^-+|-+$/g, "");
-        const image = e.target.image.value;
-        const tagsInput = e.target.tags.value;
-        const tags = tagsInput.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
+
+        const tagsArray = tags.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
 
         try {
-            const res = await fetch("/api/blogs", {
-                method: "POST",
+            const res = await fetch(`/api/blogs/${params.slug}`, {
+                method: "PUT",
                 body: JSON.stringify({
                     title,
-                    slug,
+                    slug: newSlug,
                     image,
                     content,
-                    tags,
+                    tags: tagsArray,
                 }),
             });
 
-            if (res.status === 201) {
+            if (res.status === 200) {
                 router.push("/admin");
             }
         } catch (err) {
@@ -69,7 +84,7 @@ const CreateBlog = () => {
         }
     };
 
-    if (session.status === "loading") {
+    if (session.status === "loading" || isLoading) {
         return <div className="p-8">Loading...</div>;
     }
 
@@ -78,7 +93,7 @@ const CreateBlog = () => {
             <div className="min-h-screen bg-gray-100 p-8">
                 <div className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-md">
                     <h1 className="mb-6 text-2xl font-bold text-gray-800">
-                        Create New Blog
+                        Edit Blog
                     </h1>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
@@ -87,7 +102,8 @@ const CreateBlog = () => {
                             </label>
                             <input
                                 type="text"
-                                name="title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 required
                                 className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
                                 placeholder="Blog Title"
@@ -99,7 +115,8 @@ const CreateBlog = () => {
                             </label>
                             <input
                                 type="text"
-                                name="image"
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
                                 required
                                 className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
                                 placeholder="https://example.com/image.jpg"
@@ -125,17 +142,27 @@ const CreateBlog = () => {
                             </label>
                             <input
                                 type="text"
-                                name="tags"
+                                value={tags}
+                                onChange={(e) => setTags(e.target.value)}
                                 className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
                                 placeholder="tech, nextjs, web development"
                             />
                         </div>
-                        <button
-                            type="submit"
-                            className="w-full rounded-md bg-blue-600 py-3 text-white hover:bg-blue-700 transition duration-300"
-                        >
-                            Publish Blog
-                        </button>
+                        <div className="flex gap-4">
+                            <button
+                                type="button"
+                                onClick={() => router.push("/admin")}
+                                className="w-full rounded-md bg-gray-500 py-3 text-white hover:bg-gray-600 transition duration-300"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="submit"
+                                className="w-full rounded-md bg-blue-600 py-3 text-white hover:bg-blue-700 transition duration-300"
+                            >
+                                Update Blog
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -143,4 +170,4 @@ const CreateBlog = () => {
     }
 };
 
-export default CreateBlog;
+export default EditBlog;

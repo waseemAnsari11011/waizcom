@@ -106,12 +106,20 @@ const Dashboard = () => {
                                             >
                                                 View
                                             </Link>
-                                            <button
-                                                onClick={() => handleDelete(blog.slug)}
-                                                className="text-red-600 hover:underline"
-                                            >
-                                                Delete
-                                            </button>
+                                            <div className="flex gap-4">
+                                                <Link
+                                                    href={`/admin/edit/${blog.slug}`}
+                                                    className="text-green-600 hover:underline"
+                                                >
+                                                    Edit
+                                                </Link>
+                                                <button
+                                                    onClick={() => handleDelete(blog.slug)}
+                                                    className="text-red-600 hover:underline"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

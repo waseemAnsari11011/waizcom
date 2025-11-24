@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         {/* facebook domain verify */}
         <meta name="facebook-domain-verification" content="zb22go5ehqyp0ivho35zgwnfip2bq0" />
