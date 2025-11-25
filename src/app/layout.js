@@ -19,6 +19,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* google domain verify */}
+        <meta name="google-site-verification" content="RyFTBWp-tZcN0vs7nuNYgwymOC1oYy3sQz8ePuvXYH8" />
         {/* facebook domain verify */}
         <meta name="facebook-domain-verification" content="zb22go5ehqyp0ivho35zgwnfip2bq0" />
         {/* Preconnect for VWO */}

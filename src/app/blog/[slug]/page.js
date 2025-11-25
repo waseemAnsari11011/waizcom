@@ -39,29 +39,7 @@ const processContent = (content) => {
     return { processedContent, headings };
 };
 
-const TableOfContents = ({ headings }) => {
-    if (headings.length === 0) return null;
-
-    return (
-        <div className="sticky top-24 hidden lg:block">
-            <h4 className="mb-4 text-lg font-bold uppercase tracking-widest text-gray-900">
-                Table of Contents
-            </h4>
-            <nav className="flex flex-col space-y-3 border-l border-gray-200 pl-4">
-                {headings.map((heading) => (
-                    <a
-                        key={heading.id}
-                        href={`#${heading.id}`}
-                        className={`text-base transition-colors hover:text-blue-600 ${heading.level === 3 ? "pl-4 text-gray-500" : "text-gray-600 font-medium"
-                            }`}
-                    >
-                        {heading.text}
-                    </a>
-                ))}
-            </nav>
-        </div>
-    );
-};
+import TableOfContents from "./TableOfContents";
 
 const BlogPage = async ({ params }) => {
     const blog = await getBlog(params.slug);

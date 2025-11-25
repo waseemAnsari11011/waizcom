@@ -49,7 +49,7 @@ function MyApp() {
       </div>
 
       <div id="Blog" className="section">
-        <BlogList />
+        <BlogList limit={3} />
       </div>
     </div>
   );
