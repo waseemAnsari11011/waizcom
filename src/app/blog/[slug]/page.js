@@ -2,16 +2,18 @@ import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-async function getBlog(slug) {
-    const res = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/blogs/${slug}`, {
-        cache: "no-store",
-    });
+import connect from "@/lib/db";
+import Blog from "@/models/Blog";
 
-    if (!res.ok) {
+async function getBlog(slug) {
+    try {
+        await connect();
+        const blog = await Blog.findOne({ slug }).lean();
+        return blog;
+    } catch (error) {
+        console.error("Error fetching blog:", error);
         return null;
     }
-
-    return res.json();
 }
 
 export async function generateMetadata({ params }) {
