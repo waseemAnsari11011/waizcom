@@ -19,22 +19,20 @@ const EditBlog = ({ params }) => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [tags, setTags] = useState("");
-
-    useEffect(() => {
-        if (session.status === "unauthenticated") {
-            router.push("/admin/login");
-        }
-    }, [session.status, router]);
+    const [imagePreview, setImagePreview] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
 
     useEffect(() => {
         if (blog) {
             setTitle(blog.title);
             setImage(blog.image);
+            setImagePreview(blog.image);
             setContent(blog.content);
             setTags(blog.tags.join(", "));
         }
     }, [blog]);
 
+    // ... (modules useMemo remains same)
     const modules = useMemo(
         () => ({
             toolbar: [
@@ -53,6 +51,14 @@ const EditBlog = ({ params }) => {
         []
     );
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newSlug = title
@@ -64,16 +70,20 @@ const EditBlog = ({ params }) => {
 
         const tagsArray = tags.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
 
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("slug", newSlug);
+        formData.append("content", content);
+        formData.append("tags", JSON.stringify(tagsArray));
+        formData.append("image", image); // Send existing image URL
+        if (selectedFile) {
+            formData.append("file", selectedFile);
+        }
+
         try {
             const res = await fetch(`/api/blogs/${params.slug}`, {
                 method: "PUT",
-                body: JSON.stringify({
-                    title,
-                    slug: newSlug,
-                    image,
-                    content,
-                    tags: tagsArray,
-                }),
+                body: formData,
             });
 
             if (res.status === 200) {
@@ -111,15 +121,23 @@ const EditBlog = ({ params }) => {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">
-                                Featured Image URL
+                                Featured Image
                             </label>
+                            {imagePreview && (
+                                <div className="mb-2 h-48 w-full overflow-hidden rounded-md bg-gray-100" style={{ width: "fit-content", margin: '10px' }}>
+                                    <img
+                                        src={imagePreview}
+                                        alt="Preview"
+                                        className="h-full w-full object-cover"
+                                        style={{ objectFit: 'contain' }}
+                                    />
+                                </div>
+                            )}
                             <input
-                                type="text"
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
-                                required
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
                                 className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
-                                placeholder="https://example.com/image.jpg"
                             />
                         </div>
                         <div>

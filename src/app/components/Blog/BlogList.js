@@ -11,7 +11,7 @@ const BlogList = ({ limit }) => {
 
     if (isLoading) return <div className="text-center py-10">Loading blogs...</div>;
     if (error) return <div className="text-center py-10 text-red-500">Failed to load blogs</div>;
-    if (!data || data.length === 0) return null;
+    if (!data || !Array.isArray(data) || data.length === 0) return null;
 
     const displayData = limit ? data.slice(0, limit) : data;
 

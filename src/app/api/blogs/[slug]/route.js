@@ -26,19 +26,43 @@ export const DELETE = async (request, { params }) => {
     }
 };
 
+import { uploadToS3 } from "@/lib/s3";
+
 export const PUT = async (request, { params }) => {
     const { slug } = params;
-    const body = await request.json();
 
     try {
+        const formData = await request.formData();
+        const title = formData.get("title");
+        const newSlug = formData.get("slug");
+        const content = formData.get("content");
+        const tags = JSON.parse(formData.get("tags"));
+        const file = formData.get("file");
+        const existingImage = formData.get("image");
+
+        let imageUrl = existingImage;
+        if (file && typeof file !== "string") {
+            const filename = `${Date.now()}-${file.name.replace(/\s/g, "-")}`;
+            imageUrl = await uploadToS3(file, filename);
+        }
+
+        const updateData = {
+            title,
+            slug: newSlug,
+            content,
+            tags,
+            image: imageUrl,
+        };
+
         await connect();
         const updatedBlog = await Blog.findOneAndUpdate(
             { slug },
-            { $set: body },
+            { $set: updateData },
             { new: true }
         );
         return new NextResponse(JSON.stringify(updatedBlog), { status: 200 });
     } catch (err) {
-        return new NextResponse("Database Error", { status: 500 });
+        console.error("Database/Upload Error:", err);
+        return new NextResponse("Database/Upload Error", { status: 500 });
     }
 };

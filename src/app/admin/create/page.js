@@ -11,12 +11,20 @@ const CreateBlog = () => {
     const session = useSession();
     const router = useRouter();
     const [content, setContent] = useState("");
+    const [imagePreview, setImagePreview] = useState("");
 
     useEffect(() => {
         if (session.status === "unauthenticated") {
             router.push("/admin/login");
         }
     }, [session.status, router]);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
 
     const modules = useMemo(
         () => ({
@@ -45,20 +53,23 @@ const CreateBlog = () => {
             .replace(/[^\w\s-]/g, "")
             .replace(/[\s_-]+/g, "-")
             .replace(/^-+|-+$/g, "");
-        const image = e.target.image.value;
+        const imageFile = e.target.image.files[0];
         const tagsInput = e.target.tags.value;
         const tags = tagsInput.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("slug", slug);
+        formData.append("content", content);
+        formData.append("tags", JSON.stringify(tags));
+        if (imageFile) {
+            formData.append("file", imageFile);
+        }
 
         try {
             const res = await fetch("/api/blogs", {
                 method: "POST",
-                body: JSON.stringify({
-                    title,
-                    slug,
-                    image,
-                    content,
-                    tags,
-                }),
+                body: formData,
             });
 
             if (res.status === 201) {
@@ -95,14 +106,25 @@ const CreateBlog = () => {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">
-                                Featured Image URL
+                                Featured Image
                             </label>
+                            {imagePreview && (
+                                <div className="mb-2 h-48 w-full overflow-hidden rounded-md bg-gray-100" style={{ width: "fit-content", margin: '10px' }}>
+                                    <img
+                                        src={imagePreview}
+                                        alt="Preview"
+                                        className="h-full w-full object-cover"
+                                        style={{ objectFit: 'contain' }}
+                                    />
+                                </div>
+                            )}
                             <input
-                                type="text"
+                                type="file"
                                 name="image"
+                                accept="image/*"
                                 required
+                                onChange={handleImageChange}
                                 className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
-                                placeholder="https://example.com/image.jpg"
                             />
                         </div>
                         <div>
