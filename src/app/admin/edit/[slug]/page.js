@@ -32,21 +32,56 @@ const EditBlog = ({ params }) => {
         }
     }, [blog]);
 
-    // ... (modules useMemo remains same)
     const modules = useMemo(
         () => ({
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ["bold", "italic", "underline", "strike", "blockquote"],
-                [
-                    { list: "ordered" },
-                    { list: "bullet" },
-                    { indent: "-1" },
-                    { indent: "+1" },
+            toolbar: {
+                container: [
+                    [{ header: [1, 2, 3, false] }],
+                    ["bold", "italic", "underline", "strike", "blockquote"],
+                    [
+                        { list: "ordered" },
+                        { list: "bullet" },
+                        { indent: "-1" },
+                        { indent: "+1" },
+                    ],
+                    ["link", "image"],
+                    ["clean"],
                 ],
-                ["link", "image"],
-                ["clean"],
-            ],
+                handlers: {
+                    image: function () {
+                        const quill = this.quill;
+                        const input = document.createElement("input");
+                        input.setAttribute("type", "file");
+                        input.setAttribute("accept", "image/*");
+                        input.click();
+
+                        input.onchange = async () => {
+                            const file = input.files[0];
+                            if (file) {
+                                const formData = new FormData();
+                                formData.append("file", file);
+
+                                try {
+                                    const res = await fetch("/api/upload", {
+                                        method: "POST",
+                                        body: formData,
+                                    });
+
+                                    if (res.ok) {
+                                        const data = await res.json();
+                                        const range = quill.getSelection();
+                                        quill.insertEmbed(range.index, "image", data.url);
+                                    } else {
+                                        console.error("Image upload failed");
+                                    }
+                                } catch (err) {
+                                    console.error("Error uploading image:", err);
+                                }
+                            }
+                        };
+                    },
+                },
+            },
         }),
         []
     );

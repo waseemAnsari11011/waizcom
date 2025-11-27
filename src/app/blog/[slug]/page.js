@@ -23,7 +23,10 @@ export async function generateMetadata({ params }) {
     return {
         title: blog.title,
         description: blog.content.substring(0, 160).replace(/<[^>]+>/g, ''),
-        keywords: blog.tags
+        keywords: blog.tags,
+        alternates: {
+            canonical: `/blog/${blog.slug}`,
+        },
     };
 }
 
@@ -42,6 +45,7 @@ const processContent = (content) => {
 };
 
 import TableOfContents from "./TableOfContents";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 const BlogPage = async ({ params }) => {
     const blog = await getBlog(params.slug);
@@ -52,9 +56,34 @@ const BlogPage = async ({ params }) => {
 
     const { processedContent, headings } = processContent(blog.content);
 
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Blog", href: "/blog" },
+        { label: blog.title, href: `/blog/${blog.slug}` },
+    ];
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: blog.title,
+        image: [blog.image],
+        datePublished: blog.createdAt,
+        dateModified: blog.updatedAt || blog.createdAt,
+        author: [{
+            "@type": "Person",
+            name: "ecarts Team",
+            url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"
+        }]
+    };
+
     return (
         <div className="min-h-screen bg-white pt-24 pb-16">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <div className="container mx-auto px-4 max-w-7xl">
+                <Breadcrumbs items={breadcrumbItems} />
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
                     {/* Main Content */}
                     <div className="lg:col-span-8">

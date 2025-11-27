@@ -10,9 +10,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"),
   title: "ecarts.agency - Custom Ecommerce App Development",
   description:
     "Partner with ecarts.agency for expert ecommerce app development. We build high-quality, scalable ecommerce solutions to grow your business.",
+  alternates: {
+    canonical: "./",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -48,6 +52,29 @@ export default function RootLayout({ children }) {
               /* DO NOT EDIT BELOW THIS LINE */
               f=false,d=document,v=d.querySelector('#vwoCode'),c={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},hide_element_style:function(){return '{'+hide_element_style+'}'},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},getVersion:function(){return version},getMatchedCookies:function(e){var t=[];if(document.cookie){t=document.cookie.match(e)||[]}return t},getCombinationCookie:function(){var e=c.getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);e=e.map(function(e){try{var t=decodeURIComponent(e);if(!/_vis_opt_exp_\d+_combi=(?:\&|$)/.test(t))return t}catch(e){}return null});return e.filter(function(e){return e!=null})},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{'+hide_element_style+'}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');v&&e.setAttribute('nonce',v.nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);var n=this.getCombinationCookie();this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version+(n.length?'&c='+n.join('&'):''));return settings_timer} };window._vwo_settings_timer = c.init(); return c; }());
             `,
+          }}
+        />
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "ecarts.agency",
+              url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency",
+              logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`,
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-88822-02176",
+                contactType: "customer service",
+              },
+              sameAs: [
+                "https://www.facebook.com/ecarts.agency",
+                "https://www.instagram.com/ecarts.agency",
+                "https://www.linkedin.com/company/ecarts-agency",
+              ],
+            }),
           }}
         />
       </body>
