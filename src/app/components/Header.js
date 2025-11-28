@@ -4,7 +4,7 @@ import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { sendGAEvent } from "@next/third-parties/google";
 import SideBar from "../utility/sideBar";
-import { Link as ScrollLink } from "react-scroll";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -63,6 +63,7 @@ const Header = () => {
             <button
               className="focus:outline-none focus:text-white"
               onClick={toggleSidebar}
+              aria-label="Toggle Menu"
             >
               {showSidebar ? (
                 <FiX className="h-6 w-6 fill-current text-black" />
@@ -109,14 +110,13 @@ const Header = () => {
                 <p>Tech</p>
               </Link>
 
-              <ScrollLink
-                to="Footer"
-                smooth={true}
+              <Link
+                href="#Footer"
                 onClick={() => setShowSidebar(false)}
                 className="get-in-touch-btn cursor-pointer"
               >
                 <p className="text-header-black font-bold">Get App Cost</p>
-              </ScrollLink>
+              </Link>
             </div>
           )}
         </div>

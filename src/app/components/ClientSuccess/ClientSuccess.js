@@ -261,6 +261,7 @@ const PortfolioCard = ({ project, index }) => {
               <button
                 key={idx}
                 onClick={() => setCurrentImageIndex(idx)}
+                aria-label={`View image ${idx + 1}`}
                 className={`ps656-indicator ${idx === currentImageIndex ? "ps656-indicator-active" : ""
                   }`}
               />

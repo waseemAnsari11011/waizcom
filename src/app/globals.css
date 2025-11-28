@@ -12,12 +12,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 .bg-linkedin-blue {
@@ -63,7 +60,7 @@ body {
 }
 
 .text-black {
-  color: 1e2a2e;
+  color: #1e2a2e;
 }
 
 .text-header {
@@ -222,12 +219,14 @@ body {
 .carousel {
   display: flex;
   gap: 30px;
-  width: 200%; /* Adjust according to the number of images and duplicates */
+  width: 200%;
+  /* Adjust according to the number of images and duplicates */
   animation: leftmove 30s linear infinite;
 }
 
 .carousel-item {
-  flex: 0 0 33.3333%; /* Adjust to fit the container */
+  flex: 0 0 33.3333%;
+  /* Adjust to fit the container */
 }
 
 .carousel img {
@@ -241,8 +240,10 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
-    transform: translateX(-50%); /* Move by 50% of the container width */
+    transform: translateX(-50%);
+    /* Move by 50% of the container width */
   }
 }
 
@@ -253,8 +254,10 @@ body {
     width: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* For smooth scrolling on iOS */
   }
+
   .carousel-item {
     flex: 0 0 100%;
     scroll-snap-align: start;
@@ -283,13 +286,12 @@ body {
   left: 0;
   width: 100%;
   height: 100px;
-  background: -webkit-linear-gradient(
-    rgba(0, 0, 0, 0) 0%,
-    rgb(30, 42, 46) 100%
-  ) !important;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0) 0%,
+      rgb(30, 42, 46) 100%) !important;
 
   z-index: 1;
 }
+
 .effect::before {
   content: "";
   position: absolute;
@@ -297,15 +299,15 @@ body {
   left: 0;
   width: 100%;
   height: 100px;
-  background: -webkit-linear-gradient(
-    rgb(30, 42, 46) 0%,
-    rgba(0, 0, 0, 0) 100%
-  ) !important;
+  background: -webkit-linear-gradient(rgb(30, 42, 46) 0%,
+      rgba(0, 0, 0, 0) 100%) !important;
   z-index: 1;
 }
 
 
 
 @media (max-width: 800px) {
-.hideonmobile{display: none;}
+  .hideonmobile {
+    display: none;
+  }
 }

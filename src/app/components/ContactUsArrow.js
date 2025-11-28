@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link as ScrollLink } from "react-scroll";
+import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 
 const ContactUs = () => {
@@ -45,13 +45,12 @@ const ContactUs = () => {
               KNOW YOUR APP COST
             </h2>
           </div>
-          <ScrollLink
-            to="Footer" // Replace with the ID of the home section
-            smooth={true}
+          <Link
+            href="#Footer" // Replace with the ID of the home section
             className="bg-[#fad171] hover:bg-[#fad171] font-bold py-3 px-8 rounded-full"
           >
             <p className="text-black">Contact us</p>
-          </ScrollLink>
+          </Link>
         </div>
       </div>
     </section>

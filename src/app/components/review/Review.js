@@ -16,6 +16,7 @@ const Review = () => {
                   src="/bluekiteProfile.png"
                   className="w-[54px] rounded-full"
                   loading="lazy"
+                  alt="Blue Kite Profile"
                 />
               </div>
 
@@ -135,6 +136,7 @@ const Review = () => {
                   src="/coslomart.jpg"
                   className="w-[54px] rounded-full"
                   loading="lazy"
+                  alt="Coslo Mart Profile"
                 />
               </div>
 
@@ -341,12 +343,12 @@ const Review = () => {
           <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
-                <img src="/images/avatar.avif" className="w-[54px]" />
+                <img src="/images/avatar.avif" className="w-[54px]" alt="Avatar" />
               </div>
               <div>
                 <h2 className="flex gap-2 font-bold text-xl text-white">
                   CEO & CO-FOUNDER, OUT CO
-                  <img src="/images/flag-1.svg" />
+                  <img src="/images/flag-1.svg" alt="Flag" />
                 </h2>
                 <p className="text-white text-lg">Anna Harissis</p>
               </div>
@@ -433,12 +435,12 @@ const Review = () => {
           <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
-                <img src="/images/avatar.avif" className="w-[54px]" />
+                <img src="/images/avatar.avif" className="w-[54px]" alt="Avatar" />
               </div>
               <div>
                 <h2 className="flex gap-2 font-bold text-xl text-white">
                   CEO & CO-FOUNDER, OUT CO
-                  <img src="/images/flag-1.svg" />
+                  <img src="/images/flag-1.svg" alt="Flag" />
                 </h2>
                 <p className="text-white text-lg">Anna Harissis</p>
               </div>
@@ -525,12 +527,12 @@ const Review = () => {
           <div className=" max-xl:w-full bg-custom-radial  border border-[#747e8b80] rounded-[40px] p-[30px] w-[calc(50%-15px)]">
             <div className="flex gap-2 items-center max-xl:flex-col max-xl:items-start">
               <div>
-                <img src="/images/avatar.avif" className="w-[54px]" />
+                <img src="/images/avatar.avif" className="w-[54px]" alt="Avatar" />
               </div>
               <div>
                 <h2 className="flex gap-2 font-bold text-xl text-white">
                   CEO & CO-FOUNDER, OUT CO
-                  <img src="/images/flag-1.svg" />
+                  <img src="/images/flag-1.svg" alt="Flag" />
                 </h2>
                 <p className="text-white text-lg">Anna Harissis</p>
               </div>

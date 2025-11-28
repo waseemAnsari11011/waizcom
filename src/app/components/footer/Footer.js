@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-import { Link as ScrollLink } from "react-scroll";
+
 import Link from "next/link";
 import { FiPhoneCall } from "react-icons/fi";
 
@@ -325,13 +325,12 @@ const Footer = () => {
             About us
           </Link>
 
-          <ScrollLink
-            to="Footer" // Replace with the actual ID for the Contact us section
-            smooth={true}
+          <Link
+            href="#Footer" // Replace with the actual ID for the Contact us section
             className="cursor-pointer hover:text-[#fad171] duration-300"
           >
             Contact us
-          </ScrollLink>
+          </Link>
         </div>
         <div className="flex flex-col text-white gap-[10px]  max-xl:mt-20 max-md:mt-0">
           <h1 className="mb-2 font-bold text-xl">Location</h1>

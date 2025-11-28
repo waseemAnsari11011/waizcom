@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import { FiFileText, FiMessageSquare } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
+
 
 import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
 
@@ -73,14 +73,13 @@ const SideBar = ({ showSidebar, setShowSidebar, toggleSidebar }) => {
             <p className="side-bar-text">Projects</p>
           </Link>
 
-          <ScrollLink
-            to="Footer" // Replace with the ID of the home section
-            smooth={true}
+          <Link
+            href="#Footer" // Replace with the ID of the home section
             onClick={() => setShowSidebar(false)} // Close sidebar on click
             className="block px-5 py-3 flex items-center cursor-pointer"
           >
             <p className="side-bar-text">Contact</p>
-          </ScrollLink>
+          </Link>
         </div>
       </div>
     </Transition>

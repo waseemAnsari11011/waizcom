@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={montserrat.className}>
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
         {/* VWO SmartCode */}
         <Script
