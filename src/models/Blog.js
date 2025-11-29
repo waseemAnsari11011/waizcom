@@ -21,6 +21,10 @@ const blogSchema = new Schema(
             type: String,
             required: true,
         },
+        images: {
+            type: [String],
+            default: [],
+        },
         tags: {
             type: [String],
             default: [],

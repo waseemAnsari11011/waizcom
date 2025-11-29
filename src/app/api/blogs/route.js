@@ -13,6 +13,7 @@ export const GET = async (request) => {
 };
 
 import { uploadToS3 } from "@/lib/s3";
+import { socialMediaService } from "@/lib/socialMedia";
 
 export const POST = async (request) => {
     try {
@@ -21,12 +22,20 @@ export const POST = async (request) => {
         const slug = formData.get("slug");
         const content = formData.get("content");
         const tags = JSON.parse(formData.get("tags"));
-        const file = formData.get("file");
-
-        let imageUrl = "";
-        if (file) {
-            const filename = `${Date.now()}-${file.name.replace(/\s/g, "-")}`;
-            imageUrl = await uploadToS3(file, filename);
+        
+        // Handle multiple files
+        const files = formData.getAll("file"); // Assuming frontend sends multiple 'file' fields or we change it to 'files'
+        // If frontend sends 'file' for single and 'files' for multiple, we need to handle both.
+        // For now, let's assume we want to support 'files' key for multiple images, but keep 'file' for backward compatibility if needed.
+        // Or better, just get all 'file' entries.
+        
+        const imageUrls = [];
+        for (const file of files) {
+            if (file && file.name) {
+                 const filename = `${Date.now()}-${file.name.replace(/\s/g, "-")}`;
+                 const url = await uploadToS3(file, filename);
+                 imageUrls.push(url);
+            }
         }
 
         const newBlog = new Blog({
@@ -34,11 +43,20 @@ export const POST = async (request) => {
             slug,
             content,
             tags,
-            image: imageUrl,
+            image: imageUrls.length > 0 ? imageUrls[0] : "", // Main image
+            images: imageUrls, // All images
         });
 
         await connect();
         await newBlog.save();
+
+        // Trigger Social Media Post
+        // We don't want to block the response, so we can run this asynchronously
+        // However, in serverless (Vercel), background tasks might be killed.
+        // For now, we will await it to ensure it runs, or use a queue in a real production app.
+        // Let's await it for simplicity and reliability in this context.
+        await socialMediaService.broadcast(newBlog);
+
         return new NextResponse("Blog has been created", { status: 201 });
     } catch (err) {
         console.error("Database/Upload Error:", err);
