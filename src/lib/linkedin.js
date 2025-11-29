@@ -22,14 +22,23 @@ export class LinkedInPlatform {
         }
     }
 
+    async getOwnerUrn() {
+        if (process.env.LINKEDIN_ORG_ID) {
+            return `urn:li:organization:${process.env.LINKEDIN_ORG_ID}`;
+        }
+        const profileId = await this.getProfileId();
+        return `urn:li:person:${profileId}`;
+    }
+
     async registerUpload() {
         try {
+            const owner = await this.getOwnerUrn();
             const response = await axios.post(
                 this.registerUploadUrl,
                 {
                     registerUploadRequest: {
                         recipes: ["urn:li:digitalmediaRecipe:feedshare-image"],
-                        owner: `urn:li:person:${await this.getProfileId()}`,
+                        owner: owner,
                         serviceRelationships: [
                             {
                                 relationshipType: "OWNER",
@@ -67,9 +76,8 @@ export class LinkedInPlatform {
     async createPost(blog) {
         console.log("LinkedInPlatform: Starting createPost for blog:", blog.title);
         try {
-            const profileId = await this.getProfileId();
-            console.log("LinkedInPlatform: Fetched Profile ID:", profileId);
-            const author = `urn:li:person:${profileId}`;
+            const author = await this.getOwnerUrn();
+            console.log("LinkedInPlatform: Posting as author:", author);
             
             let mediaAssets = [];
             
@@ -143,7 +151,7 @@ export class LinkedInPlatform {
             if (error.response?.data) {
                 console.error("LinkedInPlatform: Full Error Details:", JSON.stringify(error.response.data, null, 2));
             }
-            throw new Error("Failed to create LinkedIn post");
+            throw new Error(`Failed to create LinkedIn post: ${JSON.stringify(error.response?.data || error.message)}`);
         }
     }
 }

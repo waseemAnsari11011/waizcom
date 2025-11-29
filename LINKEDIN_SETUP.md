@@ -14,8 +14,12 @@ To enable automatic posting to LinkedIn, you need to create a LinkedIn App and g
 
 ## 2. Request Products
 1. In your app settings, go to the **Products** tab.
-2. Request access to **Share on LinkedIn** and **Sign In with LinkedIn using OpenID Connect**.
-3. These usually get approved immediately.
+2. Request access to:
+    - **Share on LinkedIn** (for personal profile posting)
+    - **Sign In with LinkedIn using OpenID Connect** (for login)
+    - **Community Management API** (REQUIRED for Company Page posting)
+3. Wait for approval (some are instant, Marketing might take time).
+4. Once approved, go back to **Auth** tab to see the new scopes.
 
 ## 3. Get Client ID and Secret
 1. Go to the **Auth** tab.
@@ -27,7 +31,10 @@ For server-side scripts without a user login flow, you often need a long-lived a
 **Simplest way for now (Developer Token):**
 1. In the **Auth** tab, look for **OAuth 2.0 tools**.
 2. Click on the link to generate a token.
-3. Select your app and the scopes `w_member_social` (for posting) and `email`, `openid`, `profile` (if needed).
+3. Select your app and the scopes:
+    - `w_member_social` (for posting to personal profile)
+    - `w_organization_social` (REQUIRED for posting to Company Page)
+    - `email`, `openid`, `profile` (standard)
 4. Login and authorize.
 5. Copy the **Access Token**.
 
@@ -40,5 +47,15 @@ Add the following to your `.env` file:
 LINKEDIN_ACCESS_TOKEN=your_access_token_here
 ```
 
-## 6. Verify
-Once configured, creating a new blog post should automatically post to your LinkedIn profile.
+## 6. (Optional) Post to Company Page
+If you want to post to a LinkedIn Company Page instead of your personal profile:
+1.  Go to your LinkedIn Company Page as an admin.
+2.  Look at the URL: `https://www.linkedin.com/company/12345678/`
+3.  The number `12345678` is your **Organization ID**.
+4.  Add it to your `.env` file:
+    ```env
+    LINKEDIN_ORG_ID=12345678
+    ```
+    
+## 7. Verify
+Once configured, creating a new blog post should automatically post to your LinkedIn profile (or Company Page if configured).
