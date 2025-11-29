@@ -66,6 +66,6 @@ export const POST = async (request) => {
         return new NextResponse("Blog has been created", { status: 201 });
     } catch (err) {
         console.error("Database/Upload Error:", err);
-        return new NextResponse("Database/Upload Error", { status: 500 });
+        return new NextResponse(JSON.stringify({ error: "Database/Upload Error", details: err.message }), { status: 500 });
     }
 };
