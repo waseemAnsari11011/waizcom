@@ -65,33 +65,40 @@ export class LinkedInPlatform {
     }
 
     async createPost(blog) {
+        console.log("LinkedInPlatform: Starting createPost for blog:", blog.title);
         try {
             const profileId = await this.getProfileId();
+            console.log("LinkedInPlatform: Fetched Profile ID:", profileId);
             const author = `urn:li:person:${profileId}`;
             
             let mediaAssets = [];
             
-            // Handle images if present
             if (blog.images && blog.images.length > 0) {
-                // For now, let's assume we are passing image URLs or buffers. 
-                // Since the blog object has S3 URLs, we need to fetch them first to upload to LinkedIn
-                // OR we can change the flow to upload to LinkedIn while we have the file buffer in the route.
-                // However, to keep it decoupled, let's fetch the image from S3 url.
-                
+                console.log(`LinkedInPlatform: Processing ${blog.images.length} images`);
                 for (const imageUrl of blog.images) {
-                    // Fetch image buffer
-                    const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-                    const imageBuffer = Buffer.from(imageResponse.data);
+                    try {
+                        console.log("LinkedInPlatform: Fetching image from:", imageUrl);
+                        const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+                        const imageBuffer = Buffer.from(imageResponse.data);
+                        console.log("LinkedInPlatform: Image fetched, size:", imageBuffer.length);
 
-                    // 1. Register Upload
-                    const uploadData = await this.registerUpload();
-                    const uploadUrl = uploadData.uploadMechanism["com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"].uploadUrl;
-                    const asset = uploadData.asset;
+                        // 1. Register Upload
+                        console.log("LinkedInPlatform: Registering upload...");
+                        const uploadData = await this.registerUpload();
+                        const uploadUrl = uploadData.uploadMechanism["com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"].uploadUrl;
+                        const asset = uploadData.asset;
+                        console.log("LinkedInPlatform: Upload registered. Asset:", asset);
 
-                    // 2. Upload Image
-                    await this.uploadImage(uploadUrl, imageBuffer);
-                    
-                    mediaAssets.push(asset);
+                        // 2. Upload Image
+                        console.log("LinkedInPlatform: Uploading image binary...");
+                        await this.uploadImage(uploadUrl, imageBuffer);
+                        console.log("LinkedInPlatform: Image binary uploaded successfully");
+                        
+                        mediaAssets.push(asset);
+                    } catch (imgError) {
+                        console.error("LinkedInPlatform: Error processing image:", imageUrl, imgError.message);
+                        // Continue with other images or post without this image
+                    }
                 }
             }
 
@@ -122,15 +129,20 @@ export class LinkedInPlatform {
                 },
             };
 
+            console.log("LinkedInPlatform: Sending post request to LinkedIn...");
             const response = await axios.post(this.postUrl, postBody, {
                 headers: {
                     Authorization: `Bearer ${this.accessToken}`,
                 },
             });
 
+            console.log("LinkedInPlatform: Post created successfully. ID:", response.data.id);
             return response.data;
         } catch (error) {
-            console.error("Error creating LinkedIn post:", error.response?.data || error.message);
+            console.error("LinkedInPlatform: Error creating LinkedIn post:", error.response?.data || error.message);
+            if (error.response?.data) {
+                console.error("LinkedInPlatform: Full Error Details:", JSON.stringify(error.response.data, null, 2));
+            }
             throw new Error("Failed to create LinkedIn post");
         }
     }
