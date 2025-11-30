@@ -27,8 +27,8 @@ const IndustriesExpert = () => {
   ];
 
   return (
-    <div className="w-full mx-auto relative max-xl:pb-20 max-md:pb-10">
-      <div className="w-full px-5 py-20 max-w-[1200px] mx-auto flex justify-between items-center max-xl:flex-col">
+    <div className="w-full mx-auto relative max-xl:pb-20 max-md:pb-0">
+      <div className="w-full px-5 py-20 max-md:py-10 max-w-[1200px] mx-auto flex justify-between items-center max-xl:flex-col">
         <div className="px-5">
           <h1 className="text-[40px] font-black mb-[40px] max-xl:text-center">
             Industries{" "}
