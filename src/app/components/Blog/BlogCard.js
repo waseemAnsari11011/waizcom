@@ -18,7 +18,7 @@ const BlogCard = ({ blog }) => {
             <div className="flex flex-1 flex-col p-6">
                 {/* Category Tags */}
                 <div className="mb-3 flex flex-wrap gap-2">
-                    {blog.tags.slice(0, 2).map((tag, index) => (
+                    {blog.tags.slice(0, 3).map((tag, index) => (
                         <span
                             key={index}
                             className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-800"

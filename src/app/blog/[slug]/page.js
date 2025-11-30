@@ -95,7 +95,7 @@ const BlogPage = async ({ params }) => {
                                 {blog.title}
                             </h1>
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {blog.tags.map((tag, index) => (
+                                {blog.tags.slice(0, 3).map((tag, index) => (
                                     <span key={index} className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600">
                                         #{tag}
                                     </span>
