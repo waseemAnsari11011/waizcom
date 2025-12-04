@@ -5,7 +5,19 @@ import Blog from "@/models/Blog";
 export const GET = async (request) => {
     try {
         await connect();
-        const blogs = await Blog.find().sort({ createdAt: -1 });
+        const { searchParams } = new URL(request.url);
+        const isHub = searchParams.get('isHub');
+        const silo = searchParams.get('silo');
+
+        let query = {};
+        if (isHub === 'true') {
+            query.is_pillar_page = true;
+        }
+        if (silo) {
+            query.silo_category = silo;
+        }
+
+        const blogs = await Blog.find(query).sort({ createdAt: -1 });
         return new NextResponse(JSON.stringify(blogs), { status: 200 });
     } catch (err) {
         return new NextResponse(JSON.stringify({ error: "Database Error" }), { status: 500 });
@@ -22,6 +34,10 @@ export const POST = async (request) => {
         const slug = formData.get("slug");
         const content = formData.get("content");
         const tags = JSON.parse(formData.get("tags"));
+        const silo_category = formData.get("silo_category");
+        const content_pillar = formData.get("content_pillar");
+        const is_pillar_page = formData.get("is_pillar_page") === 'true';
+        const parent_hub_id = formData.get("parent_hub_id") || null;
         
         // Handle multiple files
         const files = formData.getAll("file"); // Assuming frontend sends multiple 'file' fields or we change it to 'files'
@@ -45,6 +61,10 @@ export const POST = async (request) => {
             tags,
             image: imageUrls.length > 0 ? imageUrls[0] : "", // Main image
             images: imageUrls, // All images
+            silo_category,
+            content_pillar,
+            is_pillar_page,
+            parent_hub_id
         });
 
         await connect();

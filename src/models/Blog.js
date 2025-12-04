@@ -29,6 +29,25 @@ const blogSchema = new Schema(
             type: [String],
             default: [],
         },
+        silo_category: {
+            type: String,
+            enum: ['Build', 'Market', 'Comparison'],
+            required: false // Optional for now to support legacy blogs, but UI will enforce it
+        },
+        content_pillar: {
+            type: String,
+            enum: ['Economic', 'Competitive', 'Technical', 'Vertical', 'Growth'],
+            required: false
+        },
+        is_pillar_page: {
+            type: Boolean,
+            default: false
+        },
+        parent_hub_id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Blog',
+            required: false
+        },
     },
     { timestamps: true }
 );

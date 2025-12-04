@@ -22,6 +22,18 @@ const EditBlog = ({ params }) => {
     const [imagePreview, setImagePreview] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
 
+    const [silo, setSilo] = useState("");
+    const [pillar, setPillar] = useState("");
+    const [isHub, setIsHub] = useState(false);
+    const [parentHub, setParentHub] = useState("");
+    const [availableHubs, setAvailableHubs] = useState([]);
+
+    const silos = {
+        "Build": ["Technical", "Economic"],
+        "Market": ["Growth", "Vertical"],
+        "Comparison": ["Competitive"]
+    };
+
     useEffect(() => {
         if (blog) {
             setTitle(blog.title);
@@ -29,8 +41,32 @@ const EditBlog = ({ params }) => {
             setImagePreview(blog.image);
             setContent(blog.content);
             setTags(blog.tags.join(", "));
+            setSilo(blog.silo_category || "");
+            setPillar(blog.content_pillar || "");
+            setIsHub(blog.is_pillar_page || false);
+            setParentHub(blog.parent_hub_id || "");
         }
     }, [blog]);
+
+    useEffect(() => {
+        if (silo && !isHub) {
+            // Fetch hubs for this silo
+            const fetchHubs = async () => {
+                try {
+                    const res = await fetch(`/api/blogs?isHub=true&silo=${silo}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        setAvailableHubs(data);
+                    }
+                } catch (err) {
+                    console.error("Error fetching hubs:", err);
+                }
+            };
+            fetchHubs();
+        } else {
+            setAvailableHubs([]);
+        }
+    }, [silo, isHub]);
 
     const modules = useMemo(
         () => ({
@@ -110,6 +146,12 @@ const EditBlog = ({ params }) => {
         formData.append("slug", newSlug);
         formData.append("content", content);
         formData.append("tags", JSON.stringify(tagsArray));
+        formData.append("silo_category", silo);
+        formData.append("content_pillar", pillar);
+        formData.append("is_pillar_page", isHub);
+        if (!isHub && parentHub) {
+            formData.append("parent_hub_id", parentHub);
+        }
         formData.append("image", image); // Send existing image URL
         if (selectedFile) {
             formData.append("file", selectedFile);
@@ -141,6 +183,74 @@ const EditBlog = ({ params }) => {
                         Edit Blog
                     </h1>
                     <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Silo Category</label>
+                                <select 
+                                    value={silo} 
+                                    onChange={(e) => {
+                                        setSilo(e.target.value);
+                                        setPillar(""); // Reset pillar when silo changes
+                                    }}
+                                    className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                                    required
+                                >
+                                    <option value="">Select Silo</option>
+                                    {Object.keys(silos).map(s => (
+                                        <option key={s} value={s}>{s}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Content Pillar</label>
+                                <select 
+                                    value={pillar} 
+                                    onChange={(e) => setPillar(e.target.value)}
+                                    className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                                    required
+                                    disabled={!silo}
+                                >
+                                    <option value="">Select Pillar</option>
+                                    {silo && silos[silo].map(p => (
+                                        <option key={p} value={p}>{p}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center space-x-4">
+                            <input 
+                                type="checkbox" 
+                                id="isHub" 
+                                checked={isHub} 
+                                onChange={(e) => setIsHub(e.target.checked)}
+                                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                            />
+                            <label htmlFor="isHub" className="text-sm font-medium text-gray-700">
+                                Is this a Pillar Page (Hub)?
+                            </label>
+                        </div>
+
+                        {!isHub && silo && (
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Parent Hub (Required for Spokes)</label>
+                                <select 
+                                    value={parentHub} 
+                                    onChange={(e) => setParentHub(e.target.value)}
+                                    className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                                    required={!isHub}
+                                >
+                                    <option value="">Select Parent Hub</option>
+                                    {availableHubs.map(hub => (
+                                        <option key={hub._id} value={hub._id}>{hub.title}</option>
+                                    ))}
+                                </select>
+                                {availableHubs.length === 0 && (
+                                    <p className="text-xs text-red-500 mt-1">No Hubs found for this Silo. Please create a Hub page first.</p>
+                                )}
+                            </div>
+                        )}
+
                         <div>
                             <label className="block text-sm font-medium text-gray-700">
                                 Title

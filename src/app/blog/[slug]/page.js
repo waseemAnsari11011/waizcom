@@ -8,7 +8,7 @@ import Blog from "@/models/Blog";
 async function getBlog(slug) {
     try {
         await connect();
-        const blog = await Blog.findOne({ slug }).lean();
+        const blog = await Blog.findOne({ slug }).populate('parent_hub_id', 'title slug').lean();
         return blog;
     } catch (error) {
         console.error("Error fetching blog:", error);
@@ -46,6 +46,9 @@ const processContent = (content) => {
 
 import TableOfContents from "./TableOfContents";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
+import Link from "next/link";
+
+import { generateArticleSchema } from "@/utils/schemaGenerator";
 
 const BlogPage = async ({ params }) => {
     const blog = await getBlog(params.slug);
@@ -62,25 +65,20 @@ const BlogPage = async ({ params }) => {
         { label: blog.title, href: `/blog/${blog.slug}` },
     ];
 
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: blog.title,
-        image: [blog.image],
+    const articleSchema = generateArticleSchema({
+        title: blog.title,
+        image: blog.image,
         datePublished: blog.createdAt,
         dateModified: blog.updatedAt || blog.createdAt,
-        author: [{
-            "@type": "Person",
-            name: "ecarts Team",
-            url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"
-        }]
-    };
+        authorName: "ecarts Team", // Or fetch specific author if available
+        description: blog.content.substring(0, 160).replace(/<[^>]+>/g, '')
+    });
 
     return (
         <div className="min-h-screen bg-white pt-24 pb-16">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
             />
             <div className="container mx-auto px-4 max-w-7xl">
                 <Breadcrumbs items={breadcrumbItems} />
@@ -102,6 +100,15 @@ const BlogPage = async ({ params }) => {
                                 ))}
                             </div>
                         </div>
+
+                        {/* Series Link (Hub and Spoke) */}
+                        {blog.parent_hub_id && (
+                            <div className="mb-8 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-md">
+                                <p className="text-gray-700">
+                                    Part of the <Link href={`/blog/${blog.parent_hub_id.slug}`} className="text-blue-600 font-bold hover:underline">{blog.parent_hub_id.title}</Link> series.
+                                </p>
+                            </div>
+                        )}
 
                         <div className="relative mb-10 h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
                             <Image

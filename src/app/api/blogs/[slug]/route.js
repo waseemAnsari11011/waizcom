@@ -39,6 +39,10 @@ export const PUT = async (request, { params }) => {
         const tags = JSON.parse(formData.get("tags"));
         const file = formData.get("file");
         const existingImage = formData.get("image");
+        const silo_category = formData.get("silo_category");
+        const content_pillar = formData.get("content_pillar");
+        const is_pillar_page = formData.get("is_pillar_page") === 'true';
+        const parent_hub_id = formData.get("parent_hub_id") || null;
 
         let imageUrl = existingImage;
         if (file && typeof file !== "string") {
@@ -52,6 +56,10 @@ export const PUT = async (request, { params }) => {
             content,
             tags,
             image: imageUrl,
+            silo_category,
+            content_pillar,
+            is_pillar_page,
+            parent_hub_id
         };
 
         await connect();

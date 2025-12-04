@@ -3,6 +3,7 @@ import "./globals.css";
 import Script from "next/script";
 import Header from "./components/Header";
 import Footer from "./components/footer/Footer";
+import { generateOrganizationSchema, generateProfessionalServiceSchema } from "../utils/schemaGenerator";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -55,26 +56,18 @@ export default function RootLayout({ children }) {
           }}
         />
         {/* Organization Schema */}
+        {/* Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "ecarts.agency",
-              url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency",
-              logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`,
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+91-88822-02176",
-                contactType: "customer service",
-              },
-              sameAs: [
-                "https://www.facebook.com/ecarts.agency",
-                "https://www.instagram.com/ecarts.agency",
-                "https://www.linkedin.com/company/ecarts-agency",
-              ],
-            }),
+            __html: JSON.stringify(generateOrganizationSchema()),
+          }}
+        />
+        {/* Professional Service Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateProfessionalServiceSchema()),
           }}
         />
       </body>

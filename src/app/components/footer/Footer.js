@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import Link from "next/link";
 import { FiPhoneCall } from "react-icons/fi";
@@ -284,8 +284,38 @@ const Footer = () => {
             />
           </div>
 
-          {/* <p className="text-white font-black text-[20px]">info@solveit.dev</p> */}
+          <p className="text-white font-black text-[20px]">contact@ecarts.agency</p>
           <p className="text-white font-black text-[20px]">+91-88822-02176</p>
+
+          <div className="flex gap-4 mt-2">
+            <a
+              href="https://www.facebook.com/profile.php?id=61584220782402"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#fad171] text-2xl transition-colors duration-300"
+              aria-label="Facebook"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://www.instagram.com/ecarts.agency"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#fad171] text-2xl transition-colors duration-300"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/ecarts-agency"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#fad171] text-2xl transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
 
           {/* <div>
             <img src="/images/star.svg" />
