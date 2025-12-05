@@ -31,7 +31,7 @@ const Review = () => {
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
                   loading="lazy"
-                  src="https://www.youtube.com/embed/1A687uxsHSg"
+                  src="https://www.youtube.com/embed/m-kfbR27lOQ"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -151,7 +151,7 @@ const Review = () => {
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
                   loading="lazy"
-                  src="https://www.youtube.com/embed/v4ncQI8zQyY"
+                  src="https://www.youtube.com/embed/Yk2z5QDZzxw"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
