@@ -7,7 +7,7 @@ import BlogCard from "./BlogCard";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const BlogList = ({ limit }) => {
-    const { data, error, isLoading } = useSWR("/api/blogs", fetcher);
+    const { data, error, isLoading } = useSWR("/api/blogs?isHub=true", fetcher);
 
     if (isLoading) return <div className="text-center py-10">Loading blogs...</div>;
     if (error) return <div className="text-center py-10 text-red-500">Failed to load blogs</div>;

@@ -4,12 +4,22 @@ import { notFound } from "next/navigation";
 
 import connect from "@/lib/db";
 import Blog from "@/models/Blog";
+import Link from "next/link";
+import TableOfContents from "./TableOfContents";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
+import { generateArticleSchema } from "@/utils/schemaGenerator";
 
 async function getBlog(slug) {
     try {
         await connect();
         const blog = await Blog.findOne({ slug }).populate('parent_hub_id', 'title slug').lean();
-        return blog;
+        
+        let spokes = [];
+        if (blog && blog.is_pillar_page) {
+            spokes = await Blog.find({ parent_hub_id: blog._id }).select('title slug image tags createdAt').lean();
+        }
+
+        return { blog, spokes };
     } catch (error) {
         console.error("Error fetching blog:", error);
         return null;
@@ -17,9 +27,10 @@ async function getBlog(slug) {
 }
 
 export async function generateMetadata({ params }) {
-    const blog = await getBlog(params.slug);
-    if (!blog) return { title: "Blog Not Found" };
-    console.log('=', blog)
+    const data = await getBlog(params.slug);
+    if (!data || !data.blog) return { title: "Blog Not Found" };
+    const { blog } = data;
+    
     return {
         title: blog.title,
         description: blog.content.substring(0, 160).replace(/<[^>]+>/g, ''),
@@ -44,19 +55,14 @@ const processContent = (content) => {
     return { processedContent, headings };
 };
 
-import TableOfContents from "./TableOfContents";
-import Breadcrumbs from "@/app/components/Breadcrumbs";
-import Link from "next/link";
-
-import { generateArticleSchema } from "@/utils/schemaGenerator";
-
 const BlogPage = async ({ params }) => {
-    const blog = await getBlog(params.slug);
+    const data = await getBlog(params.slug);
 
-    if (!blog) {
+    if (!data || !data.blog) {
         notFound();
     }
 
+    const { blog, spokes } = data;
     const { processedContent, headings } = processContent(blog.content);
 
     const breadcrumbItems = [
@@ -70,7 +76,7 @@ const BlogPage = async ({ params }) => {
         image: blog.image,
         datePublished: blog.createdAt,
         dateModified: blog.updatedAt || blog.createdAt,
-        authorName: "ecarts Team", // Or fetch specific author if available
+        authorName: "ecarts Team",
         description: blog.content.substring(0, 160).replace(/<[^>]+>/g, '')
     });
 
@@ -124,6 +130,27 @@ const BlogPage = async ({ params }) => {
                             className="prose prose-lg max-w-none text-gray-700 prose-headings:scroll-mt-32 prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-blue-600"
                             dangerouslySetInnerHTML={{ __html: processedContent }}
                         />
+
+                        {/* Cluster Content (Spokes) for Pillar Pages */}
+                        {blog.is_pillar_page && spokes.length > 0 && (
+                            <div className="mt-16 border-t pt-10">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Related In-Depth Guides</h2>
+                                <div className="grid gap-6 md:grid-cols-2">
+                                    {spokes.map((spoke) => (
+                                        <Link key={spoke._id} href={`/blog/${spoke.slug}`} className="group block rounded-lg border p-4 hover:shadow-lg transition-shadow">
+                                            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+                                                {spoke.title}
+                                            </h3>
+                                            <div className="mt-2 flex flex-wrap gap-2">
+                                                {spoke.tags.slice(0, 2).map((tag, i) => (
+                                                    <span key={i} className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">#{tag}</span>
+                                                ))}
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Sidebar */}
