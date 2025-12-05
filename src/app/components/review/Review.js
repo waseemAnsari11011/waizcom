@@ -31,7 +31,7 @@ const Review = () => {
               <div style={{ padding: "56.34% 0 0 0", position: "relative" }}>
                 <iframe
                   loading="lazy"
-                  src="https://www.youtube.com/embed/m-kfbR27lOQ"
+                  src="https://www.youtube.com/embed/c28rhGDn1gc"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
