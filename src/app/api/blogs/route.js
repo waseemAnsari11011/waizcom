@@ -8,6 +8,7 @@ export const GET = async (request) => {
         const { searchParams } = new URL(request.url);
         const isHub = searchParams.get('isHub');
         const silo = searchParams.get('silo');
+        const status = searchParams.get('status'); // 'published' or undefined (all)
 
         let query = {};
         if (isHub === 'true') {
@@ -16,11 +17,14 @@ export const GET = async (request) => {
         if (silo) {
             query.silo_category = silo;
         }
+        if (status === 'published') {
+            query.isPublished = true;
+        }
 
         const blogs = await Blog.find(query).sort({ createdAt: -1 });
         return new NextResponse(JSON.stringify(blogs), { status: 200 });
     } catch (err) {
-        return new NextResponse(JSON.stringify({ error: "Database Error" }), { status: 500 });
+        return new NextResponse("Database Error", { status: 500 });
     }
 };
 
@@ -28,31 +32,31 @@ import { uploadToS3 } from "@/lib/s3";
 import { socialMediaService } from "@/lib/socialMedia";
 
 export const POST = async (request) => {
+    const body = await request.formData();
+
+    const title = body.get("title");
+    const slug = body.get("slug");
+    const content = body.get("content");
+    const file = body.get("file");
+    const tags = JSON.parse(body.get("tags") || "[]");
+    const silo_category = body.get("silo_category");
+    const content_pillar = body.get("content_pillar");
+    const is_pillar_page = body.get("is_pillar_page") === 'true';
+    const parent_hub_id = body.get("parent_hub_id");
+    const isPublished = body.get("isPublished") === 'true';
+
+    if (!file) {
+        return NextResponse.json({ error: "No file received." }, { status: 400 });
+    }
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filename = Date.now() + file.name.replaceAll(" ", "_");
+
     try {
-        const formData = await request.formData();
-        const title = formData.get("title");
-        const slug = formData.get("slug");
-        const content = formData.get("content");
-        const tags = JSON.parse(formData.get("tags"));
-        const silo_category = formData.get("silo_category");
-        const content_pillar = formData.get("content_pillar");
-        const is_pillar_page = formData.get("is_pillar_page") === 'true';
-        const parent_hub_id = formData.get("parent_hub_id") || null;
-        
-        // Handle multiple files
-        const files = formData.getAll("file"); // Assuming frontend sends multiple 'file' fields or we change it to 'files'
-        // If frontend sends 'file' for single and 'files' for multiple, we need to handle both.
-        // For now, let's assume we want to support 'files' key for multiple images, but keep 'file' for backward compatibility if needed.
-        // Or better, just get all 'file' entries.
-        
-        const imageUrls = [];
-        for (const file of files) {
-            if (file && file.name) {
-                 const filename = `${Date.now()}-${file.name.replace(/\s/g, "-")}`;
-                 const url = await uploadToS3(file, filename);
-                 imageUrls.push(url);
-            }
-        }
+        await connect();
+
+        // Upload image to S3
+        const imageUrl = await uploadToS3(buffer, filename);
 
         const newBlog = new Blog({
             title,

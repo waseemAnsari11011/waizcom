@@ -15,6 +15,7 @@ const CreateBlog = () => {
     const [availableHubs, setAvailableHubs] = useState([]);
     const [content, setContent] = useState("");
     const [imagePreview, setImagePreview] = useState("");
+    const [isPublished, setIsPublished] = useState(false);
 
     useEffect(() => {
         // Fetch all hubs for the dropdown
@@ -118,6 +119,7 @@ const CreateBlog = () => {
         formData.append("content", content);
         formData.append("tags", JSON.stringify(tags));
         formData.append("is_pillar_page", postType === "hub");
+        formData.append("isPublished", isPublished);
         
         if (postType === "spoke") {
             formData.append("parent_hub_id", parentHub);
@@ -261,11 +263,28 @@ const CreateBlog = () => {
                                 placeholder="tech, nextjs, web development"
                             />
                         </div>
+
+                        <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-md border border-gray-200">
+                            <input 
+                                type="checkbox" 
+                                id="isPublished" 
+                                checked={isPublished} 
+                                onChange={(e) => setIsPublished(e.target.checked)}
+                                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                            />
+                            <div>
+                                <label htmlFor="isPublished" className="block text-sm font-medium text-gray-900">
+                                    Publish this post immediately?
+                                </label>
+                                <p className="text-xs text-gray-500">Uncheck to save as Draft (hidden from public).</p>
+                            </div>
+                        </div>
+
                         <button
                             type="submit"
-                            className="w-full rounded-md bg-blue-600 py-3 text-white hover:bg-blue-700 transition duration-300"
+                            className={`w-full rounded-md py-3 text-white transition duration-300 ${isPublished ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700'}`}
                         >
-                            Publish Blog
+                            {isPublished ? 'Publish Blog' : 'Save as Draft'}
                         </button>
                     </form>
                 </div>

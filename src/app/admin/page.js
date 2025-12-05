@@ -59,7 +59,10 @@ const Dashboard = () => {
                     alt={blog.title}
                     className="h-full w-full object-cover"
                 />
-                {isHub && <span className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">HUB</span>}
+                {isHub && <span className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded font-bold">HUB</span>}
+                <span className={`absolute top-2 left-2 text-xs px-2 py-1 rounded font-bold text-white ${blog.isPublished ? 'bg-green-500' : 'bg-gray-500'}`}>
+                    {blog.isPublished ? 'PUBLISHED' : 'DRAFT'}
+                </span>
             </div>
             <div className="p-4">
                 <h2 className="mb-2 text-xl font-semibold text-gray-800 line-clamp-2">

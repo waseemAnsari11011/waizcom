@@ -31,7 +31,7 @@ export default async function sitemap() {
     let blogRoutes = [];
     try {
         await connect();
-        const blogs = await Blog.find({}, 'slug updatedAt');
+        const blogs = await Blog.find({ isPublished: true }, 'slug updatedAt');
         blogRoutes = blogs.map((blog) => ({
             url: `${baseUrl}/blog/${blog.slug}`,
             lastModified: blog.updatedAt || new Date(),

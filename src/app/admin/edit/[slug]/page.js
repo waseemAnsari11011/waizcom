@@ -25,6 +25,7 @@ const EditBlog = ({ params }) => {
     const [postType, setPostType] = useState("spoke"); // 'hub' or 'spoke'
     const [parentHub, setParentHub] = useState("");
     const [availableHubs, setAvailableHubs] = useState([]);
+    const [isPublished, setIsPublished] = useState(false);
 
     useEffect(() => {
         if (blog) {
@@ -35,6 +36,7 @@ const EditBlog = ({ params }) => {
             setTags(blog.tags.join(", "));
             setParentHub(blog.parent_hub_id || "");
             setPostType(blog.is_pillar_page ? "hub" : "spoke");
+            setIsPublished(blog.isPublished || false);
         }
     }, [blog]);
 
@@ -133,6 +135,7 @@ const EditBlog = ({ params }) => {
         formData.append("content", content);
         formData.append("tags", JSON.stringify(tagsArray));
         formData.append("is_pillar_page", postType === "hub");
+        formData.append("isPublished", isPublished);
         
         if (postType === "spoke") {
             formData.append("parent_hub_id", parentHub);
@@ -280,6 +283,23 @@ const EditBlog = ({ params }) => {
                                 placeholder="tech, nextjs, web development"
                             />
                         </div>
+
+                        <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-md border border-gray-200">
+                            <input 
+                                type="checkbox" 
+                                id="isPublished" 
+                                checked={isPublished} 
+                                onChange={(e) => setIsPublished(e.target.checked)}
+                                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                            />
+                            <div>
+                                <label htmlFor="isPublished" className="block text-sm font-medium text-gray-900">
+                                    Publish this post immediately?
+                                </label>
+                                <p className="text-xs text-gray-500">Uncheck to save as Draft (hidden from public).</p>
+                            </div>
+                        </div>
+
                         <div className="flex gap-4">
                             <button
                                 type="button"
@@ -290,9 +310,9 @@ const EditBlog = ({ params }) => {
                             </button>
                             <button
                                 type="submit"
-                                className="w-full rounded-md bg-blue-600 py-3 text-white hover:bg-blue-700 transition duration-300"
+                                className={`w-full rounded-md py-3 text-white transition duration-300 ${isPublished ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-600 hover:bg-gray-700'}`}
                             >
-                                Update Blog
+                                {isPublished ? 'Update & Publish' : 'Save as Draft'}
                             </button>
                         </div>
                     </form>

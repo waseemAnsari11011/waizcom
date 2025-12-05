@@ -48,6 +48,10 @@ const blogSchema = new Schema(
             ref: 'Blog',
             required: false
         },
+        isPublished: {
+            type: Boolean,
+            default: false
+        },
     },
     { timestamps: true }
 );

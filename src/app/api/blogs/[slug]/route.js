@@ -43,6 +43,7 @@ export const PUT = async (request, { params }) => {
         const content_pillar = formData.get("content_pillar");
         const is_pillar_page = formData.get("is_pillar_page") === 'true';
         const parent_hub_id = formData.get("parent_hub_id") || null;
+        const isPublished = formData.get("isPublished") === 'true';
 
         let imageUrl = existingImage;
         if (file && typeof file !== "string") {
@@ -59,7 +60,8 @@ export const PUT = async (request, { params }) => {
             silo_category,
             content_pillar,
             is_pillar_page,
-            parent_hub_id
+            parent_hub_id,
+            isPublished
         };
 
         await connect();
