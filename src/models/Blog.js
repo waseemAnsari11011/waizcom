@@ -56,4 +56,9 @@ const blogSchema = new Schema(
     { timestamps: true }
 );
 
+// Force model recompilation in dev to apply schema changes
+if (process.env.NODE_ENV === 'development') {
+    delete mongoose.models.Blog;
+}
+
 export default mongoose.models.Blog || mongoose.model("Blog", blogSchema);
