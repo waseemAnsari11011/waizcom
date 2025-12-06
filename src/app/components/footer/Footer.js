@@ -376,6 +376,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="w-full h-[1px] bg-[#f0f0f133]"></div>
+      <div className="text-center py-5 text-white">
+        <p>&copy; 2025 Ecarts</p>
+      </div>
     </div>
   );
 };

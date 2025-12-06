@@ -3,6 +3,7 @@ export const generateOrganizationSchema = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ecarts.agency",
+    alternateName: ["Ecarts", "Ecarts Team"],
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency",
     logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`,
     email: "contact@ecarts.agency",
@@ -14,9 +15,7 @@ export const generateOrganizationSchema = () => {
     sameAs: [
       "https://www.facebook.com/profile.php?id=61584220782402",
       "https://www.instagram.com/ecarts.agency",
-      "https://www.linkedin.com/company/ecarts-agency",
-      "https://clutch.co/profile/ecarts-agency", // Placeholder, add if known
-      "https://www.g2.com/products/ecarts-agency/reviews" // Placeholder
+      "https://www.linkedin.com/company/ecarts-agency"
     ],
   };
 };

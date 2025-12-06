@@ -58,23 +58,7 @@ const IntroSection = () => {
             <h1
               className={`${rubik.className} font-bold text-3xl md:text-7xl font-black text-black py-1.5 lg:py-2 h0`}
             >
-              Creating
-              <div className="ml-2 inline-block">
-                <div className="relative">
-                  <Image
-                    alt="My Image"
-                    src="/best_quality.png"
-                    priority={true}
-                    width={100}
-                    height={100}
-                    sizes="(max-width: 768px) 64px, (max-width: 1024px) 96px, 128px"
-                    className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <br />
-              E-commerce Apps
+              Ecarts: The E-commerce Growth Agency
             </h1>
 
             <p className="text-xl md:text-xl font-medium py-1.5 lg:py-2">

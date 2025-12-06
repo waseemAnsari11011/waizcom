@@ -12,9 +12,9 @@ const montserrat = Montserrat({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"),
-  title: "ecarts.agency - Custom Ecommerce App Development",
+  title: "Ecarts - The E-commerce Growth Agency",
   description:
-    "Partner with ecarts.agency for expert ecommerce app development. We build high-quality, scalable ecommerce solutions to grow your business.",
+    "Partner with Ecarts for expert ecommerce app development. We specialize in creating scalable, high-performance applications that drive growth and success for our clients.",
   alternates: {
     canonical: "./",
   },
