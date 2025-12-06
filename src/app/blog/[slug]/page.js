@@ -13,10 +13,10 @@ async function getBlog(slug) {
     try {
         await connect();
         const blog = await Blog.findOne({ slug }).populate('parent_hub_id', 'title slug').lean();
-        
+
         let spokes = [];
         if (blog && blog.is_pillar_page) {
-            spokes = await Blog.find({ parent_hub_id: blog._id }).select('title slug image tags createdAt').lean();
+            spokes = await Blog.find({ parent_hub_id: blog._id, isPublished: true }).select('title slug image tags createdAt').lean();
         }
 
         return { blog, spokes };
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
     const data = await getBlog(params.slug);
     if (!data || !data.blog) return { title: "Blog Not Found" };
     const { blog } = data;
-    
+
     return {
         title: blog.title,
         description: blog.content.substring(0, 160).replace(/<[^>]+>/g, ''),

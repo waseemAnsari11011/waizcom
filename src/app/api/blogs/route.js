@@ -63,12 +63,13 @@ export const POST = async (request) => {
             slug,
             content,
             tags,
-            image: imageUrls.length > 0 ? imageUrls[0] : "", // Main image
-            images: imageUrls, // All images
+            image: imageUrl, // Main image
+            images: [imageUrl], // All images
             silo_category,
             content_pillar,
             is_pillar_page,
-            parent_hub_id
+            parent_hub_id,
+            isPublished
         });
 
         await connect();
