@@ -4,16 +4,17 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
-import "react-quill/dist/quill.snow.css";
+import "react-quill-new/dist/quill.snow.css";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const EditBlog = ({ params }) => {
+    const { slug } = React.use(params);
     const session = useSession();
     const router = useRouter();
-    const { data: blog, isLoading } = useSWR(`/api/blogs/${params.slug}`, fetcher);
+    const { data: blog, isLoading } = useSWR(`/api/blogs/${slug}`, fetcher);
 
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
@@ -150,7 +151,7 @@ const EditBlog = ({ params }) => {
         }
 
         try {
-            const res = await fetch(`/api/blogs/${params.slug}`, {
+            const res = await fetch(`/api/blogs/${slug}`, {
                 method: "PUT",
                 body: formData,
             });

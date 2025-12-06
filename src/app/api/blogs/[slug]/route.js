@@ -3,7 +3,7 @@ import connect from "@/lib/db";
 import Blog from "@/models/Blog";
 
 export const GET = async (request, { params }) => {
-    const { slug } = params;
+    const { slug } = await params;
 
     try {
         await connect();
@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
 };
 
 export const DELETE = async (request, { params }) => {
-    const { slug } = params;
+    const { slug } = await params;
 
     try {
         await connect();
@@ -29,7 +29,7 @@ export const DELETE = async (request, { params }) => {
 import { uploadToS3 } from "@/lib/s3";
 
 export const PUT = async (request, { params }) => {
-    const { slug } = params;
+    const { slug } = await params;
 
     try {
         const formData = await request.formData();

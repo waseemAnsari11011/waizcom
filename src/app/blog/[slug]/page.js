@@ -27,7 +27,8 @@ async function getBlog(slug) {
 }
 
 export async function generateMetadata({ params }) {
-    const data = await getBlog(params.slug);
+    const { slug } = await params;
+    const data = await getBlog(slug);
     if (!data || !data.blog) return { title: "Blog Not Found" };
     const { blog } = data;
 
@@ -56,7 +57,8 @@ const processContent = (content) => {
 };
 
 const BlogPage = async ({ params }) => {
-    const data = await getBlog(params.slug);
+    const { slug } = await params;
+    const data = await getBlog(slug);
 
     if (!data || !data.blog) {
         notFound();
