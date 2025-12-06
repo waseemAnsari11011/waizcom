@@ -2,8 +2,9 @@ export const generateOrganizationSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "ecarts.agency",
-    alternateName: ["Ecarts", "Ecarts Team"],
+    name: "Ecarts", // CHANGED: Was "ecarts.agency"
+    legalName: "Ecarts Agency", // ADDED: Keeps your legal identity clear
+    alternateName: ["Ecarts Agency", "Ecarts Team", "ecarts.agency"],
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency",
     logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`,
     email: "contact@ecarts.agency",
@@ -11,6 +12,8 @@ export const generateOrganizationSchema = () => {
       "@type": "ContactPoint",
       telephone: "+91-88822-02176",
       contactType: "customer service",
+      areaServed: "Global",
+      availableLanguage: "English"
     },
     sameAs: [
       "https://www.facebook.com/profile.php?id=61584220782402",
@@ -24,7 +27,7 @@ export const generateProfessionalServiceSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "ecarts.agency",
+    name: "Ecarts", // CHANGED: Was "ecarts.agency"
     image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`,
     "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}#organization`,
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency",
@@ -41,7 +44,7 @@ export const generateProfessionalServiceSchema = () => {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 28.6280, // Approximate Noida coordinates
+      latitude: 28.6280, 
       longitude: 77.3649
     },
     openingHoursSpecification: {
@@ -66,7 +69,7 @@ export const generateProfessionalServiceSchema = () => {
 
 export const generateServiceSchema = (serviceName, description, options = {}) => {
   const {
-    providerName = "ecarts.agency",
+    providerName = "Ecarts", // CHANGED: Default is now "Ecarts"
     serviceOutput,
     audience,
     offers,
@@ -117,7 +120,6 @@ export const generateServiceSchema = (serviceName, description, options = {}) =>
       }))
     };
   } else {
-    // Default offers if none provided
     schema.hasOfferCatalog = {
       "@type": "OfferCatalog",
       name: `${serviceName} Services`,
@@ -144,7 +146,6 @@ export const generateServiceSchema = (serviceName, description, options = {}) =>
 };
 
 export const generateFAQSchema = (faqs) => {
-  // faqs should be an array of { question: string, answer: string }
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -169,12 +170,12 @@ export const generateArticleSchema = (article) => {
     dateModified: article.dateModified || article.datePublished,
     author: [{
         "@type": "Person",
-        name: article.authorName || "ecarts Team",
+        name: article.authorName || "Ecarts Team", // CHANGED: Consistent branding
         url: process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"
     }],
     publisher: {
         "@type": "Organization",
-        name: "ecarts.agency",
+        name: "Ecarts", // CHANGED: Was "ecarts.agency"
         logo: {
             "@type": "ImageObject",
             url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ecarts.agency"}/ecarts.png`
@@ -193,7 +194,7 @@ export const generateProductSchema = (product) => {
     description: product.description,
     brand: {
       "@type": "Brand",
-      name: "ecarts.agency"
+      name: "Ecarts" // CHANGED: Was "ecarts.agency"
     },
     aggregateRating: product.rating ? {
       "@type": "AggregateRating",
@@ -208,13 +209,13 @@ export const generateProductSchema = (product) => {
 export const generateCaseStudySchema = (caseStudy) => {
   return {
     "@context": "https://schema.org",
-    "@type": "Article", // Using Article as recommended for Case Studies
+    "@type": "Article", 
     headline: caseStudy.title,
     image: caseStudy.image,
     datePublished: caseStudy.date,
     author: {
       "@type": "Organization",
-      name: "ecarts.agency"
+      name: "Ecarts" // CHANGED: Was "ecarts.agency"
     },
     about: {
       "@type": "Organization",
