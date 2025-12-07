@@ -11,8 +11,16 @@ const s3Client = new S3Client({
 
 export async function uploadToS3(file, filename) {
     try {
-        const buffer = await file.arrayBuffer();
-        const compressedBuffer = await sharp(Buffer.from(buffer))
+        let buffer;
+        if (file instanceof Buffer) {
+            buffer = file;
+        } else if (typeof file.arrayBuffer === 'function') {
+            buffer = Buffer.from(await file.arrayBuffer());
+        } else {
+            throw new Error("Invalid file format. Expected Buffer or File.");
+        }
+
+        const compressedBuffer = await sharp(buffer)
             .resize({ width: 1200, withoutEnlargement: true }) // Resize to max width 1200px
             .jpeg({ quality: 80 }) // Compress to JPEG with 80% quality
             .toBuffer();
