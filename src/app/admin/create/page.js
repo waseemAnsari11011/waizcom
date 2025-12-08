@@ -111,16 +111,19 @@ const CreateBlog = () => {
             .replace(/^-+|-+$/g, "");
         const imageFile = e.target.image.files[0];
         const tagsInput = e.target.tags.value;
+        const keywordsInput = e.target.keywords.value;
         const tags = tagsInput.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
+        const keywords = keywordsInput.split(",").map((k) => k.trim()).filter(k => k.length > 0);
 
         const formData = new FormData();
         formData.append("title", title);
         formData.append("slug", slug);
         formData.append("content", content);
         formData.append("tags", JSON.stringify(tags));
+        formData.append("keywords", JSON.stringify(keywords));
         formData.append("is_pillar_page", postType === "hub");
         formData.append("isPublished", isPublished);
-        
+
         if (postType === "spoke") {
             formData.append("parent_hub_id", parentHub);
         }
@@ -155,26 +158,26 @@ const CreateBlog = () => {
                         Create New Blog
                     </h1>
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        
+
                         {/* Post Type Toggle */}
                         <div className="flex gap-6 mb-6">
                             <label className="flex items-center space-x-2 cursor-pointer">
-                                <input 
-                                    type="radio" 
-                                    name="postType" 
-                                    value="hub" 
-                                    checked={postType === "hub"} 
+                                <input
+                                    type="radio"
+                                    name="postType"
+                                    value="hub"
+                                    checked={postType === "hub"}
                                     onChange={(e) => setPostType(e.target.value)}
                                     className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
                                 />
                                 <span className="text-gray-900 font-medium">Create New Hub</span>
                             </label>
                             <label className="flex items-center space-x-2 cursor-pointer">
-                                <input 
-                                    type="radio" 
-                                    name="postType" 
-                                    value="spoke" 
-                                    checked={postType === "spoke"} 
+                                <input
+                                    type="radio"
+                                    name="postType"
+                                    value="spoke"
+                                    checked={postType === "spoke"}
                                     onChange={(e) => setPostType(e.target.value)}
                                     className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
                                 />
@@ -186,8 +189,8 @@ const CreateBlog = () => {
                         {postType === "spoke" && (
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Select Parent Hub</label>
-                                <select 
-                                    value={parentHub} 
+                                <select
+                                    value={parentHub}
                                     onChange={(e) => setParentHub(e.target.value)}
                                     className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
                                     required={postType === "spoke"}
@@ -263,12 +266,23 @@ const CreateBlog = () => {
                                 placeholder="tech, nextjs, web development"
                             />
                         </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">
+                                Meta Keywords (comma separated)
+                            </label>
+                            <input
+                                type="text"
+                                name="keywords"
+                                className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                                placeholder="keyword1, keyword2"
+                            />
+                        </div>
 
                         <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-md border border-gray-200">
-                            <input 
-                                type="checkbox" 
-                                id="isPublished" 
-                                checked={isPublished} 
+                            <input
+                                type="checkbox"
+                                id="isPublished"
+                                checked={isPublished}
                                 onChange={(e) => setIsPublished(e.target.checked)}
                                 className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                             />

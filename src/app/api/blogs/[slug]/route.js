@@ -37,6 +37,7 @@ export const PUT = async (request, { params }) => {
         const newSlug = formData.get("slug");
         const content = formData.get("content");
         const tags = JSON.parse(formData.get("tags"));
+        const keywords = JSON.parse(formData.get("keywords") || "[]");
         const file = formData.get("file");
         const existingImage = formData.get("image");
         const silo_category = formData.get("silo_category");
@@ -56,6 +57,7 @@ export const PUT = async (request, { params }) => {
             slug: newSlug,
             content,
             tags,
+            keywords,
             image: imageUrl,
             silo_category,
             content_pillar,

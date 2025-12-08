@@ -18,19 +18,17 @@ export const metadata = {
   alternates: {
     canonical: "./",
   },
+  verification: {
+    google: "RyFTBWp-tZcN0vs7nuNYgwymOC1oYy3sQz8ePuvXYH8",
+    other: {
+      "facebook-domain-verification": "zb22go5ehqyp0ivho35zgwnfip2bq0",
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        {/* google domain verify */}
-        <meta name="google-site-verification" content="RyFTBWp-tZcN0vs7nuNYgwymOC1oYy3sQz8ePuvXYH8" />
-        {/* facebook domain verify */}
-        <meta name="facebook-domain-verification" content="zb22go5ehqyp0ivho35zgwnfip2bq0" />
-        {/* Preconnect for VWO */}
-        <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-      </head>
       <body className={montserrat.className}>
         <Header />
         <main>{children}</main>

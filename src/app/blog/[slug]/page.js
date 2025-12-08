@@ -32,10 +32,33 @@ export async function generateMetadata({ params }) {
     if (!data || !data.blog) return { title: "Blog Not Found" };
     const { blog } = data;
 
+    const plainTextContent = blog.content.replace(/<[^>]+>/g, '');
+    const description = plainTextContent.substring(0, 160).trim();
+
     return {
         title: blog.title,
-        description: blog.content.substring(0, 160).replace(/<[^>]+>/g, ''),
-        keywords: blog.tags,
+        description: description,
+        keywords: blog.keywords && blog.keywords.length > 0 ? blog.keywords : blog.tags,
+        openGraph: {
+            title: blog.title,
+            description: description,
+            type: 'article',
+            url: `/blog/${blog.slug}`,
+            images: [
+                {
+                    url: blog.image,
+                    width: 1200,
+                    height: 630,
+                    alt: blog.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: blog.title,
+            description: description,
+            images: [blog.image],
+        },
         alternates: {
             canonical: `/blog/${blog.slug}`,
         },

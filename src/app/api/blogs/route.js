@@ -39,6 +39,7 @@ export const POST = async (request) => {
     const content = body.get("content");
     const file = body.get("file");
     const tags = JSON.parse(body.get("tags") || "[]");
+    const keywords = JSON.parse(body.get("keywords") || "[]");
     const silo_category = body.get("silo_category");
     const content_pillar = body.get("content_pillar");
     const is_pillar_page = body.get("is_pillar_page") === 'true';
@@ -63,6 +64,7 @@ export const POST = async (request) => {
             slug,
             content,
             tags,
+            keywords,
             image: imageUrl, // Main image
             images: [imageUrl], // All images
             silo_category,

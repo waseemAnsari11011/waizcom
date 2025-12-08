@@ -20,6 +20,7 @@ const EditBlog = ({ params }) => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [tags, setTags] = useState("");
+    const [keywords, setKeywords] = useState("");
     const [imagePreview, setImagePreview] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -35,6 +36,7 @@ const EditBlog = ({ params }) => {
             setImagePreview(blog.image);
             setContent(blog.content);
             setTags(blog.tags.join(", "));
+            setKeywords(blog.keywords ? blog.keywords.join(", ") : "");
             setParentHub(blog.parent_hub_id || "");
             setPostType(blog.is_pillar_page ? "hub" : "spoke");
             setIsPublished(blog.isPublished || false);
@@ -128,21 +130,24 @@ const EditBlog = ({ params }) => {
             .replace(/[\s_-]+/g, "-")
             .replace(/^-+|-+$/g, "");
 
+
         const tagsArray = tags.split(",").map((tag) => tag.trim()).filter(tag => tag.length > 0);
+        const keywordsArray = keywords.split(",").map((k) => k.trim()).filter(k => k.length > 0);
 
         const formData = new FormData();
         formData.append("title", title);
         formData.append("slug", newSlug);
         formData.append("content", content);
         formData.append("tags", JSON.stringify(tagsArray));
+        formData.append("keywords", JSON.stringify(keywordsArray));
         formData.append("is_pillar_page", postType === "hub");
         formData.append("isPublished", isPublished);
-        
+
         if (postType === "spoke") {
             formData.append("parent_hub_id", parentHub);
         } else {
-             // If switching to Hub, ensure parent_hub_id is cleared/null
-             formData.append("parent_hub_id", "");
+            // If switching to Hub, ensure parent_hub_id is cleared/null
+            formData.append("parent_hub_id", "");
         }
 
         formData.append("image", image); // Send existing image URL
@@ -176,26 +181,26 @@ const EditBlog = ({ params }) => {
                         Edit Blog
                     </h1>
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        
+
                         {/* Post Type Toggle */}
                         <div className="flex gap-6 mb-6">
                             <label className="flex items-center space-x-2 cursor-pointer">
-                                <input 
-                                    type="radio" 
-                                    name="postType" 
-                                    value="hub" 
-                                    checked={postType === "hub"} 
+                                <input
+                                    type="radio"
+                                    name="postType"
+                                    value="hub"
+                                    checked={postType === "hub"}
                                     onChange={(e) => setPostType(e.target.value)}
                                     className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
                                 />
                                 <span className="text-gray-900 font-medium">Hub (Pillar Page)</span>
                             </label>
                             <label className="flex items-center space-x-2 cursor-pointer">
-                                <input 
-                                    type="radio" 
-                                    name="postType" 
-                                    value="spoke" 
-                                    checked={postType === "spoke"} 
+                                <input
+                                    type="radio"
+                                    name="postType"
+                                    value="spoke"
+                                    checked={postType === "spoke"}
                                     onChange={(e) => setPostType(e.target.value)}
                                     className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300"
                                 />
@@ -207,8 +212,8 @@ const EditBlog = ({ params }) => {
                         {postType === "spoke" && (
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Select Parent Hub</label>
-                                <select 
-                                    value={parentHub} 
+                                <select
+                                    value={parentHub}
                                     onChange={(e) => setParentHub(e.target.value)}
                                     className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
                                     required={postType === "spoke"}
@@ -284,12 +289,24 @@ const EditBlog = ({ params }) => {
                                 placeholder="tech, nextjs, web development"
                             />
                         </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">
+                                Meta Keywords (comma separated)
+                            </label>
+                            <input
+                                type="text"
+                                value={keywords}
+                                onChange={(e) => setKeywords(e.target.value)}
+                                className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                                placeholder="keyword1, keyword2"
+                            />
+                        </div>
 
                         <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-md border border-gray-200">
-                            <input 
-                                type="checkbox" 
-                                id="isPublished" 
-                                checked={isPublished} 
+                            <input
+                                type="checkbox"
+                                id="isPublished"
+                                checked={isPublished}
                                 onChange={(e) => setIsPublished(e.target.checked)}
                                 className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                             />

@@ -29,6 +29,10 @@ const blogSchema = new Schema(
             type: [String],
             default: [],
         },
+        keywords: {
+            type: [String],
+            default: [],
+        },
         silo_category: {
             type: String,
             enum: ['Build', 'Market', 'Comparison'],
