@@ -9,6 +9,9 @@ import TableOfContents from "./TableOfContents";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 import { generateArticleSchema } from "@/utils/schemaGenerator";
 
+
+// blog page
+
 async function getBlog(slug) {
     try {
         await connect();
