@@ -10,7 +10,9 @@ import Breadcrumbs from "@/app/components/Breadcrumbs";
 import { generateArticleSchema } from "@/utils/schemaGenerator";
 
 
-// blog page
+
+
+// blog page upade
 
 async function getBlog(slug) {
     try {
