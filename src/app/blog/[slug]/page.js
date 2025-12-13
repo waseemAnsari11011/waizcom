@@ -7,6 +7,7 @@ import Blog from "@/models/Blog";
 import Link from "next/link";
 import TableOfContents from "./TableOfContents";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
+import BlogCard from "@/app/components/Blog/BlogCard";
 import { generateArticleSchema } from "@/utils/schemaGenerator";
 
 
@@ -21,7 +22,7 @@ async function getBlog(slug) {
 
         let spokes = [];
         if (blog && blog.is_pillar_page) {
-            spokes = await Blog.find({ parent_hub_id: blog._id, isPublished: true }).select('title slug image tags createdAt').lean();
+            spokes = await Blog.find({ parent_hub_id: blog._id, isPublished: true }).select('title slug image tags createdAt content').lean();
         }
 
         return { blog, spokes };
@@ -167,16 +168,7 @@ const BlogPage = async ({ params }) => {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Related In-Depth Guides</h2>
                                 <div className="grid gap-6 md:grid-cols-2">
                                     {spokes.map((spoke) => (
-                                        <Link key={spoke._id} href={`/blog/${spoke.slug}`} className="group block rounded-lg border p-4 hover:shadow-lg transition-shadow">
-                                            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
-                                                {spoke.title}
-                                            </h3>
-                                            <div className="mt-2 flex flex-wrap gap-2">
-                                                {spoke.tags.slice(0, 2).map((tag, i) => (
-                                                    <span key={i} className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">#{tag}</span>
-                                                ))}
-                                            </div>
-                                        </Link>
+                                        <BlogCard key={spoke._id} blog={spoke} />
                                     ))}
                                 </div>
                             </div>

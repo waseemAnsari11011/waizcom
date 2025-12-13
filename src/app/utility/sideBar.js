@@ -17,7 +17,7 @@ const SideBar = ({ showSidebar, setShowSidebar, toggleSidebar }) => {
       leave="transition-all duration-300 transform"
       leaveFrom="translate-x-0"
       leaveTo="-translate-x-full"
-      className="fixed top-0 left-0 h-screen w-screen bg-white flex flex-col justify-between"
+      className="fixed top-0 left-0 h-screen w-screen bg-white flex flex-col"
     >
       {/* Sidebar content */}
       <div>
@@ -36,7 +36,7 @@ const SideBar = ({ showSidebar, setShowSidebar, toggleSidebar }) => {
             <FiX className="h-8 w-8 fill-current" />
           </button>
         </div>
-        <div className="mt-19">
+        <div className="mt-19" style={{ marginTop: '40px' }}>
           <Link
             href="/"
             onClick={() => setShowSidebar(false)} // Close sidebar on click
