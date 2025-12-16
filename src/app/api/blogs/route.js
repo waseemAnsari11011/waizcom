@@ -82,13 +82,13 @@ export const POST = async (request) => {
         // However, in serverless (Vercel), background tasks might be killed.
         // For now, we will await it to ensure it runs, or use a queue in a real production app.
         // Let's await it for simplicity and reliability in this context.
-        console.log("API: Blog created. Initiating Social Media Broadcast...");
-        try {
-            await socialMediaService.broadcast(newBlog);
-            console.log("API: Social Media Broadcast finished.");
-        } catch (broadcastError) {
-            console.error("API: Social Media Broadcast failed:", broadcastError);
-        }
+        // console.log("API: Blog created. Initiating Social Media Broadcast...");
+        // try {
+        //     await socialMediaService.broadcast(newBlog);
+        //     console.log("API: Social Media Broadcast finished.");
+        // } catch (broadcastError) {
+        //     console.error("API: Social Media Broadcast failed:", broadcastError);
+        // }
 
         return new NextResponse("Blog has been created", { status: 201 });
     } catch (err) {
