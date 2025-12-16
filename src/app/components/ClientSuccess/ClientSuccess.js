@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 import "./ClientSuccess.css";
 
@@ -169,7 +169,7 @@ const PortfolioCard = ({ project, index }) => {
 
           {/* Results */}
           <div className="ps656-info-block">
-            <p className="ps656-info-label">Results:</p>
+            <p className="ps656-info-label">App Performance:</p>
             <div
               style={{
                 marginTop: "0.75rem",
@@ -199,8 +199,9 @@ const PortfolioCard = ({ project, index }) => {
 
           {/* Phone Mockups Container */}
           <div
-            className={`ps656-phones-container ${showMonitor ? "ps656-phones-hide" : ""
-              }`}
+            className={`ps656-phones-container ${
+              showMonitor ? "ps656-phones-hide" : ""
+            }`}
           >
             {/* Left Phone */}
             <div className="ps656-phone-left">
@@ -221,7 +222,7 @@ const PortfolioCard = ({ project, index }) => {
                 <img
                   src={
                     project.images[
-                    (currentImageIndex + 1) % project.images.length
+                      (currentImageIndex + 1) % project.images.length
                     ]
                   }
                   alt="App preview"
@@ -233,8 +234,9 @@ const PortfolioCard = ({ project, index }) => {
 
           {/* Monitor Container */}
           <div
-            className={`ps656-monitor-container-787 ${showMonitor ? "ps656-monitor-show-787" : ""
-              }`}
+            className={`ps656-monitor-container-787 ${
+              showMonitor ? "ps656-monitor-show-787" : ""
+            }`}
           >
             <div className="ps656-monitor-787">
               {/* Monitor Frame */}
@@ -262,8 +264,9 @@ const PortfolioCard = ({ project, index }) => {
                 key={idx}
                 onClick={() => setCurrentImageIndex(idx)}
                 aria-label={`View image ${idx + 1}`}
-                className={`ps656-indicator ${idx === currentImageIndex ? "ps656-indicator-active" : ""
-                  }`}
+                className={`ps656-indicator ${
+                  idx === currentImageIndex ? "ps656-indicator-active" : ""
+                }`}
               />
             ))}
           </div>
