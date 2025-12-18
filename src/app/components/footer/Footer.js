@@ -160,7 +160,7 @@ const Footer = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                placeholder="You are Interested in ola-like application"
+                placeholder="You are Interested in ecommerce-like application"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
               />
             </div>
