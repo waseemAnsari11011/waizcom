@@ -51,11 +51,12 @@ const Footer = () => {
         data
       )
       .then((response) => {
-        if (window.gtag) {
+        if (typeof window.gtag_report_conversion === 'function') {
+          window.gtag_report_conversion();
+        } else if (window.gtag) {
+          // Fallback in case the function isn't ready, though it should be
           window.gtag("event", "conversion", {
-            send_to: "AW-16527872688/w3d9CP-j06UZELCljck9",
-            value: 1.0,
-            currency: "INR",
+            send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
           });
         }
         console.log("Email sent successfully:", response.data);
