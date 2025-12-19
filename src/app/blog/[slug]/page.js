@@ -152,7 +152,7 @@ const BlogPage = async ({ params }) => {
                                 src={blog.image}
                                 alt={blog.title}
                                 fill
-                                className="object-cover"
+                                className="object-contain"
                                 priority
                             />
                         </div>
