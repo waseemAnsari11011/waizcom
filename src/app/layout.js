@@ -3,6 +3,7 @@ import "./globals.css";
 import Script from "next/script";
 import Header from "./components/Header";
 import Footer from "./components/footer/Footer";
+import WhatsAppButton from "./utility/whatsappBtn";
 import { generateOrganizationSchema, generateProfessionalServiceSchema } from "../utils/schemaGenerator";
 
 const montserrat = Montserrat({
@@ -86,6 +87,7 @@ export default function RootLayout({ children }) {
         {/* End Google Tag Manager (noscript) */}
         <Header />
         <main>{children}</main>
+        <WhatsAppButton phoneNumber={"918882202176"} />
         <Footer />
         {/* VWO SmartCode */}
         <Script

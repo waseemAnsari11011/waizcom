@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Script from "next/script";
 import Image from "next/image";
 import { sendGAEvent } from "@next/third-parties/google";
-import WhatsAppButton from "../../utility/whatsappBtn";
 import Carousel from "./Carousel";
 import { montserrat, rubik } from "@/app/fonts";
 
@@ -34,7 +33,6 @@ const IntroSection = () => {
 
   return (
     <div className="bg-white">
-      <WhatsAppButton phoneNumber={"918882202176"} />
 
       <Script
         strategy="afterInteractive"
