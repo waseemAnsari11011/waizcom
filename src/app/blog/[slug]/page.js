@@ -73,12 +73,27 @@ export async function generateMetadata({ params }) {
 
 const processContent = (content) => {
     const headings = [];
+    const uniqueIds = new Set();
+
     const processedContent = content.replace(/<h([1-3])>(.*?)<\/h\1>/g, (match, level, text) => {
         const cleanText = text.replace(/<[^>]+>/g, '');
-        const id = cleanText
+        let id = cleanText
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/(^-|-$)/g, "");
+
+        // Ensure ID is unique
+        if (uniqueIds.has(id)) {
+            let counter = 1;
+            let newId = `${id}-${counter}`;
+            while (uniqueIds.has(newId)) {
+                counter++;
+                newId = `${id}-${counter}`;
+            }
+            id = newId;
+        }
+
+        uniqueIds.add(id);
         headings.push({ id, text: cleanText, level: parseInt(level) });
         return `<h${level} id="${id}">${text}</h${level}>`;
     });
