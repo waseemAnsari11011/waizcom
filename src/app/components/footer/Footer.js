@@ -9,13 +9,15 @@ import axios from "axios";
 
 const Footer = () => {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState();
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [company, setCompany] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,8 +37,10 @@ const Footer = () => {
     console.log("API call");
 
     const data = {
-      name: phone,
+      name,
+      phone,
       email,
+      company,
       subject,
       message,
     };
@@ -45,34 +49,58 @@ const Footer = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    axios
-      .post(
+    // Create array of promises to handle both requests
+    const promises = [
+      axios.post(
         "https://email-server-new.netlify.app/.netlify/functions/api/send-email",
         data
-      )
-      .then((response) => {
-        if (typeof window.gtag_report_conversion === 'function') {
-          window.gtag_report_conversion();
-        } else if (window.gtag) {
-          // Fallback in case the function isn't ready, though it should be
-          window.gtag("event", "conversion", {
-            send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
-          });
+      ),
+      axios.post("/api/leads", data)
+    ];
+
+    Promise.allSettled(promises)
+      .then((results) => {
+        const emailResult = results[0];
+        const dbResult = results[1];
+
+        // Check if email failed
+        if (emailResult.status === 'rejected') {
+          console.error("Error sending email:", emailResult.reason);
+          setErrorMessage("Error sending email. Please try again later.");
+        } else {
+          console.log("Email sent successfully: 88", emailResult.value.data);
+          if (typeof window.gtag_report_conversion === 'function') {
+            console.log("oo")
+            window.gtag_report_conversion();
+          } else if (window.gtag) {
+            console.log("ee")
+            window.gtag("event", "conversion", {
+              send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
+            });
+          }
         }
-        console.log("Email sent successfully:", response.data);
-        setSuccessMessage("Email sent successfully!");
-        // Reset form fields
-        setPhone("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-        setErrorMessage("Error sending email. Please try again later.");
+
+        // Check if DB save failed
+        if (dbResult.status === 'rejected') {
+          console.error("Error saving lead to DB:", dbResult.reason);
+          // We might not want to show an error to the user if email succeeded, 
+          // but for now let's prioritize showing success if at least one worked?
+          // or if email worked, we consider it a success from user perspective.
+        }
+
+        if (emailResult.status === 'fulfilled') {
+          setSuccessMessage("Email sent successfully!");
+          // Reset form fields
+          setName("");
+          setPhone("");
+          setEmail("");
+          setCompany("");
+          setSubject("");
+          setMessage("");
+        }
       })
       .finally(() => {
-        setLoading(false); // Set loading state to false after the request is complete (either success or error)
+        setLoading(false);
       });
   };
 
@@ -114,6 +142,8 @@ const Footer = () => {
             <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
               <label>Your Name</label>
               <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. John Doe"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
               />
@@ -150,6 +180,8 @@ const Footer = () => {
             <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
               <label>Company</label>
               <input
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
                 placeholder="ecarts"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
               />
