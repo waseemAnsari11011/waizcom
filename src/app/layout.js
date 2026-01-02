@@ -54,8 +54,8 @@ export default function RootLayout({ children }) {
 
           gtag('config', 'AW-17813249829');
           
-          // Conversion event (legacy placement)
-          gtag('event', 'conversion', {'send_to': 'AW-17813249829/B1xyCILN5NMbEKW-gq5C'});
+          // Conversion event (legacy placement) - REMOVED to prevent auto-trigger on page load
+          // gtag('event', 'conversion', {'send_to': 'AW-17813249829/B1xyCILN5NMbEKW-gq5C'});
 
           function gtag_report_conversion(url) {
             var callback = function () {
