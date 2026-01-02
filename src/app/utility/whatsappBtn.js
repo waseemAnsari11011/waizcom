@@ -3,7 +3,8 @@ import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppButton = ({ phoneNumber }) => {
-    const whatsappLink = `https://wa.me/message/6ZHRHY6SXHAKG1`;
+    const message = "I am interested in your e-commerce development services";
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
 
     const handleClick = () => {
