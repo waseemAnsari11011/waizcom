@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import Link from "next/link";
-import { FiPhoneCall, FiMail } from "react-icons/fi";
+import { FiPhoneCall, FiMail, FiCalendar } from "react-icons/fi";
 import SuccessModal from "../SuccessModal/SuccessModal";
 
 import axios from "axios";
@@ -136,6 +136,17 @@ const Footer = () => {
       });
   };
 
+  const handleBookMeeting = () => {
+    // Trigger Google Ads conversion
+    if (typeof window.gtag_report_conversion === 'function') {
+      window.gtag_report_conversion();
+    } else if (window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
+      });
+    }
+  };
+
   return (
     <div id="Footer" className="bg-[#021b4b] w-full">
       <div className="w-full max-w-[1200px] py-32 px-5 mx-auto flex gap-[60px]">
@@ -143,26 +154,27 @@ const Footer = () => {
           <h1 className="text-[38px] font-black max-md:text-[24px] text-white uppercase max-xl:text-center max-xl:mb-[10px]">
             Got a project in mind?
           </h1>
-          <p className="text-white my-[10px] max-xl:text-center">
-            Fill the form and get a free consultation!
-          </p>
-          <p className="text-white my-[10px] flex items-center gap-2 max-md:justify-center md:justify-start">
+          <div className="my-[20px] max-xl:text-center max-md:flex max-md:justify-center">
             <a
-              href="tel:+918882202176"
-              className="flex items-center gap-2 text-[#fad171] hover:underline"
+              href="https://calendly.com/ecarts-agency-biz/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleBookMeeting}
+              className="inline-flex items-center justify-center gap-3 bg-[#fad171] rounded-[50px] px-8 py-4 font-black text-black text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg animate-pulse"
             >
-              <FiPhoneCall className="text-[#fad171] text-xl animate-pulse" />
-              +91-88822-02176
+              <FiCalendar className="text-black text-2xl" />
+              BOOK A MEETING
             </a>
-          </p>
-          <p className="text-white my-[10px] flex items-center gap-2 max-md:justify-center md:justify-start">
-            <a
-              href="mailto:contact@ecarts.agency"
-              className="flex items-center gap-2 text-[#fad171] hover:underline"
-            >
-              <FiMail className="text-[#fad171] text-xl animate-pulse" />
-              contact@ecarts.agency
-            </a>
+          </div>
+
+          <div className="flex items-center gap-4 my-8 w-full max-w-[400px] max-xl:mx-auto opacity-30">
+            <div className="h-[1px] bg-white flex-1"></div>
+            <span className="text-white font-bold text-sm">OR</span>
+            <div className="h-[1px] bg-white flex-1"></div>
+          </div>
+
+          <p className="text-white my-[10px] max-xl:text-center opacity-80">
+            Prefer to write to us? Fill the form below:
           </p>
 
           {/* Display error message if present */}
