@@ -4,6 +4,7 @@ import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "
 
 import Link from "next/link";
 import { FiPhoneCall } from "react-icons/fi";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 import axios from "axios";
 
@@ -16,6 +17,7 @@ const Footer = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [company, setCompany] = useState("");
 
@@ -47,7 +49,7 @@ const Footer = () => {
 
     setLoading(true); // Set loading state to true when form is submitted
     setErrorMessage("");
-    setSuccessMessage("");
+    // setSuccessMessage(""); // No longer using inline success message
 
     // Create array of promises to handle both requests
     const promises = [
@@ -89,7 +91,8 @@ const Footer = () => {
         }
 
         if (emailResult.status === 'fulfilled') {
-          setSuccessMessage("Email sent successfully!");
+          // setSuccessMessage("Email sent successfully!");
+          setIsModalOpen(true);
           // Reset form fields
           setName("");
           setPhone("");
@@ -131,12 +134,18 @@ const Footer = () => {
             </div>
           )}
 
-          {/* Display success message if present */}
-          {successMessage && (
+          {/* Display success message if present */
+          /* {successMessage && (
             <div className="text-green-500 mb-[10px] max-xl:text-center">
               {successMessage}
             </div>
-          )}
+          )} */ }
+
+          <SuccessModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            message="Your message has been sent successfully! We will get back to you shortly."
+          />
 
           <form className="mt-[40px] text-white flex flex-wrap gap-[30px] max-xl:justify-center max-md:flex-col max-md:items-center">
             <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
