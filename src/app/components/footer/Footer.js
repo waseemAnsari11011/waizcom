@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import Link from "next/link";
-import { FiPhoneCall } from "react-icons/fi";
+import { FiPhoneCall, FiMail } from "react-icons/fi";
 import SuccessModal from "../SuccessModal/SuccessModal";
 
 import axios from "axios";
@@ -20,6 +20,32 @@ const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [company, setCompany] = useState("");
+  const [country, setCountry] = useState("");
+
+  const countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", 
+    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", 
+    "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", 
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", 
+    "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", 
+    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", 
+    "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. 'Swaziland')", "Ethiopia", "Fiji", "Finland", 
+    "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", 
+    "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", 
+    "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", 
+    "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", 
+    "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", 
+    "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", 
+    "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", 
+    "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", 
+    "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", 
+    "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", 
+    "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", 
+    "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", 
+    "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
+    "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", 
+    "Zambia", "Zimbabwe"
+  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +69,7 @@ const Footer = () => {
       phone,
       email,
       company,
+      country,
       subject,
       message,
     };
@@ -96,8 +123,10 @@ const Footer = () => {
           // Reset form fields
           setName("");
           setPhone("");
+          setPhone("");
           setEmail("");
           setCompany("");
+          setCountry("");
           setSubject("");
           setMessage("");
         }
@@ -124,6 +153,15 @@ const Footer = () => {
             >
               <FiPhoneCall className="text-[#fad171] text-xl animate-pulse" />
               +91-88822-02176
+            </a>
+          </p>
+          <p className="text-white my-[10px] flex items-center gap-2 max-md:justify-center md:justify-start">
+            <a
+              href="mailto:contact@ecarts.agency"
+              className="flex items-center gap-2 text-[#fad171] hover:underline"
+            >
+              <FiMail className="text-[#fad171] text-xl animate-pulse" />
+              contact@ecarts.agency
             </a>
           </p>
 
@@ -194,6 +232,20 @@ const Footer = () => {
                 placeholder="ecarts"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
               />
+            </div>
+
+            <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
+              <label>Country</label>
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133] text-white [&>option]:text-black"
+              >
+                <option value="">Select a country</option>
+                {countries.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
             </div>
 
             <div className="w-full flex flex-col">
@@ -326,7 +378,7 @@ const Footer = () => {
             />
           </div>
 
-          <p className="text-white font-black text-[20px]">contact@ecarts.agency</p>
+          <a href="mailto:contact@ecarts.agency" className="text-white font-black text-[20px] hover:text-[#fad171] transition-colors">contact@ecarts.agency</a>
           <p className="text-white font-black text-[20px]">+91-88822-02176</p>
 
           <div className="flex gap-4 mt-2">

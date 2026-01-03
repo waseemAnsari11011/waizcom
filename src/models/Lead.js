@@ -16,6 +16,9 @@ const LeadSchema = new mongoose.Schema(
         company: {
             type: String,
         },
+        country: {
+            type: String,
+        },
         message: {
             type: String,
             required: true,
