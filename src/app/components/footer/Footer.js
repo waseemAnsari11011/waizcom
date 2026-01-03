@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import Link from "next/link";
@@ -21,6 +21,10 @@ const Footer = () => {
 
   const [company, setCompany] = useState("");
   const [country, setCountry] = useState("");
+
+  const phoneInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const messageInputRef = useRef(null);
 
   const countries = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", 
@@ -51,9 +55,23 @@ const Footer = () => {
     event.preventDefault();
 
     // Validation checks
-    if (!phone || !email || !message) {
+    if (!phone) {
+       setErrorMessage("Please fill out all required fields.");
+       phoneInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       phoneInputRef.current?.focus();
+       return;
+    }
+    if (!email) {
       setErrorMessage("Please fill out all required fields.");
-      return; // Stop the form submission if validation fails
+      emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      emailInputRef.current?.focus();
+      return;
+    }
+    if (!message) {
+      setErrorMessage("Please fill out all required fields.");
+      messageInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      messageInputRef.current?.focus();
+      return;
     }
 
     // Optional: Validate phone number format (e.g., must be 10 digits)
@@ -178,11 +196,7 @@ const Footer = () => {
           </p>
 
           {/* Display error message if present */}
-          {errorMessage && (
-            <div className="text-red-500 mb-[10px] max-xl:text-center">
-              {errorMessage}
-            </div>
-          )}
+
 
           {/* Display success message if present */
           /* {successMessage && (
@@ -220,6 +234,7 @@ const Footer = () => {
                 title="Please enter a 10-digit phone number with only digits"
                 placeholder="e.g. 8882202176"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={phoneInputRef}
               />
             </div>
 
@@ -233,6 +248,7 @@ const Footer = () => {
                 required
                 placeholder="e.g. j.b@example.com"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={emailInputRef}
               />
             </div>
 
@@ -268,9 +284,15 @@ const Footer = () => {
                 required
                 placeholder="You are Interested in ecommerce-like application"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={messageInputRef}
               />
             </div>
 
+            {errorMessage && (
+              <div className="text-red-500 mb-[20px] w-full text-center">
+                {errorMessage}
+              </div>
+            )}
             <button
               onClick={handleSubmit}
               type="submit"
