@@ -77,13 +77,17 @@ const BlogContent = ({ content }) => {
     let newContent = sections.map((section, index) => {
         // Don't inject before the first section (intro) + first H2
         if (index === 0) return section;
+
+        // Check if section has actual text content (ignore empty/whitespace sections or just HTML tags)
+        const textContent = section.replace(/<[^>]+>/g, '').trim();
+        if (textContent.length < 50) return section; // Increased threshold and stripped tags
         
         // Inject CTA before this H2 starts
         return ctaHtml + section;
     }).join("");
 
-    // Also add one at the very end of the article
-    newContent += ctaHtml;
+    // Also add one at the very end of the article - REMOVED to avoid duplicate with Footer
+    // newContent += ctaHtml;
 
     setInjectedContent(newContent);
 
