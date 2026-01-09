@@ -186,6 +186,7 @@ const LeadsPage = () => {
                             <th className="px-6 py-3">Phone</th>
                             <th className="px-6 py-3">Email</th>
                             <th className="px-6 py-3">Company</th>
+                            <th className="px-6 py-3">Country</th>
                             <th className="px-6 py-3">Call Status</th>
                             <th className="px-6 py-3">Lead Status</th>
                             <th className="px-6 py-3">Follow-up Date</th>
@@ -213,6 +214,7 @@ const LeadsPage = () => {
                                 <td className="px-6 py-4">{lead.phone}</td>
                                 <td className="px-6 py-4">{lead.email}</td>
                                 <td className="px-6 py-4">{lead.company}</td>
+                                <td className="px-6 py-4">{lead.country || '-'}</td>
                                 <td className="px-6 py-4">
                                     <select
                                         value={lead.callStatus}

@@ -43,7 +43,7 @@ const Breadcrumbs = ({ items }) => {
                             </svg>
                         )}
                         {index === items.length - 1 ? (
-                            <span className="font-medium text-gray-900" aria-current="page">
+                            <span className="font-medium text-gray-900 truncate max-w-[200px] md:max-w-none block" aria-current="page">
                                 {item.label}
                             </span>
                         ) : (

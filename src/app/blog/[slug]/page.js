@@ -8,6 +8,7 @@ import Link from "next/link";
 import TableOfContents from "./TableOfContents";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 import BlogCard from "@/app/components/Blog/BlogCard";
+import BlogContent from "@/app/components/Blog/BlogContent";
 import { generateArticleSchema } from "@/utils/schemaGenerator";
 
 
@@ -168,14 +169,12 @@ const BlogPage = async ({ params }) => {
                                 alt={blog.title}
                                 fill
                                 className="object-contain"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                                 priority
                             />
                         </div>
 
-                        <div
-                            className="prose prose-lg max-w-none text-gray-700 prose-headings:scroll-mt-32 prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-blue-600"
-                            dangerouslySetInnerHTML={{ __html: processedContent }}
-                        />
+                        <BlogContent content={processedContent} />
 
                         {/* Cluster Content (Spokes) for Pillar Pages */}
                         {blog.is_pillar_page && spokes.length > 0 && (

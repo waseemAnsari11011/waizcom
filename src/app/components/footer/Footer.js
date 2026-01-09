@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import Link from "next/link";
-import { FiPhoneCall } from "react-icons/fi";
+import { FiPhoneCall, FiMail, FiCalendar } from "react-icons/fi";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 import axios from "axios";
 
@@ -16,16 +17,61 @@ const Footer = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [company, setCompany] = useState("");
+  const [country, setCountry] = useState("");
+
+  const phoneInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const messageInputRef = useRef(null);
+
+  const countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", 
+    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", 
+    "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", 
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", 
+    "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", 
+    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", 
+    "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. 'Swaziland')", "Ethiopia", "Fiji", "Finland", 
+    "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", 
+    "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", 
+    "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", 
+    "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", 
+    "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", 
+    "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", 
+    "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", 
+    "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", 
+    "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", 
+    "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", 
+    "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", 
+    "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", 
+    "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
+    "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", 
+    "Zambia", "Zimbabwe"
+  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // Validation checks
-    if (!phone || !email || !message) {
+    if (!phone) {
+       setErrorMessage("Please fill out all required fields.");
+       phoneInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       phoneInputRef.current?.focus();
+       return;
+    }
+    if (!email) {
       setErrorMessage("Please fill out all required fields.");
-      return; // Stop the form submission if validation fails
+      emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      emailInputRef.current?.focus();
+      return;
+    }
+    if (!message) {
+      setErrorMessage("Please fill out all required fields.");
+      messageInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      messageInputRef.current?.focus();
+      return;
     }
 
     // Optional: Validate phone number format (e.g., must be 10 digits)
@@ -41,13 +87,14 @@ const Footer = () => {
       phone,
       email,
       company,
+      country,
       subject,
       message,
     };
 
     setLoading(true); // Set loading state to true when form is submitted
     setErrorMessage("");
-    setSuccessMessage("");
+    // setSuccessMessage(""); // No longer using inline success message
 
     // Create array of promises to handle both requests
     const promises = [
@@ -89,12 +136,15 @@ const Footer = () => {
         }
 
         if (emailResult.status === 'fulfilled') {
-          setSuccessMessage("Email sent successfully!");
+          // setSuccessMessage("Email sent successfully!");
+          setIsModalOpen(true);
           // Reset form fields
           setName("");
           setPhone("");
+          setPhone("");
           setEmail("");
           setCompany("");
+          setCountry("");
           setSubject("");
           setMessage("");
         }
@@ -104,6 +154,17 @@ const Footer = () => {
       });
   };
 
+  const handleBookMeeting = () => {
+    // Trigger Google Ads conversion
+    if (typeof window.gtag_report_conversion === 'function') {
+      window.gtag_report_conversion();
+    } else if (window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
+      });
+    }
+  };
+
   return (
     <div id="Footer" className="bg-[#021b4b] w-full">
       <div className="w-full max-w-[1200px] py-32 px-5 mx-auto flex gap-[60px]">
@@ -111,32 +172,44 @@ const Footer = () => {
           <h1 className="text-[38px] font-black max-md:text-[24px] text-white uppercase max-xl:text-center max-xl:mb-[10px]">
             Got a project in mind?
           </h1>
-          <p className="text-white my-[10px] max-xl:text-center">
-            Fill the form and get a free consultation!
-          </p>
-          <p className="text-white my-[10px] flex items-center gap-2 max-md:justify-center md:justify-start">
+          <div className="my-[20px] max-xl:text-center max-md:flex max-md:justify-center">
             <a
-              href="tel:+918882202176"
-              className="flex items-center gap-2 text-[#fad171] hover:underline"
+              href="https://calendly.com/ecarts-agency-biz/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleBookMeeting}
+              className="inline-flex items-center justify-center gap-3 bg-[#fad171] rounded-[50px] px-8 py-4 font-black text-black text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg animate-pulse"
             >
-              <FiPhoneCall className="text-[#fad171] text-xl animate-pulse" />
-              +91-88822-02176
+              <FiCalendar className="text-black text-2xl" />
+              BOOK A MEETING
             </a>
+          </div>
+
+          <div className="flex items-center gap-4 my-8 w-full max-w-[400px] max-xl:mx-auto opacity-30">
+            <div className="h-[1px] bg-white flex-1"></div>
+            <span className="text-white font-bold text-sm">OR</span>
+            <div className="h-[1px] bg-white flex-1"></div>
+          </div>
+
+          <p className="text-white my-[10px] max-xl:text-center opacity-80">
+            Prefer to write to us? Fill the form below:
           </p>
 
           {/* Display error message if present */}
-          {errorMessage && (
-            <div className="text-red-500 mb-[10px] max-xl:text-center">
-              {errorMessage}
-            </div>
-          )}
 
-          {/* Display success message if present */}
-          {successMessage && (
+
+          {/* Display success message if present */
+          /* {successMessage && (
             <div className="text-green-500 mb-[10px] max-xl:text-center">
               {successMessage}
             </div>
-          )}
+          )} */ }
+
+          <SuccessModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            message="Your message has been sent successfully! We will get back to you shortly."
+          />
 
           <form className="mt-[40px] text-white flex flex-wrap gap-[30px] max-xl:justify-center max-md:flex-col max-md:items-center">
             <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
@@ -161,6 +234,7 @@ const Footer = () => {
                 title="Please enter a 10-digit phone number with only digits"
                 placeholder="e.g. 8882202176"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={phoneInputRef}
               />
             </div>
 
@@ -174,6 +248,7 @@ const Footer = () => {
                 required
                 placeholder="e.g. j.b@example.com"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={emailInputRef}
               />
             </div>
 
@@ -187,6 +262,20 @@ const Footer = () => {
               />
             </div>
 
+            <div className="w-[calc(50%-15px)] flex flex-col max-md:w-full">
+              <label>Country</label>
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133] text-white [&>option]:text-black"
+              >
+                <option value="">Select a country</option>
+                {countries.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </div>
+
             <div className="w-full flex flex-col">
               <label>How can we help you?</label>
               <input
@@ -195,9 +284,15 @@ const Footer = () => {
                 required
                 placeholder="You are Interested in ecommerce-like application"
                 className="outline-none py-[16px] pr-[10px] bg-transparent border-b border-[#f0f0f133]"
+                ref={messageInputRef}
               />
             </div>
 
+            {errorMessage && (
+              <div className="text-red-500 mb-[20px] w-full text-center">
+                {errorMessage}
+              </div>
+            )}
             <button
               onClick={handleSubmit}
               type="submit"
@@ -317,7 +412,7 @@ const Footer = () => {
             />
           </div>
 
-          <p className="text-white font-black text-[20px]">contact@ecarts.agency</p>
+          <a href="mailto:contact@ecarts.agency" className="text-white font-black text-[20px] hover:text-[#fad171] transition-colors">contact@ecarts.agency</a>
           <p className="text-white font-black text-[20px]">+91-88822-02176</p>
 
           <div className="flex gap-4 mt-2">
