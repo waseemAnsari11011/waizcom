@@ -31,6 +31,14 @@ const LeadSchema = new mongoose.Schema(
         followUpDate: {
             type: Date,
         },
+        followupCount: {
+            type: Number,
+            default: 0,
+        },
+        followupDescription: {
+            type: String,
+            default: "",
+        },
     },
     { timestamps: true }
 );

@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -16,6 +17,7 @@ const CreateBlog = () => {
     const [content, setContent] = useState("");
     const [imagePreview, setImagePreview] = useState("");
     const [isPublished, setIsPublished] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         // Fetch all hubs for the dropdown
@@ -102,6 +104,7 @@ const CreateBlog = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const title = e.target.title.value;
         const slug = title
             .toLowerCase()
@@ -143,6 +146,7 @@ const CreateBlog = () => {
             }
         } catch (err) {
             console.log(err);
+            setIsLoading(false);
         }
     };
 
@@ -153,6 +157,7 @@ const CreateBlog = () => {
     if (session.status === "authenticated") {
         return (
             <div className="min-h-screen bg-gray-100 p-8 pt-32">
+                {isLoading && <LoadingSpinner />}
                 <div className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-md">
                     <h1 className="mb-6 text-2xl font-bold text-gray-800">
                         Create New Blog

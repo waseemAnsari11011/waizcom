@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 import "react-quill-new/dist/quill.snow.css";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -23,6 +24,7 @@ const EditBlog = ({ params }) => {
     const [keywords, setKeywords] = useState("");
     const [imagePreview, setImagePreview] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [postType, setPostType] = useState("spoke"); // 'hub' or 'spoke'
     const [parentHub, setParentHub] = useState("");
@@ -123,6 +125,7 @@ const EditBlog = ({ params }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
         const newSlug = title
             .toLowerCase()
             .trim()
@@ -166,6 +169,7 @@ const EditBlog = ({ params }) => {
             }
         } catch (err) {
             console.log(err);
+            setIsSubmitting(false);
         }
     };
 
@@ -176,6 +180,7 @@ const EditBlog = ({ params }) => {
     if (session.status === "authenticated") {
         return (
             <div className="min-h-screen bg-gray-100 p-8 pt-32">
+                {isSubmitting && <LoadingSpinner />}
                 <div className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-md">
                     <h1 className="mb-6 text-2xl font-bold text-gray-800">
                         Edit Blog
