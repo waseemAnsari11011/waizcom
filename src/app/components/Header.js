@@ -34,9 +34,7 @@ const Header = () => {
     sendGAEvent("event", "contact_sidebar_clicked", { value: "contact" });
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+
 
   return (
     <header
@@ -44,9 +42,9 @@ const Header = () => {
       style={{ zIndex: 100 }}
     >
       <div className="flex justify-between items-center">
-        <div
+        <Link
+          href="/"
           className="brand-text text-2xl font-bold cursor-pointer"
-          onClick={scrollToTop}
         >
           <Image
             src="/ecarts.png"
@@ -55,7 +53,7 @@ const Header = () => {
             height={60}
             priority={true}
           />
-        </div>
+        </Link>
 
         {/* Conditionally render based on device size */}
         <div className="text-white text-xl">
