@@ -5,10 +5,12 @@ import { FaQuoteLeft, FaQuoteRight, FaFacebook, FaInstagram, FaLinkedin } from "
 import Link from "next/link";
 import { FiPhoneCall, FiMail, FiCalendar } from "react-icons/fi";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import { usePathname } from "next/navigation";
 
 import axios from "axios";
 
 const Footer = () => {
+  const pathname = usePathname();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -16,6 +18,8 @@ const Footer = () => {
   const [message, setMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  
+  if (pathname?.startsWith("/admin")) return null;
   const [errorMessage, setErrorMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -42,6 +42,17 @@ const LeadSchema = new mongoose.Schema(
             type: String,
             default: "",
         },
+        source: {
+            type: String,
+            default: "Website", // "App Cost Calculator", "Contact Form", "Footer", etc.
+        },
+        calculatorData: {
+            type: Object, // Stores { dayRate, currency, totalCost, appSize, etc. }
+            default: null,
+        },
+        configHash: {
+            type: String,
+        },
     },
     { timestamps: true }
 );

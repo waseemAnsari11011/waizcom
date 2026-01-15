@@ -187,6 +187,7 @@ const LeadsPage = () => {
                             <th className="px-6 py-3">Email</th>
                             <th className="px-6 py-3">Company</th>
                             <th className="px-6 py-3">Country</th>
+                            <th className="px-6 py-3">Source</th>
                             <th className="px-6 py-3">Call Status</th>
                             <th className="px-6 py-3">Lead Status</th>
                             <th className="px-6 py-3">Follow-up Date</th>
@@ -215,6 +216,18 @@ const LeadsPage = () => {
                                 <td className="px-6 py-4">{lead.email}</td>
                                 <td className="px-6 py-4">{lead.company}</td>
                                 <td className="px-6 py-4">{lead.country || '-'}</td>
+                                <td className="px-6 py-4">
+                                    <div className="flex flex-col">
+                                        <span className={`text-xs font-semibold px-2 py-1 rounded-full w-fit ${lead.source === "App Cost Calculator" ? "bg-purple-100 text-purple-800" : "bg-gray-100 text-gray-800"}`}>
+                                            {lead.source || "Website"}
+                                        </span>
+                                        {lead.source === "App Cost Calculator" && lead.calculatorData && (
+                                            <span className="text-xs text-gray-500 mt-1">
+                                                {lead.calculatorData.currency} {lead.calculatorData.totalCost?.toLocaleString()}
+                                            </span>
+                                        )}
+                                    </div>
+                                </td>
                                 <td className="px-6 py-4">
                                     <select
                                         value={lead.callStatus}

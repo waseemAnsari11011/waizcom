@@ -4,13 +4,18 @@ import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { sendGAEvent } from "@next/third-parties/google";
 import SideBar from "../utility/sideBar";
+import CalculatorModal from "./Calculator/CalculatorModal";
 
 import Link from "next/link";
 import Image from "next/image";
 
+import { usePathname } from "next/navigation";
+
 const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
   const [isMobile, setIsMobile] = useState(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,16 +28,32 @@ const Header = () => {
     // Add event listener to handle resize
     window.addEventListener("resize", handleResize);
 
-    // Remove event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  // Auto-open calculator logic
+  useEffect(() => {
+    // Only run auto-open if NOT on admin pages (double check, though return null handles display)
+    if (pathname?.startsWith("/admin")) return;
+
+    const hasSeen = sessionStorage.getItem("hasSeenCalculator");
+    if (!hasSeen) {
+        const timer = setTimeout(() => {
+            setShowCalculator(true);
+            sessionStorage.setItem("hasSeenCalculator", "true");
+        }, 6000); // 6 seconds delay
+        return () => clearTimeout(timer);
+    }
+  }, [pathname]);
+
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
     sendGAEvent("event", "contact_sidebar_clicked", { value: "contact" });
   };
+
+  if (pathname?.startsWith("/admin")) return null;
 
 
 
@@ -108,13 +129,16 @@ const Header = () => {
                 <p>Tech</p>
               </Link>
 
-              <Link
-                href="#Footer"
-                onClick={() => setShowSidebar(false)}
+              <button
+                onClick={() => {
+                    setShowSidebar(false);
+                    setShowCalculator(true);
+                    sessionStorage.setItem("hasSeenCalculator", "true");
+                }}
                 className="get-in-touch-btn cursor-pointer"
               >
                 <p className="text-header-black font-bold">Get App Cost</p>
-              </Link>
+              </button>
             </div>
           )}
         </div>
@@ -125,6 +149,8 @@ const Header = () => {
           setShowSidebar={setShowSidebar}
           toggleSidebar={toggleSidebar}
         />
+        
+        <CalculatorModal isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
       </div>
     </header>
   );
