@@ -8,7 +8,7 @@ class SocialMediaService {
             this.platforms.push(new LinkedInPlatform());
         }
     }
-
+//
     async broadcast(blog) {
         console.log("SocialMediaService: Starting broadcast for blog:", blog.title);
         const results = [];
