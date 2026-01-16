@@ -18,7 +18,7 @@ export default function CalculatorView({ onClose, isModal = false }) {
   useEffect(() => {
     setMounted(true);
     // Fetch Location
-    axios.get("https://ipapi.co/json/")
+    axios.get("/api/utility/location")
       .then((res) => {
         const country = res.data.country_code;
         if (country === "IN") {
