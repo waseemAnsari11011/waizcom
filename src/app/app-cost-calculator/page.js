@@ -1,7 +1,5 @@
 import React from "react";
 import CalculatorView from "../components/Calculator/CalculatorView";
-import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
 
 export const metadata = {
   title: "Ecommerce App Cost Calculator | Build Your Store - Ecarts",
@@ -27,9 +25,7 @@ export const metadata = {
 export default function AppCostCalculatorPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
-      <main className="flex-grow pt-28 pb-20 px-4">
+      <div className="flex-grow pt-28 pb-20 px-4">
         {/* SEO Header Section */}
         <div className="max-w-4xl mx-auto mb-12 text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
@@ -76,9 +72,7 @@ export default function AppCostCalculatorPage() {
             </p>
           </div>
         </section>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 }

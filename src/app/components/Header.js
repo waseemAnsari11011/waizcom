@@ -36,7 +36,7 @@ const Header = () => {
   // Auto-open calculator logic
   useEffect(() => {
     // Only run auto-open if NOT on admin pages (double check, though return null handles display)
-    if (pathname?.startsWith("/admin")) return;
+    if (pathname?.startsWith("/admin") || pathname === "/app-cost-calculator") return;
 
     const hasSeen = sessionStorage.getItem("hasSeenCalculator");
     if (!hasSeen) {
