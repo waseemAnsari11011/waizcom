@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { FaCalculator } from "react-icons/fa";
 import { sendGAEvent } from "@next/third-parties/google";
 import axios from "axios";
+import { createPortal } from "react-dom";
 import SideBar from "../utility/sideBar";
 import CalculatorModal from "./Calculator/CalculatorModal";
 
@@ -20,7 +22,10 @@ const Header = () => {
   const [calculatorCurrency, setCalculatorCurrency] = useState(null);
   const pathname = usePathname();
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -55,8 +60,10 @@ const Header = () => {
 
             if (locationRes.status === 'fulfilled') {
                 const country = locationRes.value.data.country_code;
+                console.log("Header: Fetched country code:", country);
                 setCalculatorCurrency(country === "IN" ? "INR" : "USD");
             } else {
+                 console.log("Header: Location fetch failed or rejected");
                  setCalculatorCurrency("USD"); // Default fallback
             }
 
@@ -89,8 +96,6 @@ const Header = () => {
   };
 
   if (pathname?.startsWith("/admin")) return null;
-
-
 
   return (
     <header
@@ -191,6 +196,23 @@ const Header = () => {
             config={calculatorConfig}
             currency={calculatorCurrency}
         />
+        {/* Floating Calculator Button */}
+        {mounted && !showCalculator && createPortal(
+            <>
+                <div className="calculatorTooltip">Get App Cost</div>
+                <button
+                    className="calculatorFloatBtn"
+                    onClick={() => {
+                        setShowCalculator(true);
+                        sessionStorage.setItem("hasSeenCalculator", "true");
+                    }}
+                    aria-label="App Cost Calculator"
+                >
+                    <FaCalculator size={24} />
+                </button>
+            </>,
+            document.body
+        )}
       </div>
     </header>
   );

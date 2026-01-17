@@ -309,3 +309,54 @@ body {
     display: none;
   }
 }
+
+/* Floating Calculator Button */
+.calculatorFloatBtn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  /* Positioned above WhatsApp button */
+  right: 10px;
+  background-color: #0658f6;
+  /* Blue to differentiate */
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 24px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.calculatorFloatBtn:active {
+  transform: scale(0.95);
+}
+
+.calculatorTooltip {
+  position: fixed;
+  bottom: 145px; /* 80px bottom + 60px height + 5px gap */
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 100;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* Optional: Animation to make it pop */
+  animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

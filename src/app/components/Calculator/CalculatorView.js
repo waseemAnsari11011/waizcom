@@ -18,11 +18,16 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
   useEffect(() => {
     setMounted(true);
     
-    // If preloadedCurrency is NOT provided, fetch it
-    if (!preloadedCurrency) {
+    if (preloadedCurrency) {
+        console.log("CalculatorView: Setting currency from preload:", preloadedCurrency);
+        setCurrency(preloadedCurrency);
+    } else {
+        console.log("CalculatorView: No preload, fetching location...");
+        // Fallback fetch if not provided
         axios.get("/api/utility/location")
         .then((res) => {
             const country = res.data.country_code;
+            console.log("CalculatorView: Fetched country:", country);
             if (country === "IN") {
             setCurrency("INR");
             } else {
@@ -30,7 +35,7 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
             }
         })
         .catch((err) => {
-            // console.error("Location fetch failed, defaulting to USD");
+             console.error("Location fetch failed, defaulting to USD");
         });
     }
   }, [preloadedCurrency]);

@@ -13,13 +13,14 @@ export async function GET(request) {
 
     // Fallback for local development or if no header
     // Note: '::1' or '127.0.0.1' won't work with external geolocation APIs
+    // Fallback for local development
+    // If localhost, fetch external IP location directly
+    let url = `https://ipapi.co/${ip}/json/`;
     if (!ip || ip === "::1" || ip === "127.0.0.1") {
-       // Just return a default or try to fetch public IP if really needed (optional)
-       // For now, let's just return success=false so the client defaults to USD
-       return NextResponse.json({ success: false, message: "Localhost or unable to determine IP" });
+       url = "https://ipapi.co/json/";
     }
 
-    const response = await axios.get(`https://ipapi.co/${ip}/json/`);
+    const response = await axios.get(url);
     
     return NextResponse.json(response.data);
   } catch (error) {
