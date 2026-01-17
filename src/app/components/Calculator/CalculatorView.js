@@ -3,40 +3,46 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdClose, MdCheck } from "react-icons/md";
 
-export default function CalculatorView({ onClose, isModal = false }) {
-  const [config, setConfig] = useState(null);
+export default function CalculatorView({ onClose, isModal = false, preloadedConfig = null, preloadedCurrency = null }) {
+  const [config, setConfig] = useState(preloadedConfig);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(!preloadedConfig);
   const [calculating, setCalculating] = useState(false);
   const [result, setResult] = useState(null);
   const [mounted, setMounted] = useState(false);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(preloadedCurrency || "USD");
 
   useEffect(() => {
     setMounted(true);
-    // Fetch Location
-    axios.get("/api/utility/location")
-      .then((res) => {
-        const country = res.data.country_code;
-        if (country === "IN") {
-          setCurrency("INR");
-        } else {
-          setCurrency("USD");
-        }
-      })
-      .catch((err) => {
-        console.error("Location fetch failed, defaulting to USD", err);
-      });
-  }, []);
+    
+    // If preloadedCurrency is NOT provided, fetch it
+    if (!preloadedCurrency) {
+        axios.get("/api/utility/location")
+        .then((res) => {
+            const country = res.data.country_code;
+            if (country === "IN") {
+            setCurrency("INR");
+            } else {
+            setCurrency("USD");
+            }
+        })
+        .catch((err) => {
+            // console.error("Location fetch failed, defaulting to USD");
+        });
+    }
+  }, [preloadedCurrency]);
 
   useEffect(() => {
-    if (!config) {
+    if (!config && !preloadedConfig) {
       fetchConfig();
+    } else if (preloadedConfig && !config) {
+        setConfig(preloadedConfig);
+        setLoading(false);
     }
-  }, []); // Only fetch once on mount
+  }, [preloadedConfig]); // Re-run if preloadedConfig arrives late? mostly it's passed on mount.
 
   const fetchConfig = async () => {
     setLoading(true);

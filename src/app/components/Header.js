@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiHome, FiBriefcase } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { sendGAEvent } from "@next/third-parties/google";
+import axios from "axios";
 import SideBar from "../utility/sideBar";
 import CalculatorModal from "./Calculator/CalculatorModal";
 
@@ -15,6 +16,8 @@ const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [isMobile, setIsMobile] = useState(null);
+  const [calculatorConfig, setCalculatorConfig] = useState(null);
+  const [calculatorCurrency, setCalculatorCurrency] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -31,6 +34,38 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  // Pre-load calculator data (Config + Location)
+  useEffect(() => {
+    // Only pre-load if NOT on admin pages
+    if (pathname?.startsWith("/admin")) return;
+
+    const loadData = async () => {
+        try {
+            // Parallel fetch for speed
+            const [configRes, locationRes] = await Promise.allSettled([
+                axios.get("/api/calculator/config"),
+                axios.get("/api/utility/location")
+            ]);
+
+            if (configRes.status === 'fulfilled' && configRes.value.data.success) {
+                setCalculatorConfig(configRes.value.data.data);
+            }
+
+            if (locationRes.status === 'fulfilled') {
+                const country = locationRes.value.data.country_code;
+                setCalculatorCurrency(country === "IN" ? "INR" : "USD");
+            } else {
+                 setCalculatorCurrency("USD"); // Default fallback
+            }
+
+        } catch (error) {
+            console.error("Background pre-load failed", error);
+        }
+    };
+    
+    loadData();
   }, []);
 
   // Auto-open calculator logic
@@ -150,7 +185,12 @@ const Header = () => {
           toggleSidebar={toggleSidebar}
         />
         
-        <CalculatorModal isOpen={showCalculator} onClose={() => setShowCalculator(false)} />
+        <CalculatorModal 
+            isOpen={showCalculator} 
+            onClose={() => setShowCalculator(false)} 
+            config={calculatorConfig}
+            currency={calculatorCurrency}
+        />
       </div>
     </header>
   );
