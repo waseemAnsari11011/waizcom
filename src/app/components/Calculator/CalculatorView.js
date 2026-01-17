@@ -158,7 +158,7 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
                   Get Your Ecommerce App Cost Estimate
                 </h2>
                 <p className="text-gray-600 text-lg max-w-lg mx-auto leading-relaxed">
-                  Planning an ecommerce store? Get a detailed cost and timeline estimate for your custom Ecarts solution in less than a minute.
+                  Planning an ecommerce store? Get a detailed cost and timeline estimate in less than a minute.
                 </p>
                 <div className="pt-6">
                   <button

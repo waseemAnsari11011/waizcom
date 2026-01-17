@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: "Ecommerce App Cost Calculator | Build Your Store - Ecarts",
     description:
-      "Planning an ecommerce store? Get a detailed cost and timeline estimate for your custom Ecarts solution in less than a minute.",
+      "Planning an ecommerce store? Get a detailed cost and timeline estimate in less than a minute.",
     type: "website",
   },
 };
