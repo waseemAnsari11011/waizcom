@@ -41,7 +41,7 @@ export async function GET(req, props) {
     try {
         await connectDB();
         const { id } = params;
-        const lead = await Lead.findById(id);
+        const lead = await Lead.findOne({ _id: id, isDeleted: { $ne: true } });
 
         if (!lead) {
             return NextResponse.json({ error: "Lead not found" }, { status: 404 });
@@ -51,6 +51,31 @@ export async function GET(req, props) {
     } catch (error) {
         return NextResponse.json(
             { error: "Failed to fetch lead", details: error.message },
+            { status: 500 }
+        );
+    }
+}
+
+export async function DELETE(req, props) {
+    const params = await props.params;
+    try {
+        await connectDB();
+        const { id } = params;
+        
+        const deletedLead = await Lead.findByIdAndUpdate(
+            id,
+            { isDeleted: true, deletedAt: new Date() },
+            { new: true }
+        );
+
+        if (!deletedLead) {
+            return NextResponse.json({ error: "Lead not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Lead soft deleted successfully" }, { status: 200 });
+    } catch (error) {
+        return NextResponse.json(
+            { error: "Failed to delete lead", details: error.message },
             { status: 500 }
         );
     }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
-import { FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaTimes, FaTrash } from "react-icons/fa";
 
 const LeadsPage = () => {
     const [leads, setLeads] = useState([]);
@@ -17,6 +17,37 @@ const LeadsPage = () => {
         company: "",
         message: "",
     });
+    const [selectedLeads, setSelectedLeads] = useState([]);
+
+    const handleSelectAll = (e) => {
+        if (e.target.checked) {
+            setSelectedLeads(leads.map((lead) => lead._id));
+        } else {
+            setSelectedLeads([]);
+        }
+    };
+
+    const handleSelectOne = (id) => {
+        setSelectedLeads((prev) =>
+            prev.includes(id) ? prev.filter((leadId) => leadId !== id) : [...prev, id]
+        );
+    };
+
+    const handleBulkDelete = async () => {
+        if (selectedLeads.length === 0) return;
+
+        if (confirm(`Are you sure you want to delete ${selectedLeads.length} leads?`)) {
+            try {
+                await axios.delete("/api/leads", { data: { ids: selectedLeads } });
+                setLeads((prev) => prev.filter((lead) => !selectedLeads.includes(lead._id)));
+                setSelectedLeads([]);
+                alert("Selected leads deleted successfully");
+            } catch (error) {
+                console.error("Error deleting leads:", error);
+                alert("Failed to delete selected leads");
+            }
+        }
+    };
 
     console.log(leads)
     const callStatusOptions = [
@@ -164,6 +195,19 @@ const LeadsPage = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        if (confirm("Are you sure you want to delete this lead? This action cannot be undone.")) {
+            try {
+                await axios.delete(`/api/leads/${id}`);
+                setLeads((prev) => prev.filter((lead) => lead._id !== id));
+                alert("Lead deleted successfully");
+            } catch (error) {
+                console.error("Error deleting lead:", error);
+                alert("Failed to delete lead");
+            }
+        }
+    };
+
     if (loading) return <div className="p-8 text-center">Loading leads...</div>;
 
     return (
@@ -177,10 +221,33 @@ const LeadsPage = () => {
                     <FaPlus /> Add Lead
                 </button>
             </div>
+            
+            {selectedLeads.length > 0 && (
+                <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex justify-between items-center animate-in fade-in slide-in-from-top-2">
+                    <span className="text-red-700 font-medium">
+                        {selectedLeads.length} lead{selectedLeads.length !== 1 ? 's' : ''} selected
+                    </span>
+                    <button
+                        onClick={handleBulkDelete}
+                        className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors shadow-sm"
+                    >
+                        <FaTrash /> Delete Selected
+                    </button>
+                </div>
+            )}
+
             <div className="overflow-x-auto shadow-md rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500" style={{ whiteSpace: 'nowrap' }}>
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
+                            <th className="px-6 py-3 w-4">
+                                <input
+                                    type="checkbox"
+                                    onChange={handleSelectAll}
+                                    checked={leads.length > 0 && selectedLeads.length === leads.length}
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                                />
+                            </th>
                             <th className="px-6 py-3">Inquiry Date</th>
                             <th className="px-6 py-3">Name</th>
                             <th className="px-6 py-3">Phone</th>
@@ -197,7 +264,15 @@ const LeadsPage = () => {
                     </thead>
                     <tbody>
                         {leads.map((lead) => (
-                            <tr key={lead._id} className="bg-white border-b hover:bg-gray-50">
+                            <tr key={lead._id} className={`bg-white border-b hover:bg-gray-50 ${selectedLeads.includes(lead._id) ? 'bg-blue-50' : ''}`}>
+                                <td className="px-6 py-4">
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedLeads.includes(lead._id)}
+                                        onChange={() => handleSelectOne(lead._id)}
+                                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                                    />
+                                </td>
                                 <td className="px-6 py-4">
                                     {new Date(lead.createdAt).toLocaleString("en-IN", {
                                         timeZone: "Asia/Kolkata",
@@ -289,7 +364,7 @@ const LeadsPage = () => {
                         ))}
                         {leads.length === 0 && (
                             <tr>
-                                <td colSpan="9" className="px-6 py-4 text-center">
+                                <td colSpan="14" className="px-6 py-4 text-center">
                                     No leads found.
                                 </td>
                             </tr>

@@ -53,6 +53,14 @@ const LeadSchema = new mongoose.Schema(
         configHash: {
             type: String,
         },
+        isDeleted: {
+            type: Boolean,
+            default: false,
+        },
+        deletedAt: {
+            type: Date,
+            default: null,
+        },
     },
     { timestamps: true }
 );
