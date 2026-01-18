@@ -132,7 +132,7 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
 
   // Render content logic
   const renderContent = () => (
-    <div className={`bg-white rounded-2xl w-full ${isModal ? "shadow-2xl max-w-2xl max-h-[90vh] overflow-y-auto" : ""} relative animate-in fade-in zoom-in duration-300`}>
+    <div className={`bg-white rounded-2xl w-full ${isModal ? "shadow-2xl max-w-2xl max-h-[90vh] overflow-y-auto" : "relative animate-in fade-in zoom-in duration-300"}`}>
       {isModal && onClose && (
         <button
           onClick={onClose}
@@ -160,10 +160,10 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
                   <span className="text-4xl">🚀</span>
                 </div>
                 <h2 className="text-3xl font-extrabold text-gray-900 leading-tight">
-                  Get Your Ecommerce App Cost Estimate
+                  Get Your App Cost Estimate
                 </h2>
                 <p className="text-gray-600 text-lg max-w-lg mx-auto leading-relaxed">
-                  Planning an ecommerce store? Get a detailed cost and timeline estimate in less than a minute.
+                  Planning an ecommerce app? Get a detailed cost and timeline estimate in less than a minute.
                 </p>
                 <div className="pt-6">
                   <button
