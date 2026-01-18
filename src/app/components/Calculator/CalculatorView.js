@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdClose, MdCheck } from "react-icons/md";
+import { FaCalculator } from "react-icons/fa";
 
 export default function CalculatorView({ onClose, isModal = false, preloadedConfig = null, preloadedCurrency = null }) {
   const [config, setConfig] = useState(preloadedConfig);
@@ -157,7 +158,7 @@ export default function CalculatorView({ onClose, isModal = false, preloadedConf
             {step === 0 && (
               <div className="text-center py-8 space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                  <span className="text-4xl">🚀</span>
+                  <FaCalculator size={40} />
                 </div>
                 <h2 className="text-3xl font-extrabold text-gray-900 leading-tight">
                   Get Your App Cost Estimate
