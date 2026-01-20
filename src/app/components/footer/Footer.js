@@ -417,7 +417,7 @@ const Footer = () => {
           </div>
 
           <a href="mailto:contact@ecarts.agency" className="text-white font-black text-[20px] hover:text-[#fad171] transition-colors">contact@ecarts.agency</a>
-          <p className="text-white font-black text-[20px]">+91-88822-02176</p>
+          <a href="tel:+918882202176" className="text-white font-black text-[20px] hover:text-[#fad171] transition-colors">+91-88822-02176</a>
 
           <div className="flex gap-4 mt-2">
             <a
@@ -503,7 +503,7 @@ const Footer = () => {
                 sector -63, Noida
                 <br /> Uttar Pradesh, 201301
               </p>
-              <p>+91 88822-02176</p>
+              <a href="tel:+918882202176" className="hover:text-[#fad171] transition-colors">+91-88822-02176</a>
             </div>
           </div>
         </div>
