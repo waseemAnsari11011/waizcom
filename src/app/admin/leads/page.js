@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
-import { FaPlus, FaTimes, FaTrash, FaEye } from "react-icons/fa";
+import { FaPlus, FaTimes, FaTrash, FaEye, FaCopy } from "react-icons/fa";
 
 const LeadsPage = () => {
     const [leads, setLeads] = useState([]);
@@ -86,12 +86,44 @@ const LeadsPage = () => {
 
     const [isFollowupModalOpen, setIsFollowupModalOpen] = useState(false);
     const [selectedLeadForFollowup, setSelectedLeadForFollowup] = useState(null);
+    const [followupData, setFollowupData] = useState({
+        followupCount: 0,
+        followupDescription: "",
+    });
+
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
     const [selectedLeadForDetails, setSelectedLeadForDetails] = useState(null);
 
     const openDetailsModal = (lead) => {
         setSelectedLeadForDetails(lead);
         setIsDetailsModalOpen(true);
+    };
+
+    const handleCopyToClipboard = (lead) => {
+        if (!lead) return;
+
+        let textToCopy = `**Lead Context & Requirements**\n\n`;
+        // Removed Client Details as requested
+
+        textToCopy += `**Message:**\n${lead.message}\n\n`;
+
+        if (lead.calculatorData && lead.calculatorData.answers) {
+            textToCopy += `**Project Requirements (App Cost Calculator):**\n`;
+            textToCopy += `Est. Cost: ${lead.calculatorData.currency} ${lead.calculatorData.totalCost?.toLocaleString()} | Duration: ~${lead.calculatorData.totalDays} Days\n\n`;
+            
+            Object.entries(lead.calculatorData.answers).forEach(([key, value]) => {
+                const label = key.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                const displayValue = Array.isArray(value) ? value.join(", ") : value;
+                textToCopy += `- ${label}: ${displayValue}\n`;
+            });
+        }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert("Lead context copied to clipboard! You can now paste this into AI.");
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            alert("Failed to copy context.");
+        });
     };
 
     const openFollowupModal = async (lead) => {
@@ -561,9 +593,18 @@ const LeadsPage = () => {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" style={{ zIndex: '300' }}>
                     <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[85vh] flex flex-col">
                         <div className="flex justify-between items-center p-4 border-b bg-gray-50">
-                            <div>
-                                <h2 className="text-xl font-bold text-gray-800">Lead Details</h2>
-                                <p className="text-sm text-gray-500">{selectedLeadForDetails.name} • {selectedLeadForDetails.company || 'N/A'}</p>
+                            <div className="flex items-center gap-4">
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-800">Lead Details</h2>
+                                    <p className="text-sm text-gray-500">{selectedLeadForDetails.name} • {selectedLeadForDetails.company || 'N/A'}</p>
+                                </div>
+                                <button
+                                    onClick={() => handleCopyToClipboard(selectedLeadForDetails)}
+                                    className="flex items-center gap-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                                    title="Copy structured data for AI"
+                                >
+                                    <FaCopy size={14} /> Copy for AI
+                                </button>
                             </div>
                             <button
                                 onClick={() => setIsDetailsModalOpen(false)}
