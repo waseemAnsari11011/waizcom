@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
-import { FaPlus, FaTimes, FaTrash } from "react-icons/fa";
+import { FaPlus, FaTimes, FaTrash, FaEye } from "react-icons/fa";
 
 const LeadsPage = () => {
     const [leads, setLeads] = useState([]);
@@ -86,10 +86,13 @@ const LeadsPage = () => {
 
     const [isFollowupModalOpen, setIsFollowupModalOpen] = useState(false);
     const [selectedLeadForFollowup, setSelectedLeadForFollowup] = useState(null);
-    const [followupData, setFollowupData] = useState({
-        followupCount: 0,
-        followupDescription: "",
-    });
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+    const [selectedLeadForDetails, setSelectedLeadForDetails] = useState(null);
+
+    const openDetailsModal = (lead) => {
+        setSelectedLeadForDetails(lead);
+        setIsDetailsModalOpen(true);
+    };
 
     const openFollowupModal = async (lead) => {
         setSelectedLeadForFollowup(lead);
@@ -259,7 +262,7 @@ const LeadsPage = () => {
                             <th className="px-6 py-3">Lead Status</th>
                             <th className="px-6 py-3">Follow-up Date</th>
                             <th className="px-6 py-3">Follow-up Status</th>
-                            <th className="px-6 py-3">Message</th>
+                            <th className="px-6 py-3">Details</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -357,8 +360,19 @@ const LeadsPage = () => {
                                         Check
                                     </button>
                                 </td>
-                                <td className="px-6 py-4 max-w-xs truncate" style={{ width: '100px', overflowX: 'auto' }} title={lead.message}>
-                                    {lead.message}
+                                <td className="px-6 py-4" style={{ width: '200px' }}>
+                                    <div className="flex items-center gap-2">
+                                        <div className="truncate max-w-[150px]" title={lead.message}>
+                                            {lead.message}
+                                        </div>
+                                        <button
+                                            onClick={() => openDetailsModal(lead)}
+                                            className="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-50 transition-colors"
+                                            title="View Full Details"
+                                        >
+                                            <FaEye />
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -538,6 +552,88 @@ const LeadsPage = () => {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Lead Details Modal */}
+            {isDetailsModalOpen && selectedLeadForDetails && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" style={{ zIndex: '300' }}>
+                    <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[85vh] flex flex-col">
+                        <div className="flex justify-between items-center p-4 border-b bg-gray-50">
+                            <div>
+                                <h2 className="text-xl font-bold text-gray-800">Lead Details</h2>
+                                <p className="text-sm text-gray-500">{selectedLeadForDetails.name} • {selectedLeadForDetails.company || 'N/A'}</p>
+                            </div>
+                            <button
+                                onClick={() => setIsDetailsModalOpen(false)}
+                                className="text-gray-500 hover:text-gray-700 transition-colors p-2 hover:bg-gray-200 rounded-full"
+                            >
+                                <FaTimes size={20} />
+                            </button>
+                        </div>
+                        
+                        <div className="p-6 overflow-y-auto flex-1 space-y-6">
+                            {/* Message Section */}
+                            <div>
+                                <h3 className="text-md font-bold text-gray-800 mb-2 border-l-4 border-blue-600 pl-2">Message</h3>
+                                <div className="text-gray-700 bg-blue-50/50 p-4 rounded-lg border border-blue-100 whitespace-pre-wrap leading-relaxed text-sm">
+                                    {selectedLeadForDetails.message}
+                                </div>
+                            </div>
+
+                            {/* Requirements Section (Calculator Data) */}
+                            {selectedLeadForDetails.calculatorData && selectedLeadForDetails.calculatorData.answers && (
+                                <div>
+                                    <h3 className="text-md font-bold text-gray-800 mb-3 border-l-4 border-purple-600 pl-2 flex justify-between items-center">
+                                        <span>Project Requirements</span>
+                                        <span className="text-sm font-normal bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
+                                            {selectedLeadForDetails.calculatorData.currency} {selectedLeadForDetails.calculatorData.totalCost?.toLocaleString()} 
+                                            <span className="mx-2">•</span> 
+                                            ~{selectedLeadForDetails.calculatorData.totalDays} Days
+                                        </span>
+                                    </h3>
+                                    
+                                    <div className="rounded-lg border border-gray-200 overflow-hidden text-sm">
+                                        <table className="w-full text-left bg-white">
+                                            <thead className="bg-gray-100 text-gray-700 font-semibold border-b border-gray-200">
+                                                <tr>
+                                                    <th className="p-3 w-1/3">Feature / Category</th>
+                                                    <th className="p-3">Selected Requirement</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-100">
+                                                {Object.entries(selectedLeadForDetails.calculatorData.answers).map(([key, value], idx) => {
+                                                    // Format key: "app_size" -> "App Size"
+                                                    const label = key.split('_')
+                                                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                                        .join(' ');
+                                                    
+                                                    // Format value: Handle arrays (multi-select)
+                                                    const displayValue = Array.isArray(value) ? value.join(", ") : value;
+
+                                                    return (
+                                                        <tr key={key} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
+                                                            <td className="p-3 font-medium text-gray-600">{label}</td>
+                                                            <td className="p-3 text-gray-800">{displayValue}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="p-4 border-t bg-gray-50 flex justify-end">
+                            <button
+                                onClick={() => setIsDetailsModalOpen(false)}
+                                className="px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors font-medium shadow-sm"
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
