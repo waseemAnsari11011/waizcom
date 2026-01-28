@@ -8,13 +8,7 @@ const WhatsAppButton = ({ phoneNumber }) => {
 
 
     const handleClick = () => {
-        if (typeof window.gtag_report_conversion === 'function') {
-            window.gtag_report_conversion();
-        } else if (window.gtag) {
-            window.gtag('event', 'conversion', {
-                'send_to': 'AW-17813249829/B1xyCILN5NMbEKW-gq5C'
-            });
-        }
+
     };
 
     return (

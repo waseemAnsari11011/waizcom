@@ -120,15 +120,7 @@ const Footer = () => {
           setErrorMessage("Error sending email. Please try again later.");
         } else {
           console.log("Email sent successfully: 88", emailResult.value.data);
-          if (typeof window.gtag_report_conversion === 'function') {
-            console.log("oo")
-            window.gtag_report_conversion();
-          } else if (window.gtag) {
-            console.log("ee")
-            window.gtag("event", "conversion", {
-              send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
-            });
-          }
+    
         }
 
         // Check if DB save failed
@@ -159,14 +151,7 @@ const Footer = () => {
   };
 
   const handleBookMeeting = () => {
-    // Trigger Google Ads conversion
-    if (typeof window.gtag_report_conversion === 'function') {
-      window.gtag_report_conversion();
-    } else if (window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "AW-17813249829/B1xyCILN5NMbEKW-gq5C",
-      });
-    }
+
   };
 
   return (

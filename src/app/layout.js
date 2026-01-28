@@ -46,34 +46,7 @@ export default function RootLayout({ children }) {
         src="https://www.googletagmanager.com/gtag/js?id=AW-17813249829"
         strategy="afterInteractive"
       />
-      <Script id="google-ads-config" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', 'AW-17813249829');
-          
-          // Conversion event (legacy placement) - REMOVED to prevent auto-trigger on page load
-          // gtag('event', 'conversion', {'send_to': 'AW-17813249829/B1xyCILN5NMbEKW-gq5C'});
-
-          function gtag_report_conversion(url) {
-            var callback = function () {
-              if (typeof(url) != 'undefined') {
-                window.location = url;
-              }
-            };
-            gtag('event', 'conversion', {
-                'send_to': 'AW-17813249829/B1xyCILN5NMbEKW-gq5C',
-                'event_callback': callback
-            });
-            return false;
-          }
-          
-          // Expose function to window for React components
-          window.gtag_report_conversion = gtag_report_conversion;
-        `}
-      </Script>
       {/* Microsoft Clarity */}
       <Script id="microsoft-clarity" strategy="afterInteractive">
         {`
