@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { FiCheckCircle, FiClock, FiSmartphone, FiLayout, FiTrendingUp, FiBox } from "react-icons/fi";
+import Review from "../components/review/Review";
 
 const GroceryAppLaunch = () => {
   return (
@@ -77,7 +78,7 @@ const GroceryAppLaunch = () => {
                     <p className="text-slate-400 font-medium uppercase tracking-wider">Unbeatable Price</p>
                 </div>
                 <div className="p-6 border-l-0 md:border-l border-r-0 md:border-r border-slate-700">
-                    <h3 className="text-white text-4xl font-black mb-2">7 Days</h3>
+                    <h3 className="text-white text-4xl font-black mb-2">15 Days</h3>
                     <p className="text-slate-400 font-medium uppercase tracking-wider">Go Live Fast</p>
                 </div>
                 <div className="p-6">
@@ -165,6 +166,9 @@ const GroceryAppLaunch = () => {
         </div>
       </div>
 
+      {/* Testimonials Section */}
+      <Review />
+
       {/* CTA Section */}
       <div className="py-20 bg-white">
         <div className="container mx-auto px-5 text-center">
@@ -179,7 +183,7 @@ const GroceryAppLaunch = () => {
                         <li>Fill out the form below</li>
                         <li>Our expert will call you within 24 hours</li>
                         <li>We schedule a live demo</li>
-                        <li>You get your app in 7 days</li>
+                        <li>We will make live your app in 15 days</li>
                     </ol>
                 </div>
                 <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 flex items-center justify-center">
