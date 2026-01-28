@@ -197,7 +197,7 @@ const Header = () => {
             currency={calculatorCurrency}
         />
         {/* Floating Calculator Button */}
-        {mounted && !showCalculator && createPortal(
+        {mounted && !showCalculator && pathname !== "/grocery-app-launch" && createPortal(
             <>
                 <div className="calculatorTooltip">Get App Cost</div>
                 <button

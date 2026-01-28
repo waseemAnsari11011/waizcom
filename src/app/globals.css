@@ -127,7 +127,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* animation: pulse .9s infinite alternate; */
+   animation: pulse .9s infinite alternate;
   /* Add this line for animation */
 }
 
