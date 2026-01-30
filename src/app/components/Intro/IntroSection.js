@@ -2,17 +2,11 @@
 import { useState, useEffect } from "react";
 import Script from "next/script";
 import Image from "next/image";
-import { sendGAEvent } from "@next/third-parties/google";
 import Carousel from "./Carousel";
 import { montserrat, rubik } from "@/app/fonts";
 
 const IntroSection = () => {
   const [isMobile, setIsMobile] = useState(null);
-  const trigerEvent = () => {
-    sendGAEvent("event", "contact_me_intro_sec_clicked", {
-      value: "contact_me_intro",
-    });
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,18 +28,6 @@ const IntroSection = () => {
   return (
     <div className="bg-white">
 
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=AW-16527872688"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-16527872688');
-    `}
-      </Script>
       {/* Intro Content */}
       <div
         id="intro-section"
