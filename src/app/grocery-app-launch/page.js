@@ -25,7 +25,9 @@ const GroceryAppLaunch = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="#Footer"
+                  href="https://wa.me/918882202176?text=I%20am%20interested%20in%20your%20e-commerce%20development%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-8 py-4 bg-green-600 text-white font-bold rounded-lg text-lg shadow-lg hover:bg-green-700 transition-all transform hover:-translate-y-1 text-center"
                 >
                   Start at ₹45,000
@@ -196,12 +198,14 @@ const GroceryAppLaunch = () => {
             </div>
             
             <a 
-                href="#Footer"
+                href="https://wa.me/918882202176?text=I%20am%20interested%20in%20your%20e-commerce%20development%20services"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-12 py-5 bg-green-600 text-white font-bold text-xl rounded-full shadow-xl hover:bg-green-700 hover:shadow-2xl transition-all transform hover:-translate-y-1 animate-pulse"
             >
                 Get Started Now
             </a>
-            <p className="mt-4 text-slate-400 text-sm">Scroll down to fill the contact form</p>
+
         </div>
       </div>
 
