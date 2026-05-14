@@ -78,7 +78,12 @@ const Header = () => {
   // Auto-open calculator logic
   useEffect(() => {
     // Only run auto-open if NOT on admin pages (double check, though return null handles display)
-    if (pathname?.startsWith("/admin") || pathname === "/app-cost-calculator" || pathname === "/grocery-app-launch") return;
+    if (
+        pathname?.startsWith("/admin") ||
+        pathname === "/app-cost-calculator" ||
+        pathname === "/grocery-app-launch" ||
+        pathname?.startsWith("/services/dtc-mobile-apps")
+    ) return;
 
     const hasSeen = sessionStorage.getItem("hasSeenCalculator");
     if (!hasSeen) {
@@ -197,7 +202,7 @@ const Header = () => {
             currency={calculatorCurrency}
         />
         {/* Floating Calculator Button */}
-        {mounted && !showCalculator && pathname !== "/grocery-app-launch" && createPortal(
+        {mounted && !showCalculator && pathname !== "/grocery-app-launch" && !pathname?.startsWith("/services/dtc-mobile-apps") && createPortal(
             <>
                 <div className="calculatorTooltip">Get App Cost</div>
                 <button

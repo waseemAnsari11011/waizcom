@@ -9,6 +9,8 @@ export default async function sitemap() {
         '',
         '/about-us',
         '/services',
+        '/services/dtc-mobile-apps',
+        '/services/dtc-mobile-apps/demo',
         '/projects',
         '/tech',
         '/blog',

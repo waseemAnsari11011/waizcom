@@ -19,7 +19,7 @@ const Footer = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   
-  if (pathname?.startsWith("/admin")) return null;
+  if (pathname?.startsWith("/admin") || pathname === "/services/dtc-mobile-apps/demo") return null;
   const [errorMessage, setErrorMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -443,6 +443,9 @@ const Footer = () => {
 
           <Link href="/services" className="cursor-pointer hover:text-[#fad171] duration-300">
             Mobile App development
+          </Link>
+          <Link href="/services/dtc-mobile-apps" className="cursor-pointer hover:text-[#fad171] duration-300">
+            DTC Mobile Apps
           </Link>
           <Link href="/services" className="cursor-pointer hover:text-[#fad171] duration-300">
             Web development
