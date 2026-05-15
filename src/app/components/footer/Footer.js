@@ -103,7 +103,7 @@ const Footer = () => {
     // Create array of promises to handle both requests
     const promises = [
       axios.post(
-        "https://email-server-new.netlify.app/.netlify/functions/api/send-email",
+        "/api/send-email",
         data
       ),
       axios.post("/api/leads", data)

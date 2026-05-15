@@ -41,23 +41,33 @@ export default function DemoForm() {
       "Requested step: Free app preview",
     ].join("\n");
 
-    try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: `${form.firstName} ${form.lastName}`.trim(),
-          phone: form.phone || "Not provided",
-          email: form.email,
-          company: form.company,
-          message,
-          source: "DTC Mobile Apps Free Preview Page",
-        }),
-      });
+    const payload = {
+      name: `${form.firstName} ${form.lastName}`.trim(),
+      phone: form.phone || "Not provided",
+      email: form.email,
+      company: form.company,
+      message,
+      source: "DTC Mobile Apps Free Preview Page",
+    };
 
-      if (!response.ok) {
+    try {
+      const [dbResponse, emailResponse] = await Promise.allSettled([
+        fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }),
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...payload,
+            subject: "New App Preview Lead - DTC Mobile Apps",
+          }),
+        })
+      ]);
+
+      if (dbResponse.status === "rejected" || !dbResponse.value.ok) {
         throw new Error("Lead submission failed");
       }
 

@@ -3,6 +3,7 @@ import connect from "@/lib/db";
 import Lead from "@/models/Lead";
 import CalculatorConfig from "@/models/CalculatorConfig";
 import axios from "axios";
+import { sendEmail } from "@/lib/sendEmail";
 
 export async function POST(request) {
   await connect();
@@ -134,7 +135,7 @@ export async function POST(request) {
 
     // Send Notification Email to Admin
     try {
-        await axios.post("https://email-server-new.netlify.app/.netlify/functions/api/send-email", {
+        await sendEmail({
             name: "App Cost Calculator User",
             email,
             phone,
